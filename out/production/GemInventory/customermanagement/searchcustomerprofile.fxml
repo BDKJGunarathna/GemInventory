@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customermanagement.SearchcustomerprofileController">
+    <top>
+        <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="searchprofhomebtn" layoutX="732.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="searchproflogoutbtn" layoutX="809.0" layoutY="23.0" onAction="#searchproflogoutAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="257.0" layoutY="35.0" text="SEARCH CUSTOMER PROFILE" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="310.0" text="Name" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="searchprofcustname" layoutX="50.0" layoutY="345.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="1.0" />
+                    </effect>
+                </TextField>
+                <JFXButton fx:id="searchprofdeleteaccountbtn" layoutX="213.0" layoutY="455.0" prefWidth="275.0" style="-fx-background-color: #2196f3;" text="Delete Account">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <Label layoutX="50.0" layoutY="160.0" text="Customer ID" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="searchprofcustid" layoutX="50.0" layoutY="195.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="1.0" />
+                    </effect>
+                </TextField>
+            </children></Pane>
+    </center>
+    <left>
+        <Pane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="searchprofregcustmenu" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#regcustmenubuttonAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Register Customer" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="searchprofcustdetailsmenu" alignment="BASELINE_LEFT" layoutY="250.0" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Customer Details" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="searchprofsearchprofilemenu" alignment="BASELINE_LEFT" layoutY="395.0" onAction="#searchprofilemenubuttonAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="Search Profile">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+            </children></Pane>
+    </left>
+</BorderPane>

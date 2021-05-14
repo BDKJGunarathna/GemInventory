@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="employeemanagement.ViewemployeedetailsController">
+    <top>
+        <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="viewempdetailslogoutbtn" layoutX="1189.0" layoutY="23.0" onAction="#viewempdetlogoutAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="viewempdetailshomebtn" layoutX="1126.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="550.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="505.0" layoutY="32.0" text="VIEW EMPLOYEE DETAILS" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="viewempdetailssearch" alignment="BASELINE_RIGHT" layoutX="1089.0" layoutY="65.0" promptText="Search Employee ID" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <FontAwesomeIconView fill="#2196f3" glyphName="SEARCH" layoutX="1096.0" layoutY="85.0">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fx:id="refresh" fill="#2196f3" glyphName="REFRESH" layoutX="1050.0" layoutY="89.0" onMouseClicked="#refreshTable" size="25.0" />
+            <FontAwesomeIconView fx:id="print" fill="#2196f3" glyphName="PRINT" layoutX="1010.0" layoutY="89.0" size="25.0" />
+            <FontAwesomeIconView fx:id="add" fill="#2196f3" glyphName="USER_PLUS" layoutX="970.0" layoutY="89.0" onMouseClicked="#getAddView" size="25.0" />
+                <FontAwesomeIconView fx:id="employeecount" fill="#2196f3" glyphName="CHECK_SQUARE" layoutX="930.0" layoutY="89.0" onMouseClicked="#getEmployeeCouneView" size="25.0" />
+            <FontAwesomeIconView fx:id="viewemployee" fill="#2196f3" glyphName="SEARCH" layoutX="890.0" layoutY="89.0" onMouseClicked="#getViewEmployeeView" size="25.0" />
+            <TableView fx:id="viewemployeetable" layoutX="15.0" layoutY="120.0" prefHeight="590.0" prefWidth="1255.0">
+              <columns>
+                <TableColumn fx:id="viewempdetailsempid" prefWidth="50.0" text="EmpID" />
+                <TableColumn fx:id="viewempdetailsempname" prefWidth="140.0" text="Name" />
+                  <TableColumn fx:id="viewempdetailsdob" prefWidth="85.0" text="DOB" />
+                  <TableColumn fx:id="viewempdetailsnic" prefWidth="85.0" text="NIC Number" />
+                  <TableColumn fx:id="viewempdetailsaddress" prefWidth="140.0" text="Address" />
+                  <TableColumn fx:id="viewempdetailsphone" prefWidth="75.0" text="Home" />
+                  <TableColumn fx:id="viewempdetailsphonemobile" prefWidth="75.0" text="Mobile" />
+                  <TableColumn fx:id="viewempdetailsemptype" prefWidth="140.0" text="Employee Type" />
+                  <TableColumn fx:id="viewempdetailsemail" prefWidth="140.0" text="Email" />
+                  <TableColumn fx:id="viewempdetailssalary" prefWidth="95.0" text="Salary (Rs)" />
+                  <TableColumn fx:id="viewempdetailssuspend" prefWidth="65.0" text="Suspend" />
+                  <TableColumn fx:id="viewempdetailsactions" prefWidth="164.0" text="Actions" />
+              </columns>
+            </TableView>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>

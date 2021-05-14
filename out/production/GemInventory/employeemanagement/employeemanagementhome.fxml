@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="employeemanagement.EmployeemanagementhomeController">
+    <left>
+        <Pane prefHeight="330.0" prefWidth="75.0" BorderPane.alignment="CENTER" />
+    </left>
+    <top>
+        <Pane prefHeight="75.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="emphomelogoutbtn" layoutX="549.0" layoutY="23.0" onAction="#emphomelogoutAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="emphomehomebtn" layoutX="486.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="330.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="113.0" layoutY="14.0" text="EMPLOYEE MANAGEMENT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="emphomeaddempbtn" layoutY="50.0" onAction="#emphomeaddemployeeAction" prefHeight="130.0" prefWidth="235.0" style="-fx-border-color: #2196f3; -fx-border-width: 5; -fx-border-radius: 5;" text="ADD EMPLOYEE" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="emphomeviewempbtn" layoutX="255.0" layoutY="50.0" onAction="#emphomeviewemployeeAction" prefHeight="130.0" prefWidth="235.0" style="-fx-border-color: #2196f3; -fx-border-width: 5; -fx-border-radius: 5;" text="VIEW EMPLOYEE" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="emphomeempcountbtn" layoutY="200.0" onAction="#emphomeemployeecountmenubuttonAction" prefHeight="130.0" prefWidth="490.0" style="-fx-border-color: #2196f3; -fx-border-width: 5; -fx-border-radius: 5;" text="EMPLOYEE COUNT" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+        </Pane>
+    </center>
+   <right>
+      <Pane prefHeight="330.0" prefWidth="75.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="75.0" prefWidth="640.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

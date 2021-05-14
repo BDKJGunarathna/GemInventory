@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="suppliermanagement.NewpurchaseorderController">
+    <top>
+        <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="newpurchhome" layoutX="732.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="newpurchlogout" layoutX="809.0" layoutY="23.0" onAction="#logoutpurchorderAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="248.0" text="NEW PURCHASE ORDER" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            <Label layoutX="25.0" layoutY="50.0" text="Order ID" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchorderid" layoutX="100.0" layoutY="44.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="25.0" layoutY="100.0" text="Gem ID *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchgemid" layoutX="100.0" layoutY="94.0" prefWidth="150.0" promptText="Enter Gem ID" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="275.0" layoutY="100.0" text="Gem Description *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchdescription" layoutX="400.0" layoutY="94.0" prefHeight="32.0" prefWidth="275.0" promptText="Enter Description" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="25.0" layoutY="150.0" text="Date *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="newpurchdate" defaultColor="#2196f3" layoutX="25.0" layoutY="175.0" prefHeight="32.0" promptText="Select Date" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </JFXDatePicker>
+            <Label layoutX="220.0" layoutY="150.0" text="Shape *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="newpurchshape" layoutX="220.0" layoutY="175.0" prefHeight="32.0" prefWidth="150.0" promptText="Select Shape" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ComboBox>
+            <Label layoutX="400.0" layoutY="150.0" text="Weight (ct) *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="newpurchweight" layoutX="400.0" layoutY="175.0" prefHeight="32.0" prefWidth="125.0">
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </Spinner>
+            <Label layoutX="575.0" layoutY="150.0" text="Quantity *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="newpurchquantity" layoutX="550.0" layoutY="175.0" prefHeight="32.0" prefWidth="125.0">
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </Spinner>
+            <Label layoutX="250.0" layoutY="240.0" text="Price (US$)" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchprice" layoutX="350.0" layoutY="234.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="25.0" layoutY="290.0" text="Supplier Name *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchsuppliernamesearch" layoutX="145.0" layoutY="284.0" promptText="Search for Supplier" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="345.0" layoutY="290.0" text="Supplier Email" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchsupemail" layoutX="451.0" layoutY="284.0" prefHeight="32.0" prefWidth="224.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="25.0" layoutY="340.0" text="Supplier Address" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpurchsupaddress" layoutX="145.0" layoutY="334.0" prefHeight="32.0" prefWidth="530.0" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </TextField>
+            <Label layoutX="25.0" layoutY="390.0" text="Delivery Expected On *" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="newpurchdeliverydate" defaultColor="#2196f3" layoutX="25.0" layoutY="420.0" prefHeight="32.0" promptText="Select Date" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </JFXDatePicker>
+            <Label layoutX="210.0" layoutY="390.0" text="Additional Notes" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="newpurchadditionalnotes" layoutX="325.0" layoutY="384.0" prefHeight="135.0" prefWidth="350.0" promptText="Enter Additional Notes" style="-fx-border-color: #2196f3;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </JFXTextArea>
+            <JFXButton fx:id="newpurchsubmitorderbtn" layoutX="25.0" layoutY="560.0" prefWidth="200.0" style="-fx-background-color: #2196f3;" text="Submit Order">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="newpurchresetformbtn" layoutX="250.0" layoutY="560.0" prefWidth="200.0" style="-fx-background-color: red;" text="Reset Form">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="newpurchaddsupplierbtn" layoutX="475.0" layoutY="560.0" onAction="#newsuppliermenubuttonAction" prefWidth="200.0" style="-fx-background-color: a0a2ab;" text="Add Spplier">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <FontAwesomeIconView glyphName="CHECK" layoutX="43.0" layoutY="586.0" size="20.0" />
+            <FontAwesomeIconView glyphName="UNDO" layoutX="276.0" layoutY="586.0" size="20.0" />
+            <FontAwesomeIconView glyphName="PLUS_CIRCLE" layoutX="500.0" layoutY="586.0" size="20.0" />
+            </children>
+        </Pane>
+    </center>
+    <left>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="newpurchcheckgemstonesmenu" alignment="BASELINE_LEFT" layoutY="105.0" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Check Gemstones" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="newpurchnewpurchordmenu" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#newpurchaseordermenubuttonAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="New Purchase Order">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="newpurchnewsupmenu" alignment="BASELINE_LEFT" layoutY="255.0" onAction="#newsuppliermenubuttonAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="New Supplier" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="newpurchgemstoneordlistmenu" alignment="BASELINE_LEFT" layoutY="330.0" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Gemstone Order List" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="newpurchsuplistmenu" alignment="BASELINE_LEFT" layoutY="405.0" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Supplier List" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+            </children></Pane>
+    </left>
+</BorderPane>
