@@ -66,7 +66,7 @@
                </effect>
             </FontAwesomeIconView>
             <FontAwesomeIconView fx:id="refresh" fill="#2196f3" glyphName="REFRESH" layoutX="1050.0" layoutY="89.0" onMouseClicked="#refreshTable" size="25.0" />
-            <FontAwesomeIconView fx:id="print" fill="#2196f3" glyphName="PRINT" layoutX="1010.0" layoutY="89.0" size="25.0" />
+            <FontAwesomeIconView fx:id="print" fill="#2196f3" glyphName="PRINT" layoutX="1010.0" layoutY="89.0" onMouseClicked="#print" size="25.0" />
             <FontAwesomeIconView fx:id="add" fill="#2196f3" glyphName="USER_PLUS" layoutX="970.0" layoutY="89.0" onMouseClicked="#getAddView" size="25.0" />
                 <FontAwesomeIconView fx:id="employeecount" fill="#2196f3" glyphName="CHECK_SQUARE" layoutX="930.0" layoutY="89.0" onMouseClicked="#getEmployeeCouneView" size="25.0" />
             <FontAwesomeIconView fx:id="viewemployee" fill="#2196f3" glyphName="SEARCH" layoutX="890.0" layoutY="89.0" onMouseClicked="#getViewEmployeeView" size="25.0" />
