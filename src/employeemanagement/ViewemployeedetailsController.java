@@ -7,6 +7,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import empmodels.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -116,6 +118,33 @@ public class ViewemployeedetailsController implements Initializable {
 
         //Initialize loadDate method
         loadDate();
+
+        FilteredList<Employee> filteredEmployeeDetails = new FilteredList<>(EmployeeList, b -> true);
+
+        viewempdetailssearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredEmployeeDetails.setPredicate(employee -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFIlter = newValue.toLowerCase();
+
+                if (employee.getEmpName().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;
+                } else if (employee.getEmpType().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;
+                } else if (String.valueOf(employee.getEmpID()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;
+                } else
+                    return false;
+            });
+        });
+
+        SortedList<Employee> sortedEmployeeDetails = new SortedList<>(filteredEmployeeDetails);
+
+        sortedEmployeeDetails.comparatorProperty().bind(viewemployeetable.comparatorProperty());
+
+        viewemployeetable.setItems(sortedEmployeeDetails);
     }
 
     //Logout Method(Direct to login page)
