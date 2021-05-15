@@ -300,8 +300,8 @@ public class AddemployeeController implements Initializable {
     //NIC Number Validation
     private boolean validateNICNumber () {
         //Patterns Define (Return compiled version of a regular expression into the patterns)
-        Pattern p1 = Pattern.compile("(99|98|97|96|95)?[001-365][001-999][0-9]*V");
-        Pattern p2 = Pattern.compile("(99|98|97|96|95)?[001-365][001-999][0-9]*v");
+        Pattern p1 = Pattern.compile("(9|8|7|6|5)?[0-9][001-365][001-999][0-9]*V");
+        Pattern p2 = Pattern.compile("(9|8|7|6|5)?[0-9][001-365][001-999][0-9]*v");
         //Matching the above define patterns against regular expression
         Matcher m1 = p1.matcher(nicnumber.getText());
         Matcher m2 = p2.matcher(nicnumber.getText());
