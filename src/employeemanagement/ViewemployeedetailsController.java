@@ -255,7 +255,11 @@ public class ViewemployeedetailsController implements Initializable {
 
     //Generate Report Method
     @FXML
-    private void print(MouseEvent event) {
+    private void print(MouseEvent event) throws SQLException {
+        //Create Generate Types of Employee Object
+        Types_Of_Employee_Report typesOfEmployeeReport = new Types_Of_Employee_Report();
+        //Create Types of Employee PDF
+        typesOfEmployeeReport.createPdf();
     }
 
     //Table View Method
