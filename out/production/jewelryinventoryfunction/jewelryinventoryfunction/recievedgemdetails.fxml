@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jewelryinventoryfunction.RecievedgemdetailsController">
+    <top>
+        <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="receivedgemdetailshomebtn" layoutX="732.0" layoutY="23.0" onAction="#fhomeOnAction" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="receivedgemdetailslogoutbtn" layoutX="809.0" layoutY="23.0" onAction="#logoutreceivedgemAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2196f3;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="261.0" layoutY="35.0" text="RECEIVED GEM DETAILS" textFill="#2d3447">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="110.0" text="Request Number" textFill="#2d3447">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="184.0" text="Gem ID" textFill="#2d3447">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="262.0" text="Description" textFill="#2d3447">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="340.0" text="Weight" textFill="#2d3447">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="receivedgemdetailsreqnum" layoutX="200.0" layoutY="104.0" prefWidth="455.0" promptText="Enter Request Number" style="-fx-background-color: transparent; -fx-border-color: #2d3447;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" />
+                    </effect>
+                </TextField>
+                <TextField fx:id="receivedgemdetailsgemid" layoutX="200.0" layoutY="178.0" prefWidth="455.0" promptText="Enter Gem ID" style="-fx-background-color: transparent; -fx-border-color: #2d3447;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" />
+                    </effect>
+                </TextField>
+                <TextField fx:id="receivedgemdetailsdescription" layoutX="200.0" layoutY="254.0" prefWidth="455.0" promptText="Enter Description" style="-fx-background-color: transparent; -fx-border-color: #2d3447;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" />
+                    </effect>
+                </TextField>
+                <TextField fx:id="receivedgemdetailsweight" layoutX="200.0" layoutY="331.0" prefWidth="455.0" promptText="Enter Weight" style="-fx-background-color: transparent; -fx-border-color: #2d3447;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" />
+                    </effect>
+                </TextField>
+                <JFXButton fx:id="receivedgemdetailsaddbtn" layoutX="212.0" layoutY="491.0" onAction="#addgemrecAction" prefWidth="300.0" style="-fx-background-color: #2d3447;" text="ADD" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+            <Label layoutX="50.0" layoutY="409.0" text="Quantity" textFill="#2d3447">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="receivedgemdetailsquantity" layoutX="200.0" layoutY="408.0" prefWidth="455.0" promptText="Enter Quantity" style="-fx-background-color: transparent; -fx-border-color: #2d3447;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </TextField>
+            </children>
+        </Pane>
+    </center>
+    <left>
+        <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </left>
+    <right>
+        <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </right>
+    <bottom>
+        <Pane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </bottom>
+</BorderPane>
