@@ -119,31 +119,39 @@ public class ViewemployeedetailsController implements Initializable {
         //Initialize loadDate method
         loadDate();
 
+        //Wrap the ObservableList in a FilteredList (initially display all data)
         FilteredList<Employee> filteredEmployeeDetails = new FilteredList<>(EmployeeList, b -> true);
 
+        //Set the filter Predicate whenever the filter changes
         viewempdetailssearch.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredEmployeeDetails.setPredicate(employee -> {
+                //If filter text is empty, display all employees
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
+                //Compare employee name, employee type, and employee ID of every person with filter text
                 String lowerCaseFIlter = newValue.toLowerCase();
 
                 if (employee.getEmpName().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;
+                    return true;//Filter matches employee name
                 } else if (employee.getEmpType().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;
+                    return true;//Filter matches employee type
                 } else if (String.valueOf(employee.getEmpID()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;
+                    return true;//Filter matches employee ID
                 } else
-                    return false;
+                    return false;//Does not match
             });
         });
 
+        //Wrap the FilteredList in a SortedList
         SortedList<Employee> sortedEmployeeDetails = new SortedList<>(filteredEmployeeDetails);
 
+        //Bind the SortedList comparator to the EmployeeTableView comparator
+        //Otherwise, sorting the EmployeeTableView would have no effect
         sortedEmployeeDetails.comparatorProperty().bind(viewemployeetable.comparatorProperty());
 
+        //Add sorted (and filtered) data to the table
         viewemployeetable.setItems(sortedEmployeeDetails);
     }
 
