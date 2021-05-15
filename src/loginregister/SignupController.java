@@ -126,6 +126,12 @@ public class SignupController implements Initializable {
 
                     //Update Query (It will returns the number of affected rows)
                     pst.executeUpdate();
+
+                    //Alert Information box
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully SignUp");
+                    alert.show();
                 } catch (SQLException e2) {
                     e2.printStackTrace();
                 }
