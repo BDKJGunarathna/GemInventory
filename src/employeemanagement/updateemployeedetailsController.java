@@ -186,6 +186,12 @@ public class updateemployeedetailsController implements Initializable {
 
                     //Update Query (It will returns the number of affected rows)
                     pst.executeUpdate();
+
+                    //Alert Information box
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Updated");
+                    alert.show();
                 } catch (SQLException ex2) {
                     ex2.printStackTrace();
                 }
