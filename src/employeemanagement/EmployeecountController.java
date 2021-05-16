@@ -1,6 +1,7 @@
 package employeemanagement;
 
 import com.jfoenix.controls.*;
+import dbconnection.DBHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EmployeecountController implements Initializable {
@@ -88,6 +93,12 @@ public class EmployeecountController implements Initializable {
     @FXML
     private Label nqualitycheckers;
 
+    private DBHandler handler;//DBHandler is the connection class
+    private Connection connection;
+    private String query;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -147,6 +158,29 @@ public class EmployeecountController implements Initializable {
         countempcount.setScene(countscene5);//Set Scene object on the Stage
         countempcount.show();//Show the Stage which create above (makes the Stage visible and the exits)
         countempcount.setResizable(false);//User cannot resize the frame
+    }
+
+    @FXML
+    private void totalEmployee() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            totemployees.setText(resultSet.getString("COUNT(*)"));
+        }
     }
 
 }
