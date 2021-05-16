@@ -106,6 +106,20 @@ public class AddemployeeController implements Initializable {
         logout.setResizable(false);//User cannot resize the frame
     }
 
+    //Home Page (Direct to Employee Management Home Page)
+    @FXML
+    public void addemployeehomeAction(ActionEvent emphome8) throws  IOException {
+        home.getScene().getWindow().hide();
+
+        Stage addemphome = new Stage();//Create a Stage
+        //Setup the Scene
+        Parent addemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
+        Scene addempscene8 = new Scene(addemproot8);//Create a scene
+        addemphome.setScene(addempscene8);//Set Scene object on the Stage
+        addemphome.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        addemphome.setResizable(false);
+    }
+
     //Add Employee Button method (Direct to add employee page)
     @FXML
     public void addemployeemenubuttonAction(ActionEvent ev4) throws IOException {
