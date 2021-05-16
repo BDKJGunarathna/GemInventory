@@ -82,7 +82,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="activeemp" layoutX="475.0" layoutY="105.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Active Employees" textFill="#2196f3">
+            <JFXButton fx:id="activeemp" layoutX="475.0" layoutY="105.0" onAction="#printActiveEmployeeList" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Active Employees" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
