@@ -185,4 +185,12 @@ public class FilteremployeesController implements Initializable {
         active_employee_list_report.createPdf();
     }
 
+    @FXML
+    private void printCEODetails(ActionEvent event) throws SQLException {
+        //Create CEO Details Object
+        CEODetails ceoDetails = new CEODetails();
+        //Create CEO Details PDF
+        ceoDetails.createPdf();
+    }
+
 }
