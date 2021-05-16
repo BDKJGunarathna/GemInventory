@@ -113,6 +113,20 @@ public class FilteremployeesController implements Initializable {
         filtlogout.setResizable(false);//User cannot resize the frame
     }
 
+    //Home Page (Direct to Employee Management Home Page)
+    @FXML
+    public void flithomeAction(ActionEvent emphome8) throws  IOException {
+        filteremphome.getScene().getWindow().hide();
+
+        Stage filtemphome = new Stage();//Create a Stage
+        //Setup the Scene
+        Parent filtemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
+        Scene filtempscene8 = new Scene(filtemproot8);//Create a scene
+        filtemphome.setScene(filtempscene8);//Set Scene object on the Stage
+        filtemphome.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        filtemphome.setResizable(false);
+    }
+
     //Add Employee Button method (Direct to add employee page)
     @FXML
     public void filtaddemployeemenubuttonAction(ActionEvent filtev4) throws IOException {
