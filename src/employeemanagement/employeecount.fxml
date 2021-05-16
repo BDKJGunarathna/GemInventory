@@ -40,7 +40,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="counthome" layoutX="732.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="counthome" layoutX="732.0" layoutY="23.0" onAction="#counthomeAction" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -77,7 +77,7 @@
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-            <Label fx:id="totemployees" layoutX="185.0" layoutY="65.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="totemployees" layoutX="185.0" layoutY="65.0" prefWidth="20.0" text="6" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -112,32 +112,32 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nceo" layoutX="63.0" layoutY="105.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nceo" layoutX="63.0" layoutY="105.0" prefWidth="20.0" text="1" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nadmins" layoutX="90.0" layoutY="170.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nadmins" layoutX="90.0" layoutY="170.0" prefWidth="20.0" text="1" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="naccountants" layoutX="118.0" layoutY="235.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="naccountants" layoutX="118.0" layoutY="235.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="ngemologists" layoutX="118.0" layoutY="300.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="ngemologists" layoutX="118.0" layoutY="300.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nclerks" layoutX="80.0" layoutY="365.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nclerks" layoutX="80.0" layoutY="365.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nlaborers" layoutX="100.0" layoutY="430.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nlaborers" layoutX="100.0" layoutY="430.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -172,32 +172,32 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nsalesmanagers" layoutX="411.0" layoutY="105.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nsalesmanagers" layoutX="411.0" layoutY="105.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nfinishingmanagers" layoutX="411.0" layoutY="170.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nfinishingmanagers" layoutX="411.0" layoutY="170.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nadministrativeassistants" layoutX="347.0" layoutY="235.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nadministrativeassistants" layoutX="347.0" layoutY="235.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="naccountantassistants" layoutX="337.0" layoutY="300.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="naccountantassistants" layoutX="337.0" layoutY="300.0" prefWidth="20.0" text="1" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nmarketingexecutives" layoutX="327.0" layoutY="365.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nmarketingexecutives" layoutX="327.0" layoutY="365.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nsalesreps" layoutX="327.0" layoutY="430.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nsalesreps" layoutX="327.0" layoutY="430.0" prefWidth="20.0" text="2" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -232,32 +232,32 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="ninventorymanagers" layoutX="624.0" layoutY="105.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="ninventorymanagers" layoutX="624.0" layoutY="105.0" prefWidth="20.0" text="1" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nsupmanagers" layoutX="614.0" layoutY="170.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nsupmanagers" layoutX="614.0" layoutY="170.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nassistantmanagers" layoutX="614.0" layoutY="235.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nassistantmanagers" layoutX="614.0" layoutY="235.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nstoresup" layoutX="604.0" layoutY="300.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nstoresup" layoutX="604.0" layoutY="300.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nofficeassistants" layoutX="601.0" layoutY="365.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nofficeassistants" layoutX="601.0" layoutY="365.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nqualitycheckers" layoutX="596.0" layoutY="430.0" prefWidth="20.0" textFill="#2196f3">
+            <Label fx:id="nqualitycheckers" layoutX="596.0" layoutY="430.0" prefWidth="20.0" text="0" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

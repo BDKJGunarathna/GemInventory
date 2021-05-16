@@ -118,6 +118,20 @@ public class EmployeecountController implements Initializable {
         countlogout.setResizable(false);//User cannot resize the frame
     }
 
+    //Home Page (Direct to Employee Management Home Page)
+    @FXML
+    public void counthomeAction(ActionEvent emphome8) throws  IOException {
+        counthome.getScene().getWindow().hide();
+
+        Stage countemphome = new Stage();//Create a Stage
+        //Setup the Scene
+        Parent countemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
+        Scene countempscene8 = new Scene(countemproot8);//Create a scene
+        countemphome.setScene(countempscene8);//Set Scene object on the Stage
+        countemphome.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        countemphome.setResizable(false);
+    }
+
     //Add Employee Button method (Direct to add employee page)
     @FXML
     public void countaddemployeemenubuttonAction(ActionEvent countev4) throws IOException {
