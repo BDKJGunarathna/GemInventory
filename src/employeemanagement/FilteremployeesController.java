@@ -177,4 +177,12 @@ public class FilteremployeesController implements Initializable {
         suspended_employee_list_report.createPdf();
     }
 
+    @FXML
+    private void printActiveEmployeeList(ActionEvent event) throws SQLException {
+        //Create Generate Active Employee List Object
+        Active_Employee_List_Report active_employee_list_report = new Active_Employee_List_Report();
+        //Create Suspended Active List PDF
+        active_employee_list_report.createPdf();
+    }
+
 }
