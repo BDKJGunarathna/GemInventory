@@ -1,6 +1,6 @@
 package employeemanagement;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class FilteremployeesController implements Initializable {
@@ -166,6 +167,14 @@ public class FilteremployeesController implements Initializable {
         filtviewall.setScene(filtscene6);//Set Scene object on the Stage
         filtviewall.show();//Show the Stage which create above (makes the Stage visible and the exits)
         filtviewall.setResizable(false);//User cannot resize the frame
+    }
+
+    @FXML
+    private void printSuspendedEmployeeList(ActionEvent event) throws SQLException {
+        //Create Generate Suspended Employee List Object
+        Suspended_Employee_List_Report suspended_employee_list_report = new Suspended_Employee_List_Report();
+        //Create Suspended Employee List PDF
+        suspended_employee_list_report.createPdf();
     }
 
 }
