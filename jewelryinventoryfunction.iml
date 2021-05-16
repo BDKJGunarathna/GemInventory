@@ -20,5 +20,6 @@
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="com.itextpdf.maven:itextdoc:2.0.0" level="project" />
   </component>
 </module>

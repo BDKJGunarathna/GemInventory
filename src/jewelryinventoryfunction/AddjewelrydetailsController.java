@@ -138,4 +138,5 @@ public class AddjewelrydetailsController implements Initializable {
                 ex.printStackTrace();
             }
         }
+
 }

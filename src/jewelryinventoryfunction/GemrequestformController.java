@@ -52,8 +52,35 @@ public class GemrequestformController implements Initializable {
 
     @FXML
     public void sendAction(ActionEvent gemreqev2) {
-        Stage stage = (Stage) gemrequestsendbtn.getScene().getWindow();
-        stage.close();
+
+//validation
+        if(gemrequestdescription.getText().isEmpty() |  gemrequestquantity.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Please give all the details to send request!");
+            alert.showAndWait();
+            Stage stage = (Stage) gemrequestsendbtn.getScene().getWindow();
+            stage.close();
+        }
+        else {
+            try {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Success Message!");
+                alert.setHeaderText(null);
+                alert.setContentText("Request send successfully!");
+                alert.showAndWait();
+                Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+                Stage addj = (Stage) gemrequestsendbtn.getScene().getWindow();
+                addj.setTitle("City of Gems");
+                addj.setScene(new Scene(root, 1250, 800));
+                addj.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));

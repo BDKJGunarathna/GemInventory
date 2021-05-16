@@ -62,7 +62,8 @@ public class DeletejewelrydetailsController implements Initializable {
     private JFXButton store1;
     @FXML
     private JFXButton donebtn;
-
+@FXML
+private JFXButton homeid;
 
 
     @Override
@@ -121,11 +122,11 @@ public class DeletejewelrydetailsController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void doneOnAction1(ActionEvent event){
+    public void doneOnActionhome(ActionEvent event){
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-            Stage storeg = (Stage) donebtn.getScene().getWindow();
+            Stage storeg = (Stage) homeid.getScene().getWindow();
             storeg.setTitle("City of Gems");
             storeg.setScene(new Scene(root, 1250,800));
             storeg.show();

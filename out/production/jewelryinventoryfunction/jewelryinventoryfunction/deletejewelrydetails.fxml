@@ -16,7 +16,7 @@
     <top>
         <Pane prefHeight="66.0" prefWidth="1140.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton layoutX="918.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="homeid" layoutX="918.0" layoutY="22.0" onAction="#doneOnActionhome" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

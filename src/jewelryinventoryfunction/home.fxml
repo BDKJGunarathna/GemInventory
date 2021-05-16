@@ -84,11 +84,11 @@
     <left>
         <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="gembtn" layoutX="1.0" layoutY="313.0" mnemonicParsing="false" onAction="#storeGemOnAction" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Store Recieved Gem">
+            <JFXButton fx:id="gem" layoutX="1.0" layoutY="313.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Store Recieved Gem">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
-            </Button>
+            </JFXButton>
             <Button fx:id="reportbtn" layoutX="1.0" layoutY="385.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Report">
                <font>
                   <Font name="System Bold Italic" size="20.0" />

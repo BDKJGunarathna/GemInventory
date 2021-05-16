@@ -17,7 +17,7 @@
     <top>
         <Pane prefHeight="66.0" prefWidth="1140.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton layoutX="980.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="homeupdate" layoutX="980.0" layoutY="22.0" onAction="#homeOnAction" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -49,7 +49,7 @@
     <center>
         <Pane prefHeight="776.0" prefWidth="1111.0" BorderPane.alignment="CENTER">
             <children>
-                <TableView fx:id="jewelry" layoutX="154.0" layoutY="271.0" onMouseClicked="#handleMouse" onSort="#ShowTable" prefHeight="347.0" prefWidth="959.0" style="-fx-background-color: #e6f0ff;">
+                <TableView fx:id="jewelry" layoutX="154.0" layoutY="271.0" onMouseClicked="#handleMouse" onSort="#showTable" prefHeight="347.0" prefWidth="959.0" style="-fx-background-color: #e6f0ff;">
                     <columns>
                         <TableColumn fx:id="idcol" prefWidth="125.00003051757812" text="Jewelry Id" />
                         <TableColumn fx:id="namecol" prefWidth="197.0" text="Jewelry Name" />
@@ -58,7 +58,6 @@
                         <TableColumn fx:id="weightcol" prefWidth="118.0" text="Weight(carats)" />
                         <TableColumn fx:id="quancol" prefWidth="86.0" text="Quantity" />
                         <TableColumn fx:id="pricecol" prefWidth="105.0" text="Price(Rs.)" />
-                        <TableColumn fx:id="actioncol" prefWidth="105.0" text="Action" />
                     </columns>
                 </TableView>
                 <TextField fx:id="search" alignment="TOP_LEFT" layoutX="672.0" layoutY="96.0" prefHeight="41.0" prefWidth="353.0" promptText="Search" style="-fx-background-color: #e6f0ff;">
@@ -71,7 +70,7 @@
                     <font>
                         <Font size="18.0" />
                     </font></TextField>
-            <JFXButton fx:id="donebtn3" layoutX="492.0" layoutY="663.0" mnemonicParsing="false" onAction="#doneOnAction1" prefHeight="51.0" prefWidth="163.0" style="-fx-background-color: #2196f3;" text="DONE" textFill="#e6f0ff">
+            <JFXButton fx:id="donebtn3" layoutX="492.0" layoutY="663.0" mnemonicParsing="false" onAction="#updatejewelryAction" prefHeight="51.0" prefWidth="163.0" style="-fx-background-color: #2196f3;" text="DONE" textFill="#e6f0ff">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
