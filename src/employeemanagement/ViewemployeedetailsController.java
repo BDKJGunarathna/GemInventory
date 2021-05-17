@@ -119,6 +119,14 @@ public class ViewemployeedetailsController implements Initializable {
         //Initialize loadDate method
         loadDate();
 
+        //Initialize Search Method
+        searchEmpDetails();
+
+    }
+
+    //Search Method
+    @FXML
+    private void searchEmpDetails() {
         //Wrap the ObservableList in a FilteredList (initially display all data)
         FilteredList<Employee> filteredEmployeeDetails = new FilteredList<>(EmployeeList, b -> true);
 
@@ -167,6 +175,20 @@ public class ViewemployeedetailsController implements Initializable {
         viewempdetlogout.setScene(viewempdetscene2);//Set Scene object on the Stage
         viewempdetlogout.show();//Show the Stage which create above (makes the Stage visible and the exits)
         viewempdetlogout.setResizable(false);//User cannot resize the frame
+    }
+
+    //Home Page (Direct to Filter Employee Page)
+    @FXML
+    public void viewempdethomeAction(ActionEvent viewemphome8) throws  IOException {
+        viewempdetailshomebtn.getScene().getWindow().hide();
+
+        Stage viewempdethome = new Stage();//Create a Stage
+        //Setup the Scene
+        Parent viewempdetroot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
+        Scene viewempdetscene8 = new Scene(viewempdetroot8);//Create a scene
+        viewempdethome.setScene(viewempdetscene8);//Set Scene object on the Stage
+        viewempdethome.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        viewempdethome.setResizable(false);
     }
 
     //getAddView Method (PopUP add employee interface from utility window)
