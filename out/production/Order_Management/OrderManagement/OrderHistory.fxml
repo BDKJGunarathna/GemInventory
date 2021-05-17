@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderManagement.OrderHistoryController">
+    <children>
+        <JFXButton fx:id="btnOrderHistoryHome" layoutX="993.0" layoutY="23.0" onAction="#OrderHistoryToHome" text="HOME" textFill="#a0a2ab">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="1095.0" layoutY="23.0" text="LOGOUT" textFill="#a0a2ab">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </JFXButton>
+        <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+        <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+            <font>
+                <Font name="System Bold" size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+            <font>
+                <Font name="System Bold" size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+            <font>
+                <Font name="System Bold" size="21.0" />
+            </font>
+        </Label>
+
+
+        <TableView fx:id="tvOrder" layoutX="11.0" layoutY="187.0" prefHeight="397.0" prefWidth="1168.0">
+            <columns>
+                <TableColumn fx:id="col_orderID" prefWidth="81.0" text="OrderId" />
+                <TableColumn fx:id="col_invoiceNo" prefWidth="97.00003051757812" text="InvoiceNo" />
+                <TableColumn fx:id="col_cusId" prefWidth="79.0" text="CusId" />
+                <TableColumn fx:id="col_proId" prefWidth="82.0" text="proId" />
+                <TableColumn fx:id="col_proName" prefWidth="140.0" text="proName" />
+            <TableColumn fx:id="col_unPrice" prefWidth="101.0" text="unPrice" />
+            <TableColumn fx:id="col_qty" prefWidth="62.0" text="qty" />
+            <TableColumn fx:id="col_total" prefWidth="111.0" text="total" />
+            <TableColumn fx:id="col_ordereddate" prefWidth="117.0" text="OrderedDate" />
+            <TableColumn fx:id="col_status" prefWidth="116.0" text="status" />
+            <TableColumn fx:id="col_action" prefWidth="100.0" text="Action" />
+            </columns>
+        </TableView>
+      <Label alignment="CENTER" layoutX="481.0" layoutY="44.0" prefHeight="60.0" prefWidth="221.0" text="Order List" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <HBox layoutX="134.0" layoutY="134.0" prefHeight="37.0" prefWidth="27.0" style="-fx-background-color: #73C6B6;">
+         <children>
+            <FontAwesomeIconView fill="#d16e5c" glyphName="PRINT" size="36" wrappingWidth="36.0" />
+         </children>
+      </HBox>
+      <Button fx:id="addOrderBtnHistory" layoutX="21.0" layoutY="134.0" mnemonicParsing="false" onAction="#OrderCreation" prefHeight="37.0" prefWidth="89.0" style="-fx-background-color: #73C6B6;" text="ADD" textFill="#ee1515">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

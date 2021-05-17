@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1050.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderManagement.CreateOrderController">
+   <children>
+
+      <JFXButton fx:id="btnCreateOrderHome" layoutX="823.0" layoutY="22.0" onAction="#CreateOrderToHome" text="HOME" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="927.0" layoutY="22.0" text="LOGOUT" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+      <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+
+
+
+      <TableView fx:id="tvProduct" layoutX="554.0" layoutY="125.0" onMouseClicked="#setProDetailsOnMouseClicked" prefHeight="200.0" prefWidth="461.0">
+        <columns>
+          <TableColumn fx:id="colProID" prefWidth="83.0" text="proID" />
+          <TableColumn fx:id="colProName" prefWidth="114.0" text="proName" />
+            <TableColumn fx:id="colProType" prefWidth="101.0" text="Type" />
+            <TableColumn fx:id="colProPrice" prefWidth="107.0" text="Price" />
+            <TableColumn fx:id="colProQty" prefWidth="55.0" text="Qty" />
+        </columns>
+      </TableView>
+      <VBox layoutX="167.0" layoutY="395.0" prefHeight="176.0" prefWidth="106.0" spacing="15.0" style="-fx-background-color: #2D3447;">
+         <children>
+            <Label fx:id="colCus" alignment="TOP_LEFT" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Cus ID  :       " textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Product ID   :" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Invoice No   :" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="50.0" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="ProdName   :" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="541.0" layoutY="395.0" prefHeight="165.0" prefWidth="100.0" spacing="15.0">
+         <children>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Price            :" textAlignment="JUSTIFY" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Quantity       :" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Status          :" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="140.0" style="-fx-background-color: #2D3447;" text="Ordered date:" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="293.0" layoutY="395.0" prefHeight="165.0" prefWidth="176.0" spacing="10.0">
+         <children>
+            <TextField fx:id="tfCusID" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="tfProductId" layoutX="10.0" layoutY="35.0" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="tfInvoiceNo" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="tfProName" layoutX="10.0" layoutY="60.0" style="-fx-background-color: #FFFFFF;" />
+         </children>
+      </VBox>
+      <VBox layoutX="691.0" layoutY="390.0" prefHeight="176.0" prefWidth="157.0" spacing="10.0">
+         <children>
+            <TextField fx:id="tfPrice" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="tfQuantity" layoutX="10.0" layoutY="45.0" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="tfOrderStatus" style="-fx-background-color: #FFFFFF;" />
+            <DatePicker fx:id="dpOrderedDate" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #b2beb5;" />
+         </children>
+      </VBox>
+      <Text fill="#a0a2ab" layoutX="413.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Order" textAlignment="JUSTIFY" wrappingWidth="356.13671875">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCancelOrders" layoutX="349.0" layoutY="588.0" mnemonicParsing="false" onAction="#cancelOrderOnAction" prefHeight="34.0" prefWidth="176.0" text="Cancel">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCreateOrders" layoutX="617.0" layoutY="588.0" mnemonicParsing="false" onAction="#createOrderOnAction" prefHeight="34.0" prefWidth="176.0" text="Create ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tvCustomer" layoutX="58.0" layoutY="125.0" onMouseClicked="#setCusDetailsOnMouseClicked" prefHeight="200.0" prefWidth="483.0">
+         <columns>
+            <TableColumn fx:id="colCusId" prefWidth="68.0" text="CusId" />
+            <TableColumn fx:id="colCusFName" prefWidth="136.0" text="FName" />
+            <TableColumn fx:id="colCusLName" prefWidth="134.0" text="Lname" />
+            <TableColumn fx:id="colCusTelephone" prefWidth="144.0" text="telephone" />
+
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
