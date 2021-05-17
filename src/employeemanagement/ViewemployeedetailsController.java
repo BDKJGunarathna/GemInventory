@@ -100,6 +100,9 @@ public class ViewemployeedetailsController implements Initializable {
     @FXML
     private TableColumn<Employee, String> viewempdetailsactions;
 
+    @FXML
+    private FontAwesomeIconView salaryReport;
+
     //declare variables
     private String query = null;
     private Connection connection;
@@ -282,6 +285,15 @@ public class ViewemployeedetailsController implements Initializable {
         Types_Of_Employee_Report typesOfEmployeeReport = new Types_Of_Employee_Report();
         //Create Types of Employee PDF
         typesOfEmployeeReport.createPdf();
+    }
+
+    //Generate Salary Report Method
+    @FXML
+    private void salaryReport(MouseEvent event) throws SQLException {
+        //Create Generate Salary Report Object
+        Salary_Report salary_report = new Salary_Report();
+        //Create Salary Report PDF
+        salary_report.createPdf();
     }
 
     //Table View Method
