@@ -66,10 +66,10 @@
                </effect>
             </FontAwesomeIconView>
             <FontAwesomeIconView fx:id="refresh" fill="#2196f3" glyphName="REFRESH" layoutX="1050.0" layoutY="89.0" onMouseClicked="#refreshTable" size="25.0" />
-            <FontAwesomeIconView fx:id="print" fill="#2196f3" glyphName="PRINT" layoutX="1010.0" layoutY="89.0" onMouseClicked="#print" size="25.0" />
-            <FontAwesomeIconView fx:id="add" fill="#2196f3" glyphName="USER_PLUS" layoutX="970.0" layoutY="89.0" onMouseClicked="#getAddView" size="25.0" />
-                <FontAwesomeIconView fx:id="employeecount" fill="#2196f3" glyphName="CHECK_SQUARE" layoutX="930.0" layoutY="89.0" onMouseClicked="#getEmployeeCouneView" size="25.0" />
-            <FontAwesomeIconView fx:id="viewemployee" fill="#2196f3" glyphName="SEARCH" layoutX="890.0" layoutY="89.0" onMouseClicked="#getViewEmployeeView" size="25.0" />
+            <FontAwesomeIconView fx:id="print" fill="#2196f3" glyphName="PRINT" layoutX="970.0" layoutY="89.0" onMouseClicked="#print" size="25.0" />
+            <FontAwesomeIconView fx:id="add" fill="#2196f3" glyphName="USER_PLUS" layoutX="930.0" layoutY="89.0" onMouseClicked="#getAddView" size="25.0" />
+                <FontAwesomeIconView fx:id="employeecount" fill="#2196f3" glyphName="CHECK_SQUARE" layoutX="890.0" layoutY="89.0" onMouseClicked="#getEmployeeCouneView" size="25.0" />
+            <FontAwesomeIconView fx:id="viewemployee" fill="#2196f3" glyphName="SEARCH" layoutX="850.0" layoutY="89.0" onMouseClicked="#getViewEmployeeView" size="25.0" />
             <TableView fx:id="viewemployeetable" layoutX="15.0" layoutY="120.0" prefHeight="590.0" prefWidth="1255.0">
               <columns>
                 <TableColumn fx:id="viewempdetailsempid" prefWidth="50.0" text="EmpID" />
@@ -86,6 +86,7 @@
                   <TableColumn fx:id="viewempdetailsactions" prefWidth="164.0" text="Actions" />
               </columns>
             </TableView>
+            <FontAwesomeIconView fx:id="salaryReport" fill="#2196f3" glyphName="FILE" layoutX="1010.0" layoutY="89.0" onMouseClicked="#salaryReport" size="25.0" />
             </children>
         </Pane>
     </center>
