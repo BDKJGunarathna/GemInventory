@@ -49,11 +49,16 @@
                   <Font size="19.0" />
                </font>
             </Button>
+            <Button fx:id="btnsearch" layoutX="10.0" layoutY="249.0" mnemonicParsing="false" onAction="#genReport" prefHeight="75.0" prefWidth="205.0" style="-fx-background-color: #1f6661;" text="Search Gems" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <TextField fx:id="src" alignment="TOP_LEFT" layoutX="547.0" layoutY="66.0" prefHeight="26.0" prefWidth="339.0" promptText="Search" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="152.0" stroke="BLACK" strokeType="INSIDE" width="205.0" />
-      <ImageView fitHeight="152.0" fitWidth="197.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
+      <ImageView fitHeight="152.0" fitWidth="205.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
          <image>
             <Image url="@logo.jpg" />
          </image>
