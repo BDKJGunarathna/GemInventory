@@ -319,4 +319,12 @@ public class FilteremployeesController implements Initializable {
         admin_assistants_report.createPdf();
     }
 
+    @FXML
+    private void printQualityCheckersDetails(ActionEvent event) throws SQLException {
+        //Create Quality Checkers Details Object
+        Quality_Checkers_Report  quality_checkers_report = new Quality_Checkers_Report();
+        //Create Quality Checkers Details PDF
+        quality_checkers_report.createPdf();
+    }
+
 }
