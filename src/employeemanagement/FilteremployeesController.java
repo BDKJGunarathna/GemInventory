@@ -259,8 +259,16 @@ public class FilteremployeesController implements Initializable {
     private void printSalesRepresentativesDetails(ActionEvent event) throws SQLException {
         //Create Sales Representative Details Object
         Sales_Representative_Report sales_representative_report = new Sales_Representative_Report();
-        //Create SaleRepresentative Details PDF
+        //Create Sale Representative Details PDF
         sales_representative_report.createPdf();
+    }
+
+    @FXML
+    private void printAccountantsDetails(ActionEvent event) throws SQLException {
+        //Create Accountant Details Object
+        Accountants_Report  accountants_report = new Accountants_Report();
+        //Create Accountant Details PDF
+        accountants_report.createPdf();
     }
 
 }
