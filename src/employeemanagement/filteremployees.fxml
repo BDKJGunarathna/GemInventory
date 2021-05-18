@@ -112,7 +112,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="officeassistants" layoutX="25.0" layoutY="355.0" prefWidth="200.0" style="-fx-border-color: #a0a2ab;" text="Office Assistants" textFill="#a0a2ab">
+            <JFXButton fx:id="officeassistants" layoutX="25.0" layoutY="355.0" onAction="#printOfficeAssistantsDetails" prefWidth="200.0" style="-fx-border-color: #a0a2ab;" text="Office Assistants" textFill="#a0a2ab">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
