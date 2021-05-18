@@ -110,6 +110,7 @@ public class EmployeecountController implements Initializable {
         countlogout.getScene().getWindow().hide();
 
         Stage countlogout = new Stage();//Create a Stage
+        countlogout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent countroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene countscene2 = new Scene(countroot2);//Create a scene
@@ -124,6 +125,7 @@ public class EmployeecountController implements Initializable {
         counthome.getScene().getWindow().hide();
 
         Stage countemphome = new Stage();//Create a Stage
+        countemphome.setTitle("CITY OF GEMS - EMPLOYEE MANAGEMENT HOME");//Set Title of interface
         //Setup the Scene
         Parent countemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
         Scene countempscene8 = new Scene(countemproot8);//Create a scene
@@ -138,6 +140,7 @@ public class EmployeecountController implements Initializable {
         countaddemployee.getScene().getWindow().hide();
 
         Stage countaddmenu = new Stage();//Create a Stage
+        countaddmenu.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
         //Setup the Scene
         Parent countroot3 = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
         Scene countscene3 = new Scene(countroot3);//Create a scene
@@ -152,6 +155,7 @@ public class EmployeecountController implements Initializable {
         countviewemployee.getScene().getWindow().hide();
 
         Stage countviewemp = new Stage();//Create a Stage
+        countviewemp.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent countroot5 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene countscene4 = new Scene(countroot5);//Create a scene
@@ -166,6 +170,7 @@ public class EmployeecountController implements Initializable {
         countemployeecount.getScene().getWindow().hide();
 
         Stage countempcount = new Stage();//Create a Stage
+        countempcount.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
         //Setup the Scene
         Parent countroot6 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml"));
         Scene countscene5 = new Scene(countroot6);//Create a scene

@@ -172,6 +172,7 @@ public class ViewemployeedetailsController implements Initializable {
         viewempdetailslogoutbtn.getScene().getWindow().hide();
 
         Stage viewempdetlogout = new Stage();//Create a Stage
+        viewempdetlogout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent viewempdetroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene viewempdetscene2 = new Scene(viewempdetroot2);//Create a scene
@@ -186,6 +187,7 @@ public class ViewemployeedetailsController implements Initializable {
         viewempdetailshomebtn.getScene().getWindow().hide();
 
         Stage viewempdethome = new Stage();//Create a Stage
+        viewempdethome.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent viewempdetroot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene viewempdetscene8 = new Scene(viewempdetroot8);//Create a scene
@@ -202,6 +204,7 @@ public class ViewemployeedetailsController implements Initializable {
             Parent parent = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
             Scene scene = new Scene(parent);//Create a scene
             Stage stage = new Stage();//Create a Stage
+            stage.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
             stage.setScene(scene);//Set Scene object on the Stage
             stage.initStyle(StageStyle.UTILITY);//Defines a Stage style with a solid white background and minimal platform decorations used for a utility window
             stage.show();//Show the Stage which create above (makes the Stage visible and the exits)
@@ -218,6 +221,7 @@ public class ViewemployeedetailsController implements Initializable {
             Parent parent = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
             Scene scene = new Scene(parent);//Create a scene
             Stage stage = new Stage();//Create a Stage
+            stage.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);//Defines a Stage style with a solid white background and minimal platform decorations used for a utility window
             stage.show();//Show the Stage which create above (makes the Stage visible and the exits)
@@ -234,6 +238,7 @@ public class ViewemployeedetailsController implements Initializable {
             Parent parent = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml"));
             Scene scene = new Scene(parent);//Create a scene
             Stage stage = new Stage();//Create a Stage
+            stage.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
             stage.setScene(scene);//Set Scene object on the Stage
             stage.initStyle(StageStyle.UTILITY);//Defines a Stage style with a solid white background and minimal platform decorations used for a utility window
             stage.show();//Show the Stage which create above (makes the Stage visible and the exits)
@@ -385,6 +390,7 @@ public class ViewemployeedetailsController implements Initializable {
                                     employee.getEmpType(), employee.getEmpEmail(), employee.getEmpSalary(), employee.getEmpSuspend());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();//Create a Stage
+                            stage.setTitle("CITY OF GEMS - EMPLOYEE UPDATE");//Set Title of interface
                             stage.setScene(new Scene(parent));//Set Scene object on the Stage
                             stage.initStyle(StageStyle.UTILITY);//Defines a Stage style with a solid white background and minimal platform decorations used for a utility window
                             stage.show();//Show the Stage which create above (makes the Stage visible and the exits)

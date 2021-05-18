@@ -75,6 +75,7 @@ public class SignupController implements Initializable {
         handler = new DBHandler();
     }
 
+    //Signup Method
     @FXML
     public void signupAction(ActionEvent ev1) {
         //loading
@@ -139,12 +140,13 @@ public class SignupController implements Initializable {
         }
     }
 
-    //SignUp Method (Direct to signup page)
+    //Login Method (Direct to Login page)
     @FXML
     public void loginAction(ActionEvent ev2) throws IOException {
         signup.getScene().getWindow().hide();
 
         Stage login = new Stage();//Create a Stage
+        login.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         Parent root1 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene scene1 = new Scene(root1);//Create a scene
         login.setScene(scene1);//Set Scene object on the Stage

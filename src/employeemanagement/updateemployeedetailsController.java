@@ -89,6 +89,7 @@ public class updateemployeedetailsController implements Initializable {
         updatelogout.getScene().getWindow().hide();
 
         Stage updatelogout = new Stage();//Create a Stage
+        updatelogout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent updateroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene updatescene2 = new Scene(updateroot2);//Create a scene
@@ -97,12 +98,28 @@ public class updateemployeedetailsController implements Initializable {
         updatelogout.setResizable(false);//User cannot resize the frame
     }
 
+    //Home Method (Direct to Employee Management Home page)
+    @FXML
+    public void updatehomeAction(ActionEvent updateev8) throws IOException {
+        updatehome.getScene().getWindow().hide();
+
+        Stage updatehome = new Stage();//Create a Stage
+        updatehome.setTitle("CITY OF GEMS - EMPLOYEE MANAGEMENT HOME");//Set Title of interface
+        //Setup the Scene
+        Parent updateroot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
+        Scene updatescene8 = new Scene(updateroot8);//Create a Scene
+        updatehome.setScene(updatescene8);//Set Scene object on the Stage
+        updatehome.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        updatehome.setResizable(false);//User cannot resize the frame
+    }
+
     //Add Employee Button method (Direct to add employee page)
     @FXML
     public void updateaddemployeemenubuttonAction(ActionEvent updateev4) throws IOException {
         updateaddemployeemenubtn.getScene().getWindow().hide();
 
         Stage updateaddmenu = new Stage();//Create a Stage
+        updateaddmenu.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
         //Setup the Scene
         Parent updateroot3 = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
         Scene updatescene3 = new Scene(updateroot3);//Create a scene
@@ -117,6 +134,7 @@ public class updateemployeedetailsController implements Initializable {
         updateviewemployeemenubtn.getScene().getWindow().hide();
 
         Stage updateviewemp = new Stage();//Create a Stage
+        updateviewemp.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent updateroot5 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene updatescene4 = new Scene(updateroot5);//Create a scene
@@ -131,6 +149,7 @@ public class updateemployeedetailsController implements Initializable {
         updateemployeecountmenubtn.getScene().getWindow().hide();
 
         Stage updateempcount = new Stage();//Create a Stage
+        updateempcount.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
         //Setup the Scene//Setup the Scene
         Parent updateroot6 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml.fxml"));
         Scene updatescene5 = new Scene(updateroot6);//Create a scene

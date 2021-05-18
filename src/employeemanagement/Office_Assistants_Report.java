@@ -78,7 +78,7 @@ public class Office_Assistants_Report {
             //Alert Information box
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("PDF Successfully Downloaded");
+            alert.setContentText("Office Assistants Report Successfully Downloaded");
             alert.show();
         }catch(FileNotFoundException ex){
             System.out.println(ex);

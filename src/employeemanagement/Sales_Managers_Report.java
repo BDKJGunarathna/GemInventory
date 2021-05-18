@@ -78,7 +78,7 @@ public class Sales_Managers_Report {
             //Alert Information box
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("PDF Successfully Downloaded");
+            alert.setContentText("Sales Managers Report Successfully Downloaded");
             alert.show();
         }catch(FileNotFoundException ex){
             System.out.println(ex);
