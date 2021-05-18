@@ -231,4 +231,12 @@ public class FilteremployeesController implements Initializable {
         supplier_managers_report.createPdf();
     }
 
+    @FXML
+    private void printDistributionManagersDetails(ActionEvent event) throws SQLException {
+        //Create Distribution Manager Details Object
+        Distribution_Managers_Report distribution_managers_report = new Distribution_Managers_Report();
+        //Create Distribution Manager Details PDF
+        distribution_managers_report.createPdf();
+    }
+
 }
