@@ -287,4 +287,12 @@ public class FilteremployeesController implements Initializable {
         store_supervisors_report.createPdf();
     }
 
+    @FXML
+    private void printMarketingExecutivesDetails(ActionEvent event) throws SQLException {
+        //Create Marketing Executives Details Object
+        Marketing_Executives_Report  marketing_executives_report = new Marketing_Executives_Report();
+        //Create Marketing Executives Details PDF
+        marketing_executives_report.createPdf();
+    }
+
 }
