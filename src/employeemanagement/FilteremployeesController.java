@@ -271,4 +271,12 @@ public class FilteremployeesController implements Initializable {
         accountants_report.createPdf();
     }
 
+    @FXML
+    private void printAccountantAssistantsDetails(ActionEvent event) throws SQLException {
+        //Create Accountant Assistants Details Object
+        Accountant_Assistants_Report  accountant_assistants_report = new Accountant_Assistants_Report();
+        //Create Accountant Assistants Details PDF
+        accountant_assistants_report.createPdf();
+    }
+
 }
