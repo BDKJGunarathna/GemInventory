@@ -335,4 +335,12 @@ public class FilteremployeesController implements Initializable {
         clerks_report.createPdf();
     }
 
+    @FXML
+    private void printLaborersDetails(ActionEvent event) throws SQLException {
+        //Create Laborers Details Object
+        Laborers_Report  laborers_report = new Laborers_Report();
+        //Create Laborers Details PDF
+        laborers_report.createPdf();
+    }
+
 }
