@@ -62,7 +62,7 @@ public class CEODetails {
             //Alert Information box
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("PDF Successfully Downloaded");
+            alert.setContentText("CEO Details Successfully Downloaded");
             alert.show();
         }catch(FileNotFoundException ex){
             System.out.println(ex);

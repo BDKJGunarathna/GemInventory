@@ -53,6 +53,7 @@ public class LoginController implements Initializable {
         handler = new DBHandler();
     }
 
+    //Login Method
     @FXML
     public void loginAction(ActionEvent e) {
         //loading
@@ -89,6 +90,7 @@ public class LoginController implements Initializable {
                     login.getScene().getWindow().hide();
 
                     Stage dashboard = new Stage();
+                    dashboard.setTitle("CITY OF GEMS - DASHBOARD");//Set Title of interface
                     try {
                         Parent dash_root = FXMLLoader.load(getClass().getResource("/sample/dashboard.fxml"));
                         Scene dash_scene = new Scene(dash_root);
@@ -128,6 +130,7 @@ public class LoginController implements Initializable {
         login.getScene().getWindow().hide();
 
         Stage signup = new Stage();//Create a Stage
+        signup.setTitle("CITY OF GEMS - SIGNUP");//Set Title of interface
         //Setup the Scene
         Parent root = FXMLLoader.load(getClass().getResource("/loginregister/signup.fxml"));
         Scene scene = new Scene(root);//Create a scene

@@ -41,6 +41,7 @@ public class EmployeemanagementhomeController implements Initializable {
         emphomelogoutbtn.getScene().getWindow().hide();
 
         Stage emphomelogout = new Stage();//Create a Stage
+        emphomelogout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent emphomeroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene emphomescene2 = new Scene(emphomeroot2);//Create a scene
@@ -55,6 +56,7 @@ public class EmployeemanagementhomeController implements Initializable {
         emphomehomebtn.getScene().getWindow().hide();
 
         Stage emphomehome = new Stage();//Create a Stage
+        emphomehome.setTitle("CITY OF GEMS - DASHBOARD");//Set Title of interface
         //Setup the Scene
         Parent emphomeroot8 = FXMLLoader.load(getClass().getResource("/sample/dashboard.fxml"));
         Scene emphomescene8 = new Scene(emphomeroot8);//Create a scene
@@ -69,6 +71,7 @@ public class EmployeemanagementhomeController implements Initializable {
         emphomeaddempbtn.getScene().getWindow().hide();
 
         Stage emphomeaddmenu = new Stage();//Create a Stage
+        emphomeaddmenu.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
         //Setup the Scene
         Parent emphomeroot3 = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
         Scene emphomescene3 = new Scene(emphomeroot3);//Create a scene
@@ -83,6 +86,7 @@ public class EmployeemanagementhomeController implements Initializable {
         emphomeviewempbtn.getScene().getWindow().hide();
 
         Stage emphomeviewemp = new Stage();//Create a Stage
+        emphomeviewemp.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent emphomeroot5 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene emphomescene4 = new Scene(emphomeroot5);//Create a scene
@@ -97,6 +101,7 @@ public class EmployeemanagementhomeController implements Initializable {
         emphomeempcountbtn.getScene().getWindow().hide();
 
         Stage emphometempcount = new Stage();//Create a Stage
+        emphometempcount.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
         //Setup the Scene
         Parent emphomeroot6 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml"));
         Scene emphomescene5 = new Scene(emphomeroot6);//Create a scene

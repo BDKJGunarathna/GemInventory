@@ -98,6 +98,7 @@ public class AddemployeeController implements Initializable {
         logout.getScene().getWindow().hide();
 
         Stage logout = new Stage();//Create a Stage
+        logout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent root2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene scene2 = new Scene(root2);//Create a scene
@@ -112,6 +113,7 @@ public class AddemployeeController implements Initializable {
         home.getScene().getWindow().hide();
 
         Stage addemphome = new Stage();//Create a Stage
+        addemphome.setTitle("CITY OF GEMS - EMPLOYEE MANAGEMENT HOME");//Set Title of interface
         //Setup the Scene
         Parent addemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
         Scene addempscene8 = new Scene(addemproot8);//Create a scene
@@ -126,6 +128,7 @@ public class AddemployeeController implements Initializable {
         addemployeemenubtn.getScene().getWindow().hide();
 
         Stage addmenu = new Stage();//Create a Stage
+        addmenu.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
         //Setup the Scene
         Parent root3 = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
         Scene scene3 = new Scene(root3);//Create a scene
@@ -140,6 +143,7 @@ public class AddemployeeController implements Initializable {
         viewemployeemenubtn.getScene().getWindow().hide();
 
         Stage viewemp = new Stage();//Create a Stage
+        viewemp.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent root5 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene scene4 = new Scene(root5);//Create a scene
@@ -154,6 +158,7 @@ public class AddemployeeController implements Initializable {
         employeecountmenubtn.getScene().getWindow().hide();
 
         Stage empcount = new Stage();//Create a Stage
+        empcount.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
         //Setup the Scene
         Parent root6 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml"));
         Scene scene5 = new Scene(root6);//Create a scene

@@ -105,6 +105,7 @@ public class FilteremployeesController implements Initializable {
         filteremplogout.getScene().getWindow().hide();
 
         Stage filtlogout = new Stage();//Create a Stage
+        filtlogout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         //Setup the Scene
         Parent filtroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene filtscene2 = new Scene(filtroot2);//Create a scene
@@ -119,6 +120,7 @@ public class FilteremployeesController implements Initializable {
         filteremphome.getScene().getWindow().hide();
 
         Stage filtemphome = new Stage();//Create a Stage
+        filtemphome.setTitle("CITY OF GEMS - EMPLOYEE MANAGEMENT HOME");//Set Title of interface
         //Setup the Scene
         Parent filtemproot8 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
         Scene filtempscene8 = new Scene(filtemproot8);//Create a scene
@@ -133,6 +135,7 @@ public class FilteremployeesController implements Initializable {
         filtaddemployeemenubtn.getScene().getWindow().hide();
 
         Stage filtaddmenu = new Stage();//Create a Stage
+        filtaddmenu.setTitle("CITY OF GEMS - ADD EMPLOYEE");//Set Title of interface
         //Setup the Scene
         Parent filtroot3 = FXMLLoader.load(getClass().getResource("/employeemanagement/addemployee.fxml"));
         Scene filtscene3 = new Scene(filtroot3);//Create a scene
@@ -147,6 +150,7 @@ public class FilteremployeesController implements Initializable {
         filtviewemployeemenubtn.getScene().getWindow().hide();
 
         Stage filtviewemp = new Stage();//Create a Stage
+        filtviewemp.setTitle("CITY OF GEMS - FILTERED EMPLOYEE REPORTS");//Set Title of interface
         //Setup the Scene
         Parent filtroot5 = FXMLLoader.load(getClass().getResource("/employeemanagement/filteremployees.fxml"));
         Scene filtscene4 = new Scene(filtroot5);//Create a scene
@@ -161,6 +165,7 @@ public class FilteremployeesController implements Initializable {
         filtemployeecountmenubtn.getScene().getWindow().hide();
 
         Stage filtempcount = new Stage();//Create a Stage
+        filtempcount.setTitle("CITY OF GEMS - EMPLOYEE COUNT");//Set Title of interface
         //Setup the Scene
         Parent filtroot6 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeecount.fxml"));
         Scene filtscene5 = new Scene(filtroot6);//Create a scene
@@ -175,6 +180,7 @@ public class FilteremployeesController implements Initializable {
         viewall.getScene().getWindow().hide();
 
         Stage filtviewall = new Stage();//Create a Stage
+        filtviewall.setTitle("CITY OF GEMS - EMPLOYEE DETAILS");//Set Title of interface
         //Setup the Scene
         Parent filtroot7 = FXMLLoader.load(getClass().getResource("/employeemanagement/viewemployeedetails.fxml"));
         Scene filtscene6 = new Scene(filtroot7);//Create a scene
@@ -183,6 +189,7 @@ public class FilteremployeesController implements Initializable {
         filtviewall.setResizable(false);//User cannot resize the frame
     }
 
+    //Generate Suspended Employee List Report
     @FXML
     private void printSuspendedEmployeeList(ActionEvent event) throws SQLException {
         //Create Generate Suspended Employee List Object
@@ -191,6 +198,7 @@ public class FilteremployeesController implements Initializable {
         suspended_employee_list_report.createPdf();
     }
 
+    //Generate Active Employee List Report
     @FXML
     private void printActiveEmployeeList(ActionEvent event) throws SQLException {
         //Create Generate Active Employee List Object
@@ -199,6 +207,7 @@ public class FilteremployeesController implements Initializable {
         active_employee_list_report.createPdf();
     }
 
+    //Generate CEO Details Report
     @FXML
     private void printCEODetails(ActionEvent event) throws SQLException {
         //Create CEO Details Object
@@ -207,6 +216,7 @@ public class FilteremployeesController implements Initializable {
         ceoDetails.createPdf();
     }
 
+    //Generate Sales Managers Details Report
     @FXML
     private void printSalesManagersDetails(ActionEvent event) throws SQLException {
         //Create Sales Managers Details Object
@@ -215,6 +225,7 @@ public class FilteremployeesController implements Initializable {
         sales_managers_report.createPdf();
     }
 
+    //Generate Inventory Managers Details Report
     @FXML
     private void printInventoryManagersDetails(ActionEvent event) throws SQLException {
         //Create Inventory Manager Details Object
@@ -223,6 +234,7 @@ public class FilteremployeesController implements Initializable {
         inventory_managers_report.createPdf();
     }
 
+    //Generate Supplier Managers Details Report
     @FXML
     private void printSupplierManagersDetails(ActionEvent event) throws SQLException {
         //Create Supplier Manager Details Object
@@ -231,6 +243,7 @@ public class FilteremployeesController implements Initializable {
         supplier_managers_report.createPdf();
     }
 
+    //Generate Distribution Managers Details Report
     @FXML
     private void printDistributionManagersDetails(ActionEvent event) throws SQLException {
         //Create Distribution Manager Details Object
@@ -239,6 +252,7 @@ public class FilteremployeesController implements Initializable {
         distribution_managers_report.createPdf();
     }
 
+    //Generate Assistant Managers Details Report
     @FXML
     private void printAssistantManagersDetails(ActionEvent event) throws SQLException {
         //Create Assistant Manager Details Object
@@ -247,6 +261,7 @@ public class FilteremployeesController implements Initializable {
         assistant_managers_report.createPdf();
     }
 
+    //Generate Admins Details Report
     @FXML
     private void printAdminsDetails(ActionEvent event) throws SQLException {
         //Create Admin Details Object
@@ -255,6 +270,7 @@ public class FilteremployeesController implements Initializable {
         admins_report.createPdf();
     }
 
+    //Generate Sales Representatives Details Report
     @FXML
     private void printSalesRepresentativesDetails(ActionEvent event) throws SQLException {
         //Create Sales Representative Details Object
@@ -263,6 +279,7 @@ public class FilteremployeesController implements Initializable {
         sales_representative_report.createPdf();
     }
 
+    //Generate Accountants Details Report
     @FXML
     private void printAccountantsDetails(ActionEvent event) throws SQLException {
         //Create Accountant Details Object
@@ -271,6 +288,7 @@ public class FilteremployeesController implements Initializable {
         accountants_report.createPdf();
     }
 
+    //Generate Accountant Assistants Details Report
     @FXML
     private void printAccountantAssistantsDetails(ActionEvent event) throws SQLException {
         //Create Accountant Assistants Details Object
@@ -279,6 +297,7 @@ public class FilteremployeesController implements Initializable {
         accountant_assistants_report.createPdf();
     }
 
+    //Generate Supervisors Details Report
     @FXML
     private void printStoreSupervisorsDetails(ActionEvent event) throws SQLException {
         //Create Store Supervisors Details Object
@@ -287,6 +306,7 @@ public class FilteremployeesController implements Initializable {
         store_supervisors_report.createPdf();
     }
 
+    //Generate Marketing Executives Details Report
     @FXML
     private void printMarketingExecutivesDetails(ActionEvent event) throws SQLException {
         //Create Marketing Executives Details Object
@@ -295,6 +315,7 @@ public class FilteremployeesController implements Initializable {
         marketing_executives_report.createPdf();
     }
 
+    //Generate Office Assistants Details Report
     @FXML
     private void printOfficeAssistantsDetails(ActionEvent event) throws SQLException {
         //Create Office Assistants Details Object
@@ -303,6 +324,7 @@ public class FilteremployeesController implements Initializable {
         office_assistants_report.createPdf();
     }
 
+    //Generate Gemologists Details Report
     @FXML
     private void printGemologistsDetails(ActionEvent event) throws SQLException {
         //Create Gemologists Details Object
@@ -311,6 +333,7 @@ public class FilteremployeesController implements Initializable {
         gemologists_report.createPdf();
     }
 
+    //Generate Admin Assistants Details Report
     @FXML
     private void printAdminAssistantsDetails(ActionEvent event) throws SQLException {
         //Create Admin Assistants Details Object
@@ -319,6 +342,7 @@ public class FilteremployeesController implements Initializable {
         admin_assistants_report.createPdf();
     }
 
+    //Generate Quality Checkers Details Report
     @FXML
     private void printQualityCheckersDetails(ActionEvent event) throws SQLException {
         //Create Quality Checkers Details Object
@@ -327,6 +351,7 @@ public class FilteremployeesController implements Initializable {
         quality_checkers_report.createPdf();
     }
 
+    //Generate Clerks Details Report
     @FXML
     private void printClerksDetails(ActionEvent event) throws SQLException {
         //Create Clerks Details Object
@@ -335,6 +360,7 @@ public class FilteremployeesController implements Initializable {
         clerks_report.createPdf();
     }
 
+    //Generate Laborers Details Report
     @FXML
     private void printLaborersDetails(ActionEvent event) throws SQLException {
         //Create Laborers Details Object

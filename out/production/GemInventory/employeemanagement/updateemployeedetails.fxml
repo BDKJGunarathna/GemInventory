@@ -43,7 +43,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="updatehome" layoutX="732.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="updatehome" layoutX="732.0" layoutY="23.0" onAction="#updatehomeAction" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

@@ -61,11 +61,13 @@ public class Controller implements Initializable {
 
     }
 
+    //Logout Method (Direct to login page)
     @FXML
     public void logoutdashAction(ActionEvent dashev1) throws IOException {
         dashLogoutbtn.getScene().getWindow().hide();
 
         Stage logoutdash = new Stage();
+        logoutdash.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
         Parent dashroot2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
         Scene dashscene2 = new Scene(dashroot2);
         logoutdash.setScene(dashscene2);
@@ -73,11 +75,13 @@ public class Controller implements Initializable {
         logoutdash.setResizable(false);
     }
 
+    //Dashboard Method (Direct to dashboard page)
     @FXML
     public void dashHomeAction(ActionEvent dashev2) throws IOException {
         dashHomebtn.getScene().getWindow().hide();
 
         Stage homedash = new Stage();
+        homedash.setTitle("CITY OF GEMS - DASHBOARD");//Set Title of interface
         Parent dashroot3 = FXMLLoader.load(getClass().getResource("/sample/dashboard.fxml"));
         Scene dashscene3 = new Scene(dashroot3);
         homedash.setScene(dashscene3);
@@ -85,11 +89,13 @@ public class Controller implements Initializable {
         homedash.setResizable(false);
     }
 
+    //Employee Home Method (Direct to employee management home page)
     @FXML
     public void dashEmployeeAction(ActionEvent dashev2) throws IOException {
         btnhomemp.getScene().getWindow().hide();
 
         Stage empdash = new Stage();
+        empdash.setTitle("CITY OF GEMS - EMPLOYEE MANAGEMENT HOME");//Set Title of interface
         Parent dashroot4 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
         Scene dashscene4 = new Scene(dashroot4);
         empdash.setScene(dashscene4);
