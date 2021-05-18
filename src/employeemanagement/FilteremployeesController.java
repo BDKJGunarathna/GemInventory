@@ -255,4 +255,12 @@ public class FilteremployeesController implements Initializable {
         admins_report.createPdf();
     }
 
+    @FXML
+    private void printSalesRepresentativesDetails(ActionEvent event) throws SQLException {
+        //Create Sales Representative Details Object
+        Sales_Representative_Report sales_representative_report = new Sales_Representative_Report();
+        //Create SaleRepresentative Details PDF
+        sales_representative_report.createPdf();
+    }
+
 }
