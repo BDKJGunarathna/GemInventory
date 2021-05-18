@@ -142,7 +142,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="gemologists" layoutX="250.0" layoutY="355.0" prefWidth="200.0" style="-fx-border-color: #a0a2ab;" text="Gemologists" textFill="#a0a2ab">
+            <JFXButton fx:id="gemologists" layoutX="250.0" layoutY="355.0" onAction="#printGemologistsDetails" prefWidth="200.0" style="-fx-border-color: #a0a2ab;" text="Gemologists" textFill="#a0a2ab">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
