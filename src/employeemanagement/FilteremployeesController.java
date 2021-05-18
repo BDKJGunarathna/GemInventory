@@ -327,4 +327,12 @@ public class FilteremployeesController implements Initializable {
         quality_checkers_report.createPdf();
     }
 
+    @FXML
+    private void printClerksDetails(ActionEvent event) throws SQLException {
+        //Create Clerks Details Object
+        Clerks_Report  clerks_report = new Clerks_Report();
+        //Create Clerks Details PDF
+        clerks_report.createPdf();
+    }
+
 }
