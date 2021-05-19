@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supplierManagement.ViewGemstoneOrderListController">
+    <top>
+        <Pane prefHeight="75.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="GOhomeButton" layoutX="1108.0" layoutY="21.0" text="HOME" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="GOlogoutButton" layoutX="1184.0" layoutY="21.0" onAction="#GOlogoutButtonOnAction" text="LOGOUT" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+                <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="498.0" layoutY="1.0" text="VIEW GEMSTONE ORDER LIST" textFill="#a0a2ab">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="gOrderList" layoutX="23.0" layoutY="117.0" prefHeight="391.0" prefWidth="1071.0" style="-fx-selection-bar: #9FA8DA;">
+                    <columns>
+                        <TableColumn fx:id="orderIDcol" prefWidth="81.0" text="Order&#10;    Id" />
+                        <TableColumn fx:id="orderDateCol" prefWidth="102.0" text="Ordered&#10;Date" />
+                        <TableColumn fx:id="supplierIdCol" prefWidth="162.0" text="Supplier&#10;Id" />
+                        <TableColumn fx:id="gemIdCol" minWidth="0.0" prefWidth="108.0" text="Gem Id" />
+                        <TableColumn fx:id="gDesCol" prefWidth="145.0" text="Gem&#10;Description" />
+                        <TableColumn fx:id="quantityCol" prefWidth="152.0" text="Quantity" />
+                        <TableColumn fx:id="suppNameCol" minWidth="0.0" prefWidth="139.0" text="Supplier&#10;Name" />
+                        <TableColumn fx:id="deliveryDateCol" prefWidth="81.0" text="Expected&#10;Date Of&#10;Delivery" />
+                        <TableColumn fx:id="orderStatusCol" prefWidth="100.0" text="Order&#10;Status" />
+                    </columns>
+                </TableView>
+                <JFXButton fx:id="cancelOrderButton" buttonType="RAISED" layoutX="39.0" layoutY="546.0" prefHeight="62.0" prefWidth="224.0" style="-fx-background-color: Cyan;" text="Cancel Order">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="editOrderButton" buttonType="RAISED" layoutX="298.0" layoutY="548.0" prefHeight="65.0" prefWidth="217.0" style="-fx-background-color: orchid;" text="Edit&#10; Order" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <TextField fx:id="GOSearchField" layoutX="871.0" layoutY="75.0" prefHeight="31.0" prefWidth="198.0" promptText="Search by gem description" />
+            <JFXButton fx:id="deleteOrderButton" buttonType="RAISED" layoutX="571.0" layoutY="548.0" onAction="#deleteOrderButtonOnAction" prefHeight="66.0" prefWidth="221.0" style="-fx-background-color: #EEFF41;" text="Delete Order">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="sendEmailButton" buttonType="RAISED" layoutX="843.0" layoutY="549.0" prefHeight="64.0" prefWidth="208.0" style="-fx-background-color: #FF8A65;" text="Send Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <FontAwesomeIconView fx:id="RefreshButton" glyphName="UNDO" layoutX="87.0" layoutY="101.0" size="32.0" wrappingWidth="127.14285659790039" />
+            </children>
+        </Pane>
+    </center>
+    <left>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="goListNewPButton" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#goLisNewPButtonOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="New Purchase Order" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="goNewSupButton" alignment="BASELINE_LEFT" layoutY="255.0" onAction="#goNewSupButtonOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: transparent;" text="New Supplier" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="goGemstoneOButton" alignment="BASELINE_LEFT" layoutY="330.0" onAction="#goGemstoneOButtonOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="Gemstone Order List">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="goSupplierListButton" alignment="BASELINE_LEFT" layoutY="405.0" onAction="#goSupplierListButtonOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Supplier List" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+            </children></Pane>
+    </left>
+</BorderPane>
