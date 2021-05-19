@@ -60,7 +60,7 @@
                         <TableColumn fx:id="pricecol" prefWidth="105.0" text="Price(Rs.)" />
                     </columns>
                 </TableView>
-                <TextField fx:id="search" alignment="TOP_LEFT" layoutX="672.0" layoutY="96.0" prefHeight="41.0" prefWidth="353.0" promptText="Search" style="-fx-background-color: #e6f0ff;">
+                <TextField fx:id="search" alignment="TOP_LEFT" layoutX="672.0" layoutY="96.0" onAction="#searchJewelryDetails" prefHeight="41.0" prefWidth="353.0" promptText="Search" style="-fx-background-color: #e6f0ff;">
                     <opaqueInsets>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </opaqueInsets>

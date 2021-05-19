@@ -21,5 +21,15 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="com.itextpdf.maven:itextdoc:2.0.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/itextpdf-5.1.0.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Downloads/itextpdf-5.1.0.jar" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
