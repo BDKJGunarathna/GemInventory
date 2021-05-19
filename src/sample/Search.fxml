@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchControler">
+   <children>
+      <TableView fx:id="GemTableView" layoutX="23.0" layoutY="114.0" prefHeight="455.0" prefWidth="927.0">
+         <columns>
+            <TableColumn fx:id="viewgemID" prefWidth="75.0" text="Gem ID" />
+            <TableColumn fx:id="viewgemDescription" prefWidth="204.80001831054688" text="Description" />
+            <TableColumn fx:id="viewgemWeight" prefWidth="140.00003051757812" text="Weight(in carots)" />
+            <TableColumn fx:id="viewgemShape" prefWidth="87.199951171875" text="Gem Shape" />
+            <TableColumn fx:id="viewgemDimension" prefWidth="96.800048828125" text="Dimensions" />
+            <TableColumn fx:id="viewgemReorderlevel" prefWidth="104.79998779296875" text="Reorder Level" />
+            <TableColumn fx:id="viewgemStock" prefWidth="132.0" text="Units In Stocks" />
+            <TableColumn fx:id="viewgemCost" prefWidth="76.66656494140625" text="Cost of each" />
+         </columns>
+      </TableView>
+      <TextField fx:id="src" alignment="TOP_LEFT" layoutX="362.0" layoutY="57.0" prefHeight="26.0" prefWidth="339.0" promptText="Enter Gem ID" />
+      <Button fx:id="btnhome" alignment="BASELINE_LEFT" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#home" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: TRANSPARENT;" text="Home" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="289.0" layoutY="57.0" prefHeight="26.0" prefWidth="67.0" text="Search" textFill="#fffdfd">
+         <font>
+            <Font name="Arial" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

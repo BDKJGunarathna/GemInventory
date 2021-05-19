@@ -85,6 +85,8 @@ public class Controller implements Initializable {
     private Button btnDel;
     @FXML
     private Button btnreport;
+    @FXML
+    private Button btnsearch;
 
 
     // @FXML
@@ -92,12 +94,12 @@ public class Controller implements Initializable {
 ObservableList<Gems>listM;
 ObservableList<Gems>dataList;
 
-int index=-1;
-String query=null;
-   PreparedStatement st=null;
-    Connection con=null;
-    Gems gems=null;
-    ResultSet resultSet=null;
+        int index=-1;
+        String query=null;
+           PreparedStatement st=null;
+            Connection con=null;
+            Gems gems=null;
+            ResultSet resultSet=null;
 
    
    // ObservableList<Gems>gemsList=FXCollections.observableArrayList();
@@ -183,13 +185,14 @@ String query=null;
 
     }
 
-    public ObservableList<Gems>getGemList(){
+    public ObservableList<Gems>getGemList(){//new code ()blank
 
        ObservableList<Gems>gemList=FXCollections.observableArrayList();
 
         query=" SELECT * FROM cityofgems.inventory ";
        // Statement st;
 
+        //new new uncoment this
         ResultSet rs=null;
 
         try {
@@ -232,7 +235,7 @@ void searchGem(){
     viewgemReorderlevel.setCellValueFactory(new PropertyValueFactory<>("gemReorderLevel"));
     viewgemCost.setCellValueFactory(new PropertyValueFactory<>("gemCost"));
 
-    dataList=getGemList();
+   // dataList=getGemList();
     GemTV.setItems(dataList);
 
 }
@@ -304,12 +307,28 @@ public void search(ActionEvent ae3) throws SQLException {
 
 
         }
-
+//new code
 
 
 }
 
 //new code
+  /*  public ObservableList<Gems> searchGems(String gemId)throws ClassNotFoundException,SQLException{
+        String sql="SELECT * FROM cityofgems.inventory WHERE gemId= "+gemId;
+        try {
+            ResultSet rs=null;
+            st=con.prepareStatement(sql);
+            rs=st.executeQuery();
+            ObservableList<Gems>list= getGemList(rs);
+            return list;
+
+        }catch (SQLException e){
+            System.out.println("Erro"+e);
+            e.printStackTrace();
+            throw e;
+        }
+    }*/
+    //end
 public void genReport(){
 
     try {
@@ -479,7 +498,24 @@ public void genReport(){
         delete.show();
         delete.setResizable(false);
     }
-
+    public void reportbtnAction(javafx.event.ActionEvent actionEvent)throws IOException {
+        btnsearch.getScene().getWindow().hide();
+        Stage search=new Stage();
+        Parent root=FXMLLoader.load(getClass().getResource("Search.fxml"));
+        Scene scene=new Scene(root);
+        search.setScene(scene);
+        search.show();
+        search.setResizable(false);
+    }
+    public void SearchbtnAction(javafx.event.ActionEvent actionEvent)throws IOException {
+        btnsearch.getScene().getWindow().hide();
+        Stage addnew=new Stage();
+        Parent root=FXMLLoader.load(getClass().getResource("Search.fxml"));
+        Scene scene=new Scene(root);
+        addnew.setScene(scene);
+        addnew.show();
+        addnew.setResizable(false);
+    }
    /* @FXML
     private void searchGems() {
         //Wrap the ObservableList in a FilteredList (initially display all data)
