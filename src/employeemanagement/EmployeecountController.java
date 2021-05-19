@@ -202,4 +202,418 @@ public class EmployeecountController implements Initializable {
         }
     }
 
+    @FXML
+    private void totCEO() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='CEO'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nceo.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totAdmin() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Admin'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nadmins.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totAccountant() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Accountant'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            naccountants.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totGemologist() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Gemologist'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            ngemologists.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totClerk() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Clerk'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nclerks.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totLaborer() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Laborer'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nlaborers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totSalesManager() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Sales & Administrative Manager'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nsalesmanagers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totDistributionManger() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Finishing & Distribution Manager'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nfinishingmanagers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totAdminAssistant() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Administrative Assistant'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nadministrativeassistants.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totAccountantAssistant() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Accountant Assistant'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            naccountantassistants.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totMarketing() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Marketing Executive'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nmarketingexecutives.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totSalesRep() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Sales Representative'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nstoresup.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totInventory() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Inventory Manager'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            ninventorymanagers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totSupplier() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Supplier Manager'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nsupmanagers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totAM() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Assistant Manager'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nassistantmanagers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totStore() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Store Supervisor'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nstoresup.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totOA() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Office Assistant'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nofficeassistants.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
+    @FXML
+    private void totQuality() throws SQLException {
+        //Initialize DBHandler class
+        handler = new DBHandler();
+        //Establishing a Connection
+        connection = handler.getConnection();
+
+        //Declare a variable
+        String data = "";
+
+        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        query = "SELECT COUNT(*) FROM cityofgems.employeemanagement_table WHERE empType='Quality Checker'";
+
+        //Create a statement using connection object
+        preparedStatement = connection.prepareStatement(query);
+        //Execute the query
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            nqualitycheckers.setText(resultSet.getString("COUNT(*)"));
+        }
+    }
+
 }
