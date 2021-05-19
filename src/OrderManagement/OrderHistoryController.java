@@ -4,6 +4,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -61,31 +60,23 @@ public class OrderHistoryController implements Initializable {
     private Button btnOrderHistoryHome;
     @FXML
     private Button addOrderBtnHistory;
+    @FXML
+    private TextField txtSearchJewelryOrder;
 
 
+    private Order order = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-
+        // initialize order history method
         OrderHistory();
+
+        //initialize search filter method
+        searchOrderDetails();
     }
-/*
-    @FXML
-    private void getAddView(MouseEvent event){
-        try{
-            //get CreateOrder.fxml
-            Parent parent = FXMLLoader.load(getClass().getResource("CreateOrder.fxml"));
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-*/
+
+
+
 
     //get addOrder UI
     @FXML
@@ -121,6 +112,7 @@ public class OrderHistoryController implements Initializable {
     }
 
 
+
     //check connection
     /*public Connection getConnection(){
         Connection conn;
@@ -135,6 +127,64 @@ public class OrderHistoryController implements Initializable {
     }
 
      */
+
+ /* //print method
+    @FXML
+    public void print(MouseEvent event){
+        try{
+        //Create Generate Types of Employee Object
+      Order_Details_Report orderDetailsReport = new Order_Details_Report();
+        //Create Types of Employee PDF
+        orderDetailsReport.createPdf();}
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+*/
+
+
+
+    //Search Method
+    @FXML
+    private void searchOrderDetails() {
+        ObservableList<OrderManagement.Order> list = getOrderList();
+
+        //Wrap the ObservableList in a FilteredList (initially display all data)
+        FilteredList<Order> filteredOrderDetails = new FilteredList<>(list, b -> true);
+
+        //Set the filter Predicate whenever the filter changes
+        txtSearchJewelryOrder.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredOrderDetails.setPredicate(order -> {
+                //If filter text is empty, display all employees
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                //Compare employee name, employee type, and employee ID of every person with filter text
+                String lowerCaseFIlter = newValue.toLowerCase();
+
+                if (String.valueOf(order.getCusId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;//Filter matches customer ID
+
+                } else if (String.valueOf(order.getId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;//Filter matches Order ID
+                } else
+                    return false;//Does not match
+            });
+        });
+
+        //Wrap the FilteredList in a SortedList
+        SortedList<Order> sortedOrderDetails = new SortedList<>(filteredOrderDetails);
+
+        //Bind the SortedList comparator to the OrderTableView comparator
+        //Otherwise, sorting the orderTableView would have no effect
+        sortedOrderDetails.comparatorProperty().bind(tvOrder.comparatorProperty());
+
+        //Add sorted (and filtered) data to the table
+        tvOrder.setItems(sortedOrderDetails);
+    }
+
+
 
     //get order list method (2)
     public ObservableList<OrderManagement.Order> getOrderList(){
@@ -163,9 +213,9 @@ public class OrderHistoryController implements Initializable {
     }
 
 
-
     private void OrderHistory() {
         ObservableList<OrderManagement.Order> list = getOrderList();
+        getOrderList();
 
         col_orderID.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_invoiceNo.setCellValueFactory(new PropertyValueFactory<>("invoiceNo"));

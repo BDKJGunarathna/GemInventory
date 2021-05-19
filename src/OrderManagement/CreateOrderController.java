@@ -239,16 +239,17 @@ public class CreateOrderController implements Initializable {
         if(checkUnfilledText() && quantityNumberInputValidation() && cusIdNumberInputValidation() && validateQuantity()){
         insertOrder();
         try {
-            //switch to OrderHistory.fxml
             Parent root = FXMLLoader.load(getClass().getResource("OrderHistory.fxml"));
-            Stage orderhistory = (Stage) btnCreateOrders.getScene().getWindow();
+            Stage orderhistory = (Stage) btnCancelOrders.getScene().getWindow();
             orderhistory.setTitle("Gem Merchant System");
             orderhistory.setScene(new Scene(root, 1200, 700));
             orderhistory.show();
+
         }
         catch(Exception ex){
             ex.printStackTrace();
-        }}
+        }
+        }
     }
 
 
