@@ -1,44 +1,23 @@
 package jewelryinventoryfunction;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import java.sql.DriverManager;
-
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-
-
-import com.jfoenix.controls.JFXButton;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
     public class homecontroller implements Initializable {
@@ -216,15 +195,14 @@ import java.util.ResourceBundle;
         }
 */
 
-
-
+        PreparedStatement pst;
 
 
         //observalble list to store data
-     //private final ObservableList<Jewelry> jewelryList = FXCollections.observableArrayList();
+        //private final ObservableList<Jewelry> jewelryList = FXCollections.observableArrayList();
 
         @Override
-        public void initialize(URL url, ResourceBundle rb){
+        public void initialize(URL url, ResourceBundle rb) {
 
             showTable();
 
@@ -263,7 +241,7 @@ import java.util.ResourceBundle;
         }
 
         @FXML
-        public void logoutjewelryAction (ActionEvent addjev1) throws IOException {
+        public void logoutjewelryAction(ActionEvent addjev1) throws IOException {
             addjewelrylogout.getScene().getWindow().hide();
 
             Stage logoutjewelry = new Stage();
@@ -273,95 +251,98 @@ import java.util.ResourceBundle;
             logoutjewelry.show();
             logoutjewelry.setResizable(false);
         }
+
         @FXML
-        public void dashbordOnAction(ActionEvent event){
+        public void dashbordOnAction(ActionEvent event) {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
                 Stage updatej = (Stage) updatebtn2.getScene().getWindow();
                 updatej.setTitle("City of Gems");
-                updatej.setScene(new Scene(root, 1250,800));
+                updatej.setScene(new Scene(root, 1250, 800));
                 updatej.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         @FXML
-        public void addJewelryOnAction(ActionEvent event){
+        public void addJewelryOnAction(ActionEvent event) {
 
             try {
-              Parent root = FXMLLoader.load(getClass().getResource("addjewelrydetails.fxml"));
-              Stage hm3 = (Stage) home.getScene().getWindow();
-              hm3.setTitle("City of Gems");
-              hm3.setScene(new Scene(root, 1250,800));
-              hm3.show();
-            }catch (Exception e){
+                Parent root = FXMLLoader.load(getClass().getResource("addjewelrydetails.fxml"));
+                Stage hm3 = (Stage) home.getScene().getWindow();
+                hm3.setTitle("City of Gems");
+                hm3.setScene(new Scene(root, 1250, 800));
+                hm3.show();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         @FXML
-        public void updateJewelryOnAction(ActionEvent event){
+        public void updateJewelryOnAction(ActionEvent event) {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("updatejewelrydetails.fxml"));
                 Stage updatej = (Stage) updatebtn2.getScene().getWindow();
                 updatej.setTitle("City of Gems");
-                updatej.setScene(new Scene(root, 1250,800));
+                updatej.setScene(new Scene(root, 1250, 800));
                 updatej.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         @FXML
-        public void deleteJewelryOnAction(ActionEvent event){
+        public void deleteJewelryOnAction(ActionEvent event) {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("deletejewelrydetails.fxml"));
                 Stage deletej = (Stage) deletebtn2.getScene().getWindow();
                 deletej.setTitle("City of Gems");
-                deletej.setScene(new Scene(root, 1250,800));
+                deletej.setScene(new Scene(root, 1250, 800));
                 deletej.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-       public void storeGemOnAction(ActionEvent event){
+
+        public void storeGemOnAction(ActionEvent event) {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("recievedgemdetails.fxml"));
                 Stage storeg = (Stage) gem.getScene().getWindow();
                 storeg.setTitle("City of Gems");
-                storeg.setScene(new Scene(root, 1250,800));
+                storeg.setScene(new Scene(root, 1250, 800));
                 storeg.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public void notiSendOnAction(ActionEvent event){
+
+        public void notiSendOnAction(ActionEvent event) {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("gemrequestform.fxml"));
                 Stage not = (Stage) notibtn.getScene().getWindow();
                 not.setTitle("City of Gems");
-                not.setScene(new Scene(root, 1250,800));
+                not.setScene(new Scene(root, 1250, 800));
                 not.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
 
-
-
         //database connection
-        public Connection getConnection(){
+        public Connection getConnection() {
             Connection conn;
-            try{
+            try {
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cityofgems", "root", "jami1998");
                 return conn;
-            }
-            catch(Exception ex){
-                System.out.println("Error!"+ ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Error!" + ex.getMessage());
                 return null;
             }
         }
@@ -391,7 +372,7 @@ import java.util.ResourceBundle;
 
 
         //get jewelry details
-      public void showTable(){
+        public void showTable() {
             ObservableList<Jewelry> list = getJewelryList();
 
             //set values to the columns
@@ -404,8 +385,62 @@ import java.util.ResourceBundle;
             pricecol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
             jewelry.setItems(list);
+
         }
 
-    }
 
+     /*   @Override
+           public void actionPerformed(ActionEvent e){
+
+            try{
+                String idcol = search.getText();
+                pst = getConnection().prepareStatement("SELECT * FROM jewelry WHERE id = ?");
+                pst.setString(1,idcol);
+
+                ResultSet rs = pst.executeQuery();
+
+                if(rs.next() == true ){
+                    String namecol =rs.getString(1);
+                    String typecol = rs.getString(2);
+                    String meterialcol = rs.getString(3);
+                    String weightcol = rs.getString(4);
+                    String quancol = rs.getString(5);
+                    String pricecol = rs.getString(6);
+                }
+            }
+        }
+
+*/
+
+    /*    public void search(ActionEvent event) {
+            try {
+
+                String id = search.getText();
+                pst = getConnection().prepareStatement("select name,type,meterial,weight,quantity,price from jewelry where id = ?");
+                pst.setString(1, id);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next() == true) {
+                    String name = rs.getString(1);
+                    String type = rs.getString(2);
+                    String meterial = rs.getString(3);
+                    String weight = rs.getString(4);
+                    String quantity = rs.getString(5);
+                    String price = rs.getString(6);
+
+
+                } else {
+                    search.setText("");
+
+                    JOptionPane.showMessageDialog(null, "Invalid Product ID");
+
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+     */
+    }
 
