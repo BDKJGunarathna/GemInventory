@@ -93,6 +93,8 @@ public class SupplierListController implements Initializable {
     private TextArea txtUpdateSsupGtypes;
     @FXML
     private TextArea txtUpdateSDescription;
+    @FXML
+    private TextField txtUpdateSupId;
 
 
     @FXML
@@ -184,30 +186,6 @@ public class SupplierListController implements Initializable {
 
 
 
-    @FXML
-    public void editSupButtonOnAction(MouseEvent event) {
-
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/supplierManagement/updateSupplier.fxml"));
-            Scene scene = new Scene(root);
-            //Stage stage = (Stage) editSupButton.getScene().getWindow();
-            Stage stage = new Stage();
-            stage.setTitle("City of gems");
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-
-    }
-
 
 
    /* @FXML
@@ -276,38 +254,86 @@ public class SupplierListController implements Initializable {
 
 
     private void showSupplierList() {
+
         ObservableList<SupplierListTableView> list = getSupplierList();
 
-
         sidcol.setCellValueFactory(new PropertyValueFactory<>("supplierID"));
-
         snamecol.setCellValueFactory(new PropertyValueFactory<>("s_name"));
-        //snamecol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         phonecol.setCellValueFactory(new PropertyValueFactory<>("s_phone"));
-        //phonecol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         emailcol.setCellValueFactory(new PropertyValueFactory<>("s_email"));
-        //emailcol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         websitecol.setCellValueFactory(new PropertyValueFactory<>("s_website"));
-        //websitecol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         addresscol.setCellValueFactory(new PropertyValueFactory<>("s_address"));
-        //addresscol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         suplygemtypecol.setCellValueFactory(new PropertyValueFactory<>("supp_gemstoneTypes"));
-        //suplygemtypecol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         countrycol.setCellValueFactory(new PropertyValueFactory<>("s_country"));
-        //countrycol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         descripCol.setCellValueFactory(new PropertyValueFactory<>("s_description"));
-        //descripCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         supplierTableView.setItems(list);
     }
 
+
+    //Update
+    @FXML
+    public void saveButtonOnAction(ActionEvent event){
+        if(event.getSource().equals(save)){
+            updateSupplierRecord();
+
+        }
+    }
+
+    public void clearButtonOnAction(ActionEvent actionEvent) {
+                if(actionEvent.getSource().equals(clear)){
+                    clearFields();
+                }
+    }
+
+    private void clearFields() {
+
+        txtUpdateSName.setText("");
+        txtUpdateSAddress.setText("");
+        txtUpdateSPhone.setText("");
+        txtUpdateSCountry.setText("");
+        txtUpdateSWebsite.setText("");
+        txtUpdateSsupGtypes.setText("");
+        txtUpdateSDescription.setText("");
+        txtUpdateSupId.setText("");
+        txtUpdateSEmail.setText("");
+    }
+
+    private void updateSupplierRecord() {
+                String query = "UPDATE cityofgems.supplier_info_table SET s_name = '"+txtUpdateSName.getText()+"', s_address = '" +txtUpdateSAddress.getText()+"', s_phone = '"+txtUpdateSPhone.getText()+"', s_country = '"+txtUpdateSCountry.getText()+"', s_email = '"+txtUpdateSEmail.getText()+"', s_website = '"+txtUpdateSWebsite.getText()+"' ,s_description = '"+txtUpdateSDescription.getText()+"', supp_gemstoneTypes = '"+txtUpdateSsupGtypes.getText()+"' WHERE supplierID = "+txtUpdateSupId.getText()+"";
+                executeQuery(query);
+                showSupplierList();
+    }
+
+    //Updating data in database
+    private void executeQuery (String query){
+        Connection con = getConnection();
+        Statement st;
+        try {
+            st = con.createStatement();
+
+            st.executeUpdate(query);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
+        @FXML
+        public void rowSelectionHandleEvent(MouseEvent mouseEvent) {
+            SupplierListTableView supList = supplierTableView.getSelectionModel().getSelectedItem();
+            txtUpdateSupId.setText("" +supList.getSupplierID());
+            txtUpdateSName.setText("" +supList.getS_name());
+            txtUpdateSEmail.setText("" +supList.getS_email());
+            txtUpdateSAddress.setText("" +supList.getS_address());
+            txtUpdateSPhone.setText("" +supList.getS_phone());
+            txtUpdateSCountry.setText("" +supList.getS_country());
+            txtUpdateSWebsite.setText("" +supList.getS_website());
+            txtUpdateSsupGtypes.setText("" +supList.getSupp_gemstoneTypes());
+            txtUpdateSDescription.setText("" +supList.getS_description());
+        }
 
 
 }
