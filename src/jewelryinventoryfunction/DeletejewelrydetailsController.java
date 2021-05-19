@@ -6,6 +6,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,16 +18,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-
 import java.net.URL;
 import java.sql.*;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,13 +63,15 @@ public class DeletejewelrydetailsController implements Initializable {
     private JFXButton store1;
     @FXML
     private JFXButton donebtn;
-@FXML
-private JFXButton homeid;
-
+    @FXML
+    private JFXButton homeid;
+    @FXML
+    private TextField search;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
         ShowTable();
+        searchJewelryDetails();
     }
 
     @FXML
@@ -149,7 +152,7 @@ private JFXButton homeid;
         }
     }
 
-    //get order list method (2)
+    //get jewelry list method (2)
     public ObservableList<Jewelry> getJewelryList(){
         ObservableList<Jewelry> jewelryList = FXCollections.observableArrayList();
         Connection conn = getConnection();
@@ -246,4 +249,42 @@ private JFXButton homeid;
 
 
     }
+
+    //Search Method
+    @FXML
+    private void searchJewelryDetails() {
+        ObservableList<Jewelry> list = getJewelryList();
+
+        //Wrap the ObservableList in a FilteredList (initially display all data)
+        FilteredList<Jewelry> filteredJewelryDetails = new FilteredList<>(list, b -> true);
+
+        //Set the filter Predicate whenever the filter changes
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredJewelryDetails.setPredicate(jew -> {
+                //If filter text is empty, display all details of jewelry
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                //compare values
+                String lowerCaseFIlter = newValue.toLowerCase();
+
+                if (String.valueOf(jew.getType()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;//Filter matches customer ID
+
+                } else
+                    return false;//Does not match
+            });
+        });
+
+        //Wrap the FilteredList in a SortedList
+        SortedList<Jewelry> sortedJewelryDetails = new SortedList<>(filteredJewelryDetails);
+
+        //Bind the SortedList comparator to the jewelry TableView comparator.Otherwise, sorting the TableView would have no effect
+        sortedJewelryDetails.comparatorProperty().bind(jewelry.comparatorProperty());
+
+        //Add sorted (and filtered) data to the table
+        jewelry.setItems(sortedJewelryDetails);
+    }
+
 }

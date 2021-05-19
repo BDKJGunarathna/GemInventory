@@ -3,6 +3,8 @@ package jewelryinventoryfunction;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,10 +59,10 @@ public class UpdatejewelrydetailsController implements Initializable {
     private TextField tprice;
     @FXML
     private JFXButton homeupdate;
+    @FXML
+    private TextField search;
 
-    //declare variables
-    private int jewID;
-    private boolean update;
+
     Jewelry jewel;
     private PreparedStatement pst;
 
@@ -68,6 +70,7 @@ public class UpdatejewelrydetailsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showTable();
+        searchJewelryDetails();
     }
 
     //Buttons
@@ -233,6 +236,46 @@ public class UpdatejewelrydetailsController implements Initializable {
         tid.setText("" + jewelry1.getId());
         tprice.setText("" + jewelry1.getPrice());
     }
+
+
+
+    //Search Method
+    @FXML
+    private void searchJewelryDetails() {
+        ObservableList<Jewelry> list = getJewelryList();
+
+        //Wrap the ObservableList in a FilteredList (initially display all data)
+        FilteredList<Jewelry> filteredJewelryDetails = new FilteredList<>(list, b -> true);
+
+        //Set the filter Predicate whenever the filter changes
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredJewelryDetails.setPredicate(jew -> {
+                //If filter text is empty, display all details of jewelry
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                //compare values
+                String lowerCaseFIlter = newValue.toLowerCase();
+
+                if (String.valueOf(jew.getType()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;//Filter matches customer ID
+
+                } else
+                    return false;//Does not match
+            });
+        });
+
+        //Wrap the FilteredList in a SortedList
+        SortedList<Jewelry> sortedJewelryDetails = new SortedList<>(filteredJewelryDetails);
+
+        //Bind the SortedList comparator to the jewelry TableView comparator.Otherwise, sorting the TableView would have no effect
+        sortedJewelryDetails.comparatorProperty().bind(jewelry.comparatorProperty());
+
+        //Add sorted (and filtered) data to the table
+        jewelry.setItems(sortedJewelryDetails);
+    }
+
 
 }
 
