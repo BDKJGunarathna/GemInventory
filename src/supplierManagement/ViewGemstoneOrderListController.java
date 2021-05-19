@@ -22,13 +22,12 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ViewGemstoneOrderListController implements Initializable {
 
 
-    @FXML
-    private FontAwesomeIconView RefreshButton;
     @FXML
     private JFXButton GOlogoutButton;
     @FXML
@@ -36,7 +35,12 @@ public class ViewGemstoneOrderListController implements Initializable {
 
 
     @FXML
+    private JFXButton saveOrderButton;
+    @FXML
+    private JFXButton clearFieldButton;
+    @FXML
     private JFXButton cancelOrderButton;
+
     @FXML
     private JFXButton editOrderButton;
     @FXML
@@ -74,6 +78,22 @@ public class ViewGemstoneOrderListController implements Initializable {
     private TableColumn<ViewGemOrders, Date> deliveryDateCol;
     @FXML
     private TableColumn<ViewGemOrders, String> orderStatusCol;
+
+
+    @FXML
+    private TextField txtUpdateOid;
+    @FXML
+    private TextField txtUpdateGemDes;
+    @FXML
+    private TextField txtUpdateQuantity;
+    @FXML
+    private JFXDatePicker txtUpdateDdate;
+    @FXML
+    private TextField txtUpdateSid;
+    @FXML
+    private TextField txtUpdateSupname;
+    @FXML
+    private TextField txtUpdateGemId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -168,11 +188,12 @@ public class ViewGemstoneOrderListController implements Initializable {
             r = st.executeQuery(query1);
             ViewGemOrders orders;
 
-            if(r != null){
-            while (r.next()) {
-                orders = new ViewGemOrders(r.getInt("p_OrderId"), r.getDate("p_ordered_date"), r.getInt("supp_id"), r.getInt("g_id"),r.getString("g_description"),r.getDouble("g_quantity"),r.getString("g_sup_name"),r.getDate("expected_delivery_date"),r.getString("p_order_status"));
-                gemStoneOrderList.add(orders);
-            }}
+            if (r != null) {
+                while (r.next()) {
+                    orders = new ViewGemOrders(r.getInt("p_OrderId"), r.getDate("p_ordered_date"),r.getInt("g_id"), r.getString("g_description"),r.getDouble("g_quantity"),r.getInt("supp_id"), r.getString("g_sup_name"),r.getDate("expected_delivery_date"), r.getString("p_order_status"));
+                    gemStoneOrderList.add(orders);
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -180,16 +201,16 @@ public class ViewGemstoneOrderListController implements Initializable {
     }
 
     //method to show gemstone Order details in tableView
-    public void showOrderTable(){
+    public void showOrderTable() {
         ObservableList<ViewGemOrders> list1 = getGemStoneOrderList();
 
         //set values to the columns
         orderIDcol.setCellValueFactory(new PropertyValueFactory<>("p_OrderId"));
         orderDateCol.setCellValueFactory(new PropertyValueFactory<>("p_ordered_date"));
-        supplierIdCol.setCellValueFactory(new PropertyValueFactory<>("supp_id"));
         gemIdCol.setCellValueFactory(new PropertyValueFactory<>("g_id"));
         gDesCol.setCellValueFactory(new PropertyValueFactory<>("g_description"));
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("g_quantity"));
+        supplierIdCol.setCellValueFactory(new PropertyValueFactory<>("supp_id"));
         suppNameCol.setCellValueFactory(new PropertyValueFactory<>("g_sup_name"));
         deliveryDateCol.setCellValueFactory(new PropertyValueFactory<>("expected_delivery_date"));
         orderStatusCol.setCellValueFactory(new PropertyValueFactory<>("p_order_status"));
@@ -201,7 +222,7 @@ public class ViewGemstoneOrderListController implements Initializable {
 
     @FXML
     public void deleteOrderButtonOnAction(ActionEvent event) throws SQLException {
-        Stage stage =(Stage) deleteOrderButton.getScene().getWindow();
+        Stage stage = (Stage) deleteOrderButton.getScene().getWindow();
         //gOrderList.getItems().removeAll(gOrderList.getSelectionModel().getSelectedItem());
         deleteOrderMethod();
 
@@ -209,7 +230,7 @@ public class ViewGemstoneOrderListController implements Initializable {
 
     private void deleteOrderMethod() throws SQLException {
         ViewGemOrders list3 = gOrderList.getSelectionModel().getSelectedItem();
-        String query = "DELETE FROM cityofgems.purchase_order_table WHERE p_OrderId =" + list3.getP_OrderId() +" AND p_order_status = 'Closed'";
+        String query = "DELETE FROM cityofgems.purchase_order_table WHERE p_OrderId =" + list3.getP_OrderId() + " AND p_order_status = 'Closed'";
         DBConnect.getConnection();
         Statement st = null;
         try {
@@ -219,7 +240,7 @@ public class ViewGemstoneOrderListController implements Initializable {
 
         }
         st.execute(query);
-        if(list3.getP_order_status().equals("Closed")) { //newly added
+        if (list3.getP_order_status().equals("Closed")) { //newly added
             Notifications notificationBuilder = Notifications.create();
             notificationBuilder.title("Notification");
             notificationBuilder.text("Deleted record successfully");
@@ -234,6 +255,72 @@ public class ViewGemstoneOrderListController implements Initializable {
     }
 
 
+    //----------------UPDATE----------------------------------------------------------------------------
+
+
+    public void saveOrderButtonOnAction(ActionEvent actionEvent) {
+        if (actionEvent.getSource().equals(saveOrderButton)) {
+            updatePurchaseOrderRecord();
+        }
+    }
+
+    private void updatePurchaseOrderRecord() {
+        String query = "UPDATE cityofgems.purchase_order_table SET g_id = '" + txtUpdateGemId.getText() + "', g_description = '" + txtUpdateGemDes.getText() + "', g_quantity = '" + txtUpdateQuantity.getText() + "', expected_delivery_date = '" + txtUpdateDdate.getValue() + "', supp_id = '" + txtUpdateSid.getText() + "', g_sup_name = '" + txtUpdateSupname.getText() + "' WHERE p_OrderId = " + txtUpdateOid.getText() + "";
+        executeSql(query);
+        showOrderTable();
+    }
+
+    //Updating data in database
+   private void executeSql (String query){
+        Connection con = getConnection();
+        Statement st;
+        try {
+            st = con.createStatement();
+
+            st.executeUpdate(query);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
+
+
+    @FXML
+    public void tableRowSelectionHandler (MouseEvent mouseEvent){
+        ViewGemOrders oList = gOrderList.getSelectionModel().getSelectedItem();
+
+        txtUpdateGemId.setText("" + oList.getG_id());
+        txtUpdateGemDes.setText("" + oList.getG_description());
+        txtUpdateQuantity.setText("" + oList.getG_quantity());
+        txtUpdateDdate.setValue(LocalDate.parse("" +oList.getExpected_delivery_date()));
+        txtUpdateSid.setText("" + oList.getSupp_id());
+        txtUpdateSupname.setText("" + oList.getG_sup_name());
+        txtUpdateOid.setText("" + oList.getP_OrderId());
+
+    }
+
+
+
+    public void clearFieldButtonOnAction (ActionEvent actionEvent) {
+            if (actionEvent.getSource().equals(clearFieldButton)) {
+                clearTxtFields();
+            }
+        }
+
+    private void clearTxtFields() {
+        txtUpdateGemId.setText("");
+        txtUpdateGemDes.setText("");
+        txtUpdateQuantity.setText("");
+        txtUpdateDdate.setValue(null);
+        txtUpdateSid.setText("");
+        txtUpdateSupname.setText("");
+        txtUpdateOid.setText("");
+
+    }
+
 
 
 
@@ -246,3 +333,4 @@ public class ViewGemstoneOrderListController implements Initializable {
 
 
 }
+

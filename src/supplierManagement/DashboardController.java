@@ -80,12 +80,13 @@ public class DashboardController implements Initializable {
         dashHomebtn.getScene().getWindow().hide();
 
         Stage homedash = new Stage();
-        Parent dashroot3 = FXMLLoader.load(getClass().getResource("/sample/Dashboard.fxml"));
+        Parent dashroot3 = FXMLLoader.load(getClass().getResource("/supplierManagement/Dashboard.fxml"));
         Scene dashscene3 = new Scene(dashroot3);
         homedash.setScene(dashscene3);
         homedash.show();
         homedash.setResizable(false);
     }
+
     @FXML
     public void fhomeOnAction(ActionEvent event){
 
