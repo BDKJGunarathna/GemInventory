@@ -26,6 +26,9 @@ public class AdditemControler implements Initializable {
     private Button btnAdditm;
 
     @FXML
+    private Button btndemo;
+
+    @FXML
     private TextField txtgemId;
 
     @FXML
@@ -149,5 +152,30 @@ public class AdditemControler implements Initializable {
            }
        }
        }
+
+       public void demodata(){
+
+        Connect();
+        String gemid="gem12";
+        String description="AMETHYST 16.87 CTS 15935";
+        String weight="16.87";
+        String shape="Cushion";
+        String dimensions="6 x 15.6 mm";
+        String price="50,000";
+        String quantity="3";
+        String reorder="1";
+
+           txtgemId.setText(gemid);
+           txtgemdesc.setText(description);
+           txtgemwt.setText(weight);
+           txtgemshp.setText(shape);
+           txtgemdm.setText(dimensions);
+           txtgempr.setText(price);
+           txtgemqty.setText(quantity);
+           txtgemreorder.setText(reorder);
+
+       }
+
+
    }
 

@@ -88,6 +88,9 @@ public class Controller implements Initializable {
     @FXML
     private Button btnsearch;
 
+    @FXML
+    private Button btndemo;
+
 
     // @FXML
    // private ImageView gemlogo;
@@ -163,6 +166,7 @@ ObservableList<Gems>dataList;
         Connect();
         showInventory();
         getGemList();
+
 
         //searchGems();
         //new code
@@ -329,6 +333,16 @@ public void search(ActionEvent ae3) throws SQLException {
         }
     }*/
     //end
+
+    //new code
+   /* public void demoData()  {
+        Connect();
+
+        Gems gem3=new Gems("gem12","Hardness: 7n","16.87","Cushion","6 x 15.6 mm","2","1","160,000");
+        gemList.add(gem3);
+
+    }*/
+    //emd
 public void genReport(){
 
     try {

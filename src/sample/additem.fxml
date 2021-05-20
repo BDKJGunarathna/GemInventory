@@ -70,5 +70,6 @@
          </font>
       </Label>
       <TextField fx:id="txtgemreorder" layoutX="263.0" layoutY="445.0" prefHeight="34.0" prefWidth="282.0" promptText="Enter Reorder level" />
+      <Button fx:id="btndemo" layoutX="49.0" layoutY="20.0" mnemonicParsing="false" onAction="#demodata" text="Demo" />
    </children>
 </AnchorPane>

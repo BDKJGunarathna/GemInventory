@@ -81,7 +81,7 @@ public class UpdateitemControler implements Initializable {
         st.setString(2,upgemweight.getText());
         st.setString(3,upgemshp.getText());
         st.setString(4,upgemdim.getText());
-        st.setInt(5,Integer.parseInt(upgemqty.getText()));//edited
+        st.setString(5,upgemqty.getText());//edited
 
         String gemDesc=upgemdesc.getText();
         String gemWeight=upgemweight.getText();
