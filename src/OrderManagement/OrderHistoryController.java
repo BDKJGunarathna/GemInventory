@@ -1,5 +1,10 @@
 package OrderManagement;
 
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -22,6 +27,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -126,21 +132,109 @@ public class OrderHistoryController implements Initializable {
         }
     }
 
-     */
+ */
 
- /* //print method
+ //print method
     @FXML
-    public void print(MouseEvent event){
-        try{
-        //Create Generate Types of Employee Object
-      Order_Details_Report orderDetailsReport = new Order_Details_Report();
-        //Create Types of Employee PDF
-        orderDetailsReport.createPdf();}
-        catch (Exception ex){
-            ex.printStackTrace();
+    private void print(ActionEvent event){
+
+
+        try {
+
+            String report_name = "C:\\Users\\Dinuka\\IdeaProjects\\Order_Management\\src\\OrderManagement\\Order_Details_of_current_month.pdf";
+            //create Document object
+            Document document = new Document();
+            //set pdf instance
+            PdfWriter.getInstance(document, new FileOutputStream(report_name));
+            //open the document
+            document.open();
+
+            Font bold = new Font(Font.FontFamily.HELVETICA, 30, Font.BOLD);
+            Paragraph p = new Paragraph("Jewelry_Order_Details_Of_The_Current_Month");
+            document.add(p);
+
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("  "));
+
+
+
+            OrderManagement.DBConnection.getConnection();
+            String query = "SELECT * FROM jewelry_orders where YEAR(date) = YEAR(CURRENT_DATE ) and MONTH(date) = MONTH(CURRENT_DATE )";
+            Statement st;
+            ResultSet rs;
+
+
+            st = OrderManagement.DBConnection.getConnection().createStatement();
+            rs = st.executeQuery(query);
+            OrderManagement.Order order;
+
+
+                st = OrderManagement.DBConnection.getConnection().createStatement();
+                rs = st.executeQuery(query);
+
+                if (rs != null) {
+                    PdfPTable table = null;
+                    while (rs.next()) {
+                        table = new PdfPTable(10);
+
+
+                        PdfPCell c1 = new PdfPCell(new Phrase("Order ID"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Invoice No"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Cus ID"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Pro ID"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Pro Name"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("un Price "));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Quantity"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Total"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Ordered Date"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Status"));
+                        table.addCell(c1);
+                        table.setHeaderRows(1);
+
+                        table.addCell(String.valueOf(rs.getInt("id")));
+                        table.addCell(String.valueOf(rs.getString("invoiceNo")));
+                        table.addCell(String.valueOf(rs.getInt("cusid")));
+                        table.addCell(String.valueOf(rs.getInt("proid")));
+                        table.addCell(String.valueOf(rs.getString("proname")));
+                        table.addCell(String.valueOf(rs.getDouble("unprice")));
+                        table.addCell(String.valueOf(rs.getInt("qty")));
+                        table.addCell(String.valueOf(rs.getDouble("total")));
+                        table.addCell(String.valueOf(rs.getDate("date")));
+                        table.addCell(String.valueOf(rs.getString("status")));
+                        document.add(table);
+                    }
+                }
+
+
+            document.close();
+
+
+            //Alert Information box
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("PDF Downloaded Successfully ");
+            alert.show();
+
         }
+
+        catch(Exception ex){
+                ex.printStackTrace();
+        }
+
     }
-*/
+
+
 
 
 
@@ -152,7 +246,7 @@ public class OrderHistoryController implements Initializable {
         //Wrap the ObservableList in a FilteredList (initially display all data)
         FilteredList<Order> filteredOrderDetails = new FilteredList<>(list, b -> true);
 
-        //Set the filter Predicate whenever the filter changes
+        //Set the filter Predicate whenever the filter changes(). search by the filtered list
         txtSearchJewelryOrder.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredOrderDetails.setPredicate(order -> {
                 //If filter text is empty, display all employees
@@ -161,14 +255,16 @@ public class OrderHistoryController implements Initializable {
                 }
 
                 //Compare employee name, employee type, and employee ID of every person with filter text
-                String lowerCaseFIlter = newValue.toLowerCase();
+                String lowerCaseFIlter = newValue.toLowerCase();// convert entered value to the lowercase letters
 
-                if (String.valueOf(order.getCusId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                if (String.valueOf(order.getId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
+                    return true;//Filter matches Order ID
+                }
+                else if (String.valueOf(order.getCusId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
                     return true;//Filter matches customer ID
 
-                } else if (String.valueOf(order.getId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches Order ID
-                } else
+                }
+               else
                     return false;//Does not match
             });
         });
@@ -215,9 +311,11 @@ public class OrderHistoryController implements Initializable {
 
     private void OrderHistory() {
         ObservableList<OrderManagement.Order> list = getOrderList();
-        getOrderList();
+        //getOrderList();
 
-        col_orderID.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        //set retrieved values to the table cells
+        col_orderID.setCellValueFactory(new PropertyValueFactory<>("id")); //Order class attributes
         col_invoiceNo.setCellValueFactory(new PropertyValueFactory<>("invoiceNo"));
         col_cusId.setCellValueFactory(new PropertyValueFactory<>("cusId"));
         col_proId.setCellValueFactory(new PropertyValueFactory<>("proId"));
