@@ -17,7 +17,7 @@
     <top>
         <Pane prefHeight="75.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton fx:id="supplierListhomebtn" layoutX="1641.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="supplierListhomebtn" layoutX="1641.0" layoutY="23.0" onAction="#supListTOdashboard" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -72,7 +72,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-            <TextField fx:id="supplierSearchField" layoutX="883.0" layoutY="75.0" promptText="Search by gemstone types" />
+            <TextField fx:id="supplierSearchField" layoutX="883.0" layoutY="75.0" promptText="Search by gemstone types" style="-fx-background-color: cornsilk;" />
             <AnchorPane layoutX="1114.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="535.0" style="-fx-background-color: #2D3447; -fx-border-color: white;">
                <children>
                   <Label alignment="CENTER" layoutX="181.0" layoutY="17.0" text="UPDATE SUPPLIER" textAlignment="CENTER" textFill="#a0a2ab">
@@ -161,7 +161,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="supplierListgemstonebtn" alignment="BASELINE_LEFT" layoutY="330.0" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Gemstone Order List" textFill="#2196f3">
+                <JFXButton fx:id="supplierListgemstonebtn" alignment="BASELINE_LEFT" layoutY="330.0" onAction="#supplierListTogemstoneList" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Gemstone Order List" textFill="#2196f3">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>

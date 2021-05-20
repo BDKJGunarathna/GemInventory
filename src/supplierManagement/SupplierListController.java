@@ -1,36 +1,33 @@
 package supplierManagement;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Callback;
+
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class SupplierListController implements Initializable {
 
+    //--------------variable declaration-------------------------------------------
+    //table View
     @FXML
     private TableView <SupplierListTableView> supplierTableView;
     @FXML
@@ -52,16 +49,7 @@ public class SupplierListController implements Initializable {
     @FXML
     private TableColumn <SupplierListTableView,String> descripCol;
 
-    @FXML
-    private TableColumn <SupplierListTableView, Double> totOrderPlacedCol;
-    @FXML
-    private TableColumn <SupplierListTableView,Double> totOrdersDeliveredCol;
-    @FXML
-    private TableColumn <SupplierListTableView,Double> totOverdueOrdersCol;
-    @FXML
-    private TableColumn <SupplierListTableView,String> ActivityCol;
-
-
+    //nav pane buttons with home and logout
     @FXML
     private Button supplierListhomebtn;
     @FXML
@@ -77,6 +65,8 @@ public class SupplierListController implements Initializable {
     @FXML
     private Button supplierListgemstonebtn;
 
+
+    //textFields for Update
     @FXML
     private TextField txtUpdateSName;
     @FXML
@@ -96,22 +86,28 @@ public class SupplierListController implements Initializable {
     @FXML
     private TextField txtUpdateSupId;
 
-
+    //buttons
     @FXML
     private Button save;
     @FXML
     private Button clear;
 
+    @FXML
+    private TextField supplierSearchField; //search textField
+
+    private SupplierListTableView supView; //object of viewGemOrder Class
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-
-        showSupplierList();
+        showSupplierList(); //method initialized to show data in supplier list
+        SearchField(); // method to load filtered data
     }
 
 
-
+    //----------------------scene transitions-----------------------------------
+    //to go to new purchase order
     @FXML
     public void supListToNewPurchaseAction(ActionEvent event) throws IOException {
         supplierListPurchaseorderbtn.getScene().getWindow().hide();
@@ -124,6 +120,7 @@ public class SupplierListController implements Initializable {
         StageNewP.setResizable(false);
     }
 
+    //to go to new supplier window
     @FXML
     public void supListToNewSupplierAction(ActionEvent event) throws IOException {
         supplierListnewsupplierbtn.getScene().getWindow().hide();
@@ -135,8 +132,6 @@ public class SupplierListController implements Initializable {
         StageSupp.show();
         StageSupp.setResizable(false);
     }
-
-
 
     //method for logout
     @FXML
@@ -151,7 +146,7 @@ public class SupplierListController implements Initializable {
         logoutpurchord.setResizable(false);
     }
 
-
+    //to load own window
     @FXML
     public void supplierListNavPaneAction(ActionEvent event) throws IOException {
         supplierListSuplistbtnInNav.getScene().getWindow().hide();
@@ -164,14 +159,42 @@ public class SupplierListController implements Initializable {
         SupListBtn.setResizable(false);
     }
 
+    //to go to gemstone order list window
+    @FXML
+    public void supplierListTogemstoneList(ActionEvent event) throws IOException {
+        supplierListgemstonebtn.getScene().getWindow().hide();
+
+        Stage stageGL = new Stage();
+        Parent parentGL = FXMLLoader.load(getClass().getResource("/supplierManagement/viewGemstoneOrderList.fxml"));
+        Scene gemstoneList = new Scene(parentGL);
+        stageGL.setScene(gemstoneList);
+        stageGL.show();
+        stageGL.setResizable(false);
+    }
+
+    //to go to gemstone order list window
+    @FXML
+    public void supListTOdashboard(ActionEvent event) throws IOException {
+        supplierListhomebtn.getScene().getWindow().hide();
+
+        Stage stageDB = new Stage();
+        Parent parentDB = FXMLLoader.load(getClass().getResource("/supplierManagement/Dashboard.fxml"));
+        Scene dashB = new Scene(parentDB);
+        stageDB.setScene(dashB);
+        stageDB.show();
+        stageDB.setResizable(false);
+    }
+
+    //-------------------------------DELETE-------------------------------------------------------------------------------------------
+    //event for delete remove button
     @FXML
     public void removeSupplierOnAction(ActionEvent event) throws SQLException {
         Stage stage =(Stage) removeSupButton.getScene().getWindow();
         //supplierTableView.getItems().removeAll(supplierTableView.getSelectionModel().getSelectedItem());
-        removeSupFromDb();
+        removeSupFromDb(); //method calling to delete data
     }
 
-
+    //sql query to delete data from database
     private void removeSupFromDb() throws SQLException {
 
             SupplierListTableView list = supplierTableView.getSelectionModel().getSelectedItem();
@@ -180,41 +203,10 @@ public class SupplierListController implements Initializable {
             Statement st = DBConnect.getConnection().createStatement();
             st.execute(query);
             showSupplierList();
-
-
     }
 
 
-
-
-
-   /* @FXML
-        private void handleMouseEvent(MouseEvent event){
-        SupplierListTableView supList = supplierTableView.getSelectionModel().getSelectedItem();
-        txtUpdateSName.setText("" +supList.getS_name());
-        txtUpdateSEmail.setText("" +supList.getS_email());
-        txtUpdateSAddress.setText("" +supList.getS_address());
-        txtUpdateSPhone.setText("" +supList.getS_phone());
-        txtUpdateSCountry.setText("" +supList.getS_country());
-        txtUpdateSWebsite.setText("" +supList.getS_website());
-        txtUpdateSsupGtypes.setText("" +supList.getSupp_gemstoneTypes());
-        txtUpdateSDescription.setText("" +supList.getS_description());
-        }*/
-        /*
-        UpdateSupplierController update = load.getController();
-        update.setUpdate(true);
-        UpdateSupplierController.setTextField(list2.getSupplierID(), list2.getS_address(), list2.getS_country(), list2.getS_description(), list2.getS_email())
-        editSupButton.getScene().getWindow();
-        Stage supedit = new Stage();
-        Parent supeditRoot = FXMLLoader.load(getClass().getResource("/supplierManagement/updateSupplier.fxml"));
-        Scene supeditScene = new Scene(supeditRoot);
-        supedit.setScene(supeditScene);
-        supedit.show();
-        supedit.setResizable(false); */
-
-
-
-    //check connection
+    //check database connection
             public Connection getConnection(){
                 Connection con;
                 try{
@@ -227,11 +219,12 @@ public class SupplierListController implements Initializable {
                 }
             }
 
-    //get order list method (2)
+    //--------------------------RETRIEVE-------------------------------------------------------------------------------------------------------------
+    //array list method to get order list
     public ObservableList<SupplierListTableView> getSupplierList(){
         ObservableList<SupplierListTableView> SupplierList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT * FROM cityofgems.supplier_info_table";
+        String query = "SELECT * FROM cityofgems.supplier_info_table"; //sql query to retrieve data from database
         Statement st;
         ResultSet rs;
 
@@ -251,12 +244,11 @@ public class SupplierListController implements Initializable {
         return SupplierList;
     }
 
-
-
+    //method to show the retrieved data in table
     private void showSupplierList() {
 
         ObservableList<SupplierListTableView> list = getSupplierList();
-
+        //get values to columns
         sidcol.setCellValueFactory(new PropertyValueFactory<>("supplierID"));
         snamecol.setCellValueFactory(new PropertyValueFactory<>("s_name"));
         phonecol.setCellValueFactory(new PropertyValueFactory<>("s_phone"));
@@ -267,11 +259,12 @@ public class SupplierListController implements Initializable {
         countrycol.setCellValueFactory(new PropertyValueFactory<>("s_country"));
         descripCol.setCellValueFactory(new PropertyValueFactory<>("s_description"));
 
-        supplierTableView.setItems(list);
+        supplierTableView.setItems(list); //adding items to table
     }
 
 
-    //Update
+    //------------------------UPDATE-------------------------------------------------------------------------------------------------------------------------
+    //event to be handled when save button is clicked
     @FXML
     public void saveButtonOnAction(ActionEvent event){
         if(event.getSource().equals(save)){
@@ -280,12 +273,14 @@ public class SupplierListController implements Initializable {
         }
     }
 
+    //event to be handled when clear button is clicked
     public void clearButtonOnAction(ActionEvent actionEvent) {
                 if(actionEvent.getSource().equals(clear)){
                     clearFields();
                 }
     }
 
+    //method to clear fields of the update form
     private void clearFields() {
 
         txtUpdateSName.setText("");
@@ -299,6 +294,7 @@ public class SupplierListController implements Initializable {
         txtUpdateSEmail.setText("");
     }
 
+    //Sql query to update data in database
     private void updateSupplierRecord() {
                 String query = "UPDATE cityofgems.supplier_info_table SET s_name = '"+txtUpdateSName.getText()+"', s_address = '" +txtUpdateSAddress.getText()+"', s_phone = '"+txtUpdateSPhone.getText()+"', s_country = '"+txtUpdateSCountry.getText()+"', s_email = '"+txtUpdateSEmail.getText()+"', s_website = '"+txtUpdateSWebsite.getText()+"' ,s_description = '"+txtUpdateSDescription.getText()+"', supp_gemstoneTypes = '"+txtUpdateSsupGtypes.getText()+"' WHERE supplierID = "+txtUpdateSupId.getText()+"";
                 executeQuery(query);
@@ -320,10 +316,13 @@ public class SupplierListController implements Initializable {
         }
 
     }
-
+        //Mouse clicked event to get the clicked row and load data into the fields
         @FXML
         public void rowSelectionHandleEvent(MouseEvent mouseEvent) {
+            //getting the selected row
             SupplierListTableView supList = supplierTableView.getSelectionModel().getSelectedItem();
+
+            //Assigning the textFields with the selected row's data
             txtUpdateSupId.setText("" +supList.getSupplierID());
             txtUpdateSName.setText("" +supList.getS_name());
             txtUpdateSEmail.setText("" +supList.getS_email());
@@ -335,5 +334,37 @@ public class SupplierListController implements Initializable {
             txtUpdateSDescription.setText("" +supList.getS_description());
         }
 
+        ///-----------------------------SEARCH-------------------------------------------------------------------------------------------------//
+        private void SearchField() {
+            ObservableList<SupplierListTableView> supplierList = getSupplierList();
+
+            //wrap list in filtered list
+            FilteredList<SupplierListTableView> filteredSupplierList = new FilteredList<>(supplierList, b -> true);
+
+            supplierSearchField.textProperty().addListener((observable,oldVal,newVal) -> {
+                filteredSupplierList.setPredicate(supView -> {
+                    if (newVal == null || newVal.isEmpty()) {
+                        return true;
+                    }
+
+                    String filterDetailsByLowerCase = newVal.toLowerCase();
+
+                    if (String.valueOf(supView.getS_name()).toLowerCase().indexOf(filterDetailsByLowerCase) != -1) { //check if supplier name matches
+                        return true;
+                    } else if (String.valueOf(supView.getS_country()).toLowerCase().indexOf(filterDetailsByLowerCase) != -1) { //check if country matches
+                        return true;
+                    } else if (String.valueOf(supView.getSupp_gemstoneTypes()).toLowerCase().indexOf(filterDetailsByLowerCase) != -1){ //check for gemstone types
+                        return true;
+                    }else
+                        return false;
+                });
+            });
+
+            SortedList<SupplierListTableView> sortedSupplierDetails = new SortedList<>(filteredSupplierList);
+
+            sortedSupplierDetails.comparatorProperty().bind(supplierTableView.comparatorProperty()); //merging comparator properties
+
+            supplierTableView.setItems(sortedSupplierDetails); //add sorted data to table
+        }
 
 }

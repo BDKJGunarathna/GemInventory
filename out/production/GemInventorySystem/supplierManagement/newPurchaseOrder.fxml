@@ -187,29 +187,24 @@
                         <ColorAdjust brightness="1.0" />
                     </effect>
                 </JFXTextArea>
-                <JFXButton fx:id="newpurchsubmitorderbtn" layoutX="229.0" layoutY="763.0" onAction="#createNewOrderButtonOnAction" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: #2196f3;" text="Submit Order">
+                <JFXButton fx:id="newpurchsubmitorderbtn" layoutX="321.0" layoutY="764.0" onAction="#createNewOrderButtonOnAction" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: #2196f3;" text="Submit Order">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="newpurchresetformbtn" layoutX="23.0" layoutY="763.0" onAction="#resetButtonOnAction" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: red;" text="Reset Form">
+                <JFXButton fx:id="newpurchresetformbtn" layoutX="80.0" layoutY="764.0" onAction="#resetButtonOnAction" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: red;" text="Reset Form">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="newpurchaddsupplierbtn" layoutX="626.0" layoutY="763.0" onAction="#newsuppliermenubuttonAction" prefHeight="36.0" prefWidth="188.0" style="-fx-background-color: a0a2ab;" text="Add Spplier">
+                <JFXButton fx:id="newpurchaddsupplierbtn" layoutX="556.0" layoutY="764.0" onAction="#newsuppliermenubuttonAction" prefHeight="36.0" prefWidth="188.0" style="-fx-background-color: a0a2ab;" text="Add Spplier">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </JFXButton>
-                <FontAwesomeIconView glyphName="CHECK" layoutX="242.0" layoutY="789.0" size="20.0" text="" />
-                <FontAwesomeIconView glyphName="UNDO" layoutX="48.0" layoutY="789.0" size="20.0" />
-                <FontAwesomeIconView glyphName="PLUS_CIRCLE" layoutX="650.0" layoutY="790.0" size="20.0" />
-                <JFXButton fx:id="newpurchcancelbtn" layoutX="437.0" layoutY="763.0" onAction="#cancelButtonOnAction" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: red;" text="Cancel">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </JFXButton>
+                <FontAwesomeIconView glyphName="CHECK" layoutX="326.0" layoutY="790.0" size="20.0" text="" />
+                <FontAwesomeIconView glyphName="UNDO" layoutX="108.0" layoutY="790.0" size="20.0" />
+                <FontAwesomeIconView glyphName="PLUS_CIRCLE" layoutX="581.0" layoutY="790.0" size="20.0" />
                 <TextField fx:id="orderStatus" layoutX="367.0" layoutY="648.0" prefHeight="17.0" prefWidth="88.0" style="-fx-background-color: transparent;" />
             <TableView fx:id="viewGemstones" editable="true" layoutX="13.0" layoutY="117.0" opacity="0.77" prefHeight="303.0" prefWidth="802.0" style="-fx-background-position: center; -fx-background-color: white; -fx-border-color: black;">
                <columns>

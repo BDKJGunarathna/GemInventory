@@ -1,9 +1,10 @@
 package supplierManagement;
 
 import com.jfoenix.controls.*;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,27 +28,26 @@ import java.util.ResourceBundle;
 
 public class ViewGemstoneOrderListController implements Initializable {
 
-
+    //--------Variable Declarations--------------------------
+    //logout/home buttons
     @FXML
     private JFXButton GOlogoutButton;
     @FXML
     private JFXButton GOhomeButton;
 
-
+    //other buttons
     @FXML
     private JFXButton saveOrderButton;
     @FXML
     private JFXButton clearFieldButton;
     @FXML
     private JFXButton cancelOrderButton;
-
-    @FXML
-    private JFXButton editOrderButton;
     @FXML
     private JFXButton deleteOrderButton;
     @FXML
     private JFXButton sendEmailButton;
 
+    //Nav pane buttons
     @FXML
     private JFXButton goListNewPButton;
     @FXML
@@ -57,7 +57,7 @@ public class ViewGemstoneOrderListController implements Initializable {
     @FXML
     private JFXButton goSupplierListButton;
 
-
+    //tableView
     @FXML
     private TableView<ViewGemOrders> gOrderList;
     @FXML
@@ -79,7 +79,7 @@ public class ViewGemstoneOrderListController implements Initializable {
     @FXML
     private TableColumn<ViewGemOrders, String> orderStatusCol;
 
-
+    //Update textFields
     @FXML
     private TextField txtUpdateOid;
     @FXML
@@ -95,13 +95,35 @@ public class ViewGemstoneOrderListController implements Initializable {
     @FXML
     private TextField txtUpdateGemId;
 
+    @FXML
+    private TextField GOSearchField; //search textField
+
+    private ViewGemOrders viewGOrder; //object of viewGemOrder Class
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showOrderTable();
+        showOrderTable(); //method initialized to retrieve order data to table
+        search(); // method initialized to apply search filters when loading the table
 
     }
 
+    //-------------Scene transitions------------------------------
+    //to go to dashboard/home
+    @FXML
+    public void GOhomeButtonOnAction(ActionEvent event) throws IOException {
+        GOhomeButton.getScene().getWindow().hide();
 
+        Stage stage = new Stage();
+        Parent parent = FXMLLoader.load(getClass().getResource("/supplierManagement/Dashboard.fxml"));
+        Scene dashHome = new Scene(parent);
+        stage.setScene(dashHome);
+        stage.show();
+        stage.setResizable(false);
+
+    }
+
+    //to load the same UI
     @FXML
     public void goGemstoneOButtonOnAction(ActionEvent event) throws IOException {
         goGemstoneOButton.getScene().getWindow().hide();
@@ -115,6 +137,7 @@ public class ViewGemstoneOrderListController implements Initializable {
 
     }
 
+    //to logout
     @FXML
     public void GOlogoutButtonOnAction(ActionEvent event) throws IOException {
         GOlogoutButton.getScene().getWindow().hide();
@@ -127,6 +150,7 @@ public class ViewGemstoneOrderListController implements Initializable {
         stageSS145.setResizable(false);
     }
 
+    //to go to new purchase order window
     @FXML
     public void goLisNewPButtonOnAction(ActionEvent event) throws IOException {
         goListNewPButton.getScene().getWindow().hide();
@@ -139,6 +163,7 @@ public class ViewGemstoneOrderListController implements Initializable {
         stageSS11.setResizable(false);
     }
 
+    //to go to new supplier window
     @FXML
     public void goNewSupButtonOnAction(ActionEvent event) throws IOException {
         goNewSupButton.getScene().getWindow().hide();
@@ -151,6 +176,7 @@ public class ViewGemstoneOrderListController implements Initializable {
         stageSS2.setResizable(false);
     }
 
+    //to go to supplier list window
     @FXML
     public void goSupplierListButtonOnAction(ActionEvent event) throws IOException {
         goSupplierListButton.getScene().getWindow().hide();
@@ -162,6 +188,8 @@ public class ViewGemstoneOrderListController implements Initializable {
         stageSS22.show();
         stageSS22.setResizable(false);
     }
+
+    //-------------RETRIEVE------------------------------------------------------------------------------------------------------
 
     //establishing database connection
     public Connection getConnection() {
@@ -175,7 +203,7 @@ public class ViewGemstoneOrderListController implements Initializable {
         }
     }
 
-    //get gemstones order details
+    //get gemstones order details with result set
     public ObservableList<ViewGemOrders> getGemStoneOrderList() {
         ObservableList<ViewGemOrders> gemStoneOrderList = FXCollections.observableArrayList();
         Connection conn = getConnection();
@@ -216,10 +244,11 @@ public class ViewGemstoneOrderListController implements Initializable {
         orderStatusCol.setCellValueFactory(new PropertyValueFactory<>("p_order_status"));
 
 
-        gOrderList.setItems(list1);
+        gOrderList.setItems(list1); //adding the items to the tableview
     }
 
 
+    //action event for the delete button
     @FXML
     public void deleteOrderButtonOnAction(ActionEvent event) throws SQLException {
         Stage stage = (Stage) deleteOrderButton.getScene().getWindow();
@@ -228,6 +257,9 @@ public class ViewGemstoneOrderListController implements Initializable {
 
     }
 
+    //-----------------------DELETE----------------------------------------------------------------------------------------
+
+    //method for the delete button with the delete query
     private void deleteOrderMethod() throws SQLException {
         ViewGemOrders list3 = gOrderList.getSelectionModel().getSelectedItem();
         String query = "DELETE FROM cityofgems.purchase_order_table WHERE p_OrderId =" + list3.getP_OrderId() + " AND p_order_status = 'Closed'";
@@ -243,7 +275,7 @@ public class ViewGemstoneOrderListController implements Initializable {
         if (list3.getP_order_status().equals("Closed")) { //newly added
             Notifications notificationBuilder = Notifications.create();
             notificationBuilder.title("Notification");
-            notificationBuilder.text("Deleted record successfully");
+            notificationBuilder.text("Record deleted successfully");
             notificationBuilder.hideAfter(Duration.seconds(3));
             notificationBuilder.position(Pos.BOTTOM_CENTER);
             notificationBuilder.darkStyle();
@@ -255,15 +287,16 @@ public class ViewGemstoneOrderListController implements Initializable {
     }
 
 
-    //----------------UPDATE----------------------------------------------------------------------------
+    //--------------------UPDATE-------------------------------------------------------------------------------------------------
 
-
+    //event when save button is clicked
     public void saveOrderButtonOnAction(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(saveOrderButton)) {
             updatePurchaseOrderRecord();
         }
     }
 
+    //String query for updating order table
     private void updatePurchaseOrderRecord() {
         String query = "UPDATE cityofgems.purchase_order_table SET g_id = '" + txtUpdateGemId.getText() + "', g_description = '" + txtUpdateGemDes.getText() + "', g_quantity = '" + txtUpdateQuantity.getText() + "', expected_delivery_date = '" + txtUpdateDdate.getValue() + "', supp_id = '" + txtUpdateSid.getText() + "', g_sup_name = '" + txtUpdateSupname.getText() + "' WHERE p_OrderId = " + txtUpdateOid.getText() + "";
         executeSql(query);
@@ -271,46 +304,48 @@ public class ViewGemstoneOrderListController implements Initializable {
     }
 
     //Updating data in database
-   private void executeSql (String query){
-        Connection con = getConnection();
-        Statement st;
-        try {
-            st = con.createStatement();
+       private void executeSql (String query){
+            Connection con = getConnection();
+            Statement st;
+            try {
+                st = con.createStatement();
 
-            st.executeUpdate(query);
+                st.executeUpdate(query);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-    }
-
-
-
-    @FXML
-    public void tableRowSelectionHandler (MouseEvent mouseEvent){
-        ViewGemOrders oList = gOrderList.getSelectionModel().getSelectedItem();
-
-        txtUpdateGemId.setText("" + oList.getG_id());
-        txtUpdateGemDes.setText("" + oList.getG_description());
-        txtUpdateQuantity.setText("" + oList.getG_quantity());
-        txtUpdateDdate.setValue(LocalDate.parse("" +oList.getExpected_delivery_date()));
-        txtUpdateSid.setText("" + oList.getSupp_id());
-        txtUpdateSupname.setText("" + oList.getG_sup_name());
-        txtUpdateOid.setText("" + oList.getP_OrderId());
-
-    }
-
-
-
-    public void clearFieldButtonOnAction (ActionEvent actionEvent) {
-            if (actionEvent.getSource().equals(clearFieldButton)) {
-                clearTxtFields();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
             }
+
         }
 
-    private void clearTxtFields() {
+       //Mouse clicked event to get the clicked row and load data into the fields
+        @FXML
+        public void tableRowSelectionHandler (MouseEvent mouseEvent){
+            //getting the selected row
+            ViewGemOrders oList = gOrderList.getSelectionModel().getSelectedItem();
+
+            //Assigning the textFields with the selected row's data
+            txtUpdateGemId.setText("" + oList.getG_id());
+            txtUpdateGemDes.setText("" + oList.getG_description());
+            txtUpdateQuantity.setText("" + oList.getG_quantity());
+            txtUpdateDdate.setValue(LocalDate.parse("" +oList.getExpected_delivery_date()));
+            txtUpdateSid.setText("" + oList.getSupp_id());
+            txtUpdateSupname.setText("" + oList.getG_sup_name());
+            txtUpdateOid.setText("" + oList.getP_OrderId());
+
+        }
+
+
+        //event to clear the fields of update form
+        public void clearFieldButtonOnAction (ActionEvent actionEvent) {
+                if (actionEvent.getSource().equals(clearFieldButton)) {
+                    clearTxtFields();
+                }
+            }
+
+        //method for clearing fields
+        private void clearTxtFields() {
         txtUpdateGemId.setText("");
         txtUpdateGemDes.setText("");
         txtUpdateQuantity.setText("");
@@ -319,7 +354,47 @@ public class ViewGemstoneOrderListController implements Initializable {
         txtUpdateSupname.setText("");
         txtUpdateOid.setText("");
 
+        }
+
+        //---------------SEARCH---------------------------------------------------------------------------------------------------
+
+    //Search method
+    private void search() {
+        ObservableList<ViewGemOrders> orderList = getGemStoneOrderList();
+
+        //wrap list in filtered list
+        FilteredList<ViewGemOrders> filteredOrderList = new FilteredList<>(orderList, b -> true);
+
+        GOSearchField.textProperty().addListener((observable,oldValue,newValue) -> {
+            filteredOrderList.setPredicate(viewGOrder ->{
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String filterByLowerCase = newValue.toLowerCase();
+
+                if(String.valueOf(viewGOrder.getG_description()).toLowerCase().indexOf(filterByLowerCase) != -1){ //check for gem description matches
+                    return true;
+                }else if(String.valueOf(viewGOrder.getG_sup_name()).toLowerCase().indexOf(filterByLowerCase) != -1){ //check for supplier name matches
+                    return true;
+                }else
+                    return false;
+            });
+        });
+
+        SortedList<ViewGemOrders> sortedDetails = new SortedList<>(filteredOrderList);
+
+        sortedDetails.comparatorProperty().bind(gOrderList.comparatorProperty()); //merging comparator properties
+
+        gOrderList.setItems(sortedDetails); //add sorted data to table
+
     }
+
+
+
+
+
+
 
 
 

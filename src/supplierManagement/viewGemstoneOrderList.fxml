@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -17,7 +18,7 @@
     <top>
         <Pane prefHeight="75.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton fx:id="GOhomeButton" layoutX="1647.0" layoutY="23.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="GOhomeButton" layoutX="1647.0" layoutY="23.0" onAction="#GOhomeButtonOnAction" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -72,7 +73,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <TextField fx:id="GOSearchField" layoutX="871.0" layoutY="75.0" prefHeight="31.0" prefWidth="198.0" promptText="Search by gem description" />
+                <TextField fx:id="GOSearchField" layoutX="871.0" layoutY="75.0" prefHeight="31.0" prefWidth="198.0" promptText="Search" style="-fx-background-color: cornsilk;" />
             <JFXButton fx:id="deleteOrderButton" buttonType="RAISED" layoutX="32.0" layoutY="738.0" onAction="#deleteOrderButtonOnAction" prefHeight="45.0" prefWidth="208.0" style="-fx-background-color: #EEFF41;" text="Delete Order">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -141,12 +142,21 @@
                               <Font name="System Bold" size="15.0" />
                           </font>
                       </JFXButton>
-                  <JFXDatePicker fx:id="txtUpdateDdate" defaultColor="WHITE" layoutX="297.0" layoutY="330.0" style="-fx-background-color: transparent;" />
+                  <JFXDatePicker fx:id="txtUpdateDdate" defaultColor="BLACK" layoutX="297.0" layoutY="330.0" style="-fx-background-color: white;">
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </JFXDatePicker>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </AnchorPane>
+            <Label layoutX="540.0" layoutY="79.0" text="Search by: Gem description, Supplier name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </center>
