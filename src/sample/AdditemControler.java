@@ -61,6 +61,7 @@ public class AdditemControler implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    //close button navigates to home page
     @FXML
     public void close(ActionEvent ae1)throws IOException {
         btnclose.getScene().getWindow().hide();
@@ -71,9 +72,9 @@ public class AdditemControler implements Initializable {
         close.show();
         close.setResizable(false);
     }
-    //add item button action
 
 
+    //database connection
     public void Connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -82,17 +83,19 @@ public class AdditemControler implements Initializable {
             e.printStackTrace();
         }
     }
+
    @FXML
     public void addnewgem(ActionEvent ae2) {
        Connect();
+       //assigning user inputs from text views  to variables
        String gemId = txtgemId.getText();
        String description = txtgemdesc.getText();
        String weight = txtgemwt.getText();
        String shape = txtgemshp.getText();
        String dimension = txtgemdm.getText();
        String price = txtgempr.getText();
-       String quantity = String.valueOf(txtgemqty.getText());//eddited
-       String reorder = String.valueOf(txtgemreorder.getText()); //edited
+       String quantity = txtgemqty.getText();
+       String reorder = txtgemreorder.getText();
 
     //validations
        if(gemId.isEmpty() || description.isEmpty() || weight.isEmpty() || shape.isEmpty() || dimension.isEmpty() || price.isEmpty() || quantity.isEmpty() || reorder.isEmpty()){
@@ -152,7 +155,7 @@ public class AdditemControler implements Initializable {
            }
        }
        }
-
+        //demo button action
        public void demodata(){
 
         Connect();

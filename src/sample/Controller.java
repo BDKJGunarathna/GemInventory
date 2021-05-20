@@ -90,7 +90,8 @@ public class Controller implements Initializable {
 
     @FXML
     private Button btndemo;
-
+    @FXML
+    private ImageView logoimg;
 
     // @FXML
    // private ImageView gemlogo;
@@ -105,73 +106,17 @@ ObservableList<Gems>dataList;
             ResultSet resultSet=null;
 
    
-   // ObservableList<Gems>gemsList=FXCollections.observableArrayList();
-    //new code
-   /* ObservableList<Gems>filteredData=FXCollections.observableArrayList();
 
-    public Controller(){
-        viewgemID.setCellValueFactory(new PropertyValueFactory<>("gemId"));
-        viewgemDescription.setCellValueFactory(new PropertyValueFactory<>("gemDescription"));
-        viewgemWeight.setCellValueFactory(new PropertyValueFactory<>("gemWeight"));
-        viewgemShape.setCellValueFactory(new PropertyValueFactory<>("gemShape"));
-        viewgemDimension.setCellValueFactory(new PropertyValueFactory<>("gemDimension"));
-        viewgemStock.setCellValueFactory(new PropertyValueFactory<>("gemUnitsInStock"));
-        viewgemReorderlevel.setCellValueFactory(new PropertyValueFactory<>("gemReorderLevel"));
-        viewgemCost.setCellValueFactory(new PropertyValueFactory<>("gemCost"));
-
-        dataList=getGemList();
-        filteredData.addAll(dataList);
-
-        gemsList.addListener(new ListChangeListener<Gems>() {
-            @Override
-            public void onChanged(Change<? extends Gems> change) {
-                updateFilteredData();
-            }
-        });
-    }
-    private  void updateFilteredData(){
-        //filteredData=clear();
-
-        for(Gems g:gemsList){
-            filteredData.add(g);
-        }
-        reapplyTableSortOrder();
-    }
-
-
-    private boolean matchesFilter(Gems gems){
-        String filterString=src.getText();
-        if(filterString==null || filterString.isEmpty()){
-            return true;
-        }
-        String lowerCaseFilterString=filterString.toLowerCase();
-
-        if(gems.getGemId().toLowerCase().indexOf(lowerCaseFilterString)!=-1){
-            return true;
-        }else if(gems.getGemShape().toLowerCase().indexOf(lowerCaseFilterString)!=-1){
-            return true;
-        }
-        return false;
-    }
-    private void  reapplyTableSortOrder(){
-        ArrayList<TableColumn<Gems,?>>sortOrder=new ArrayList<>(GemTV.getSortOrder());
-        GemTV.getSortOrder().clear();
-        GemTV.getSortOrder().addAll(sortOrder);
-    }
-    //end*/
     ObservableList<Gems>gemList=FXCollections.observableArrayList();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        //when application runs these methods will call automatically
         Connect();
         showInventory();
         getGemList();
 
 
-        //searchGems();
-        //new code
-
-        //end
     }
     public void Connect(){
 
@@ -188,15 +133,16 @@ ObservableList<Gems>dataList;
         System.out.println("You clicked ");
 
     }
-
-    public ObservableList<Gems>getGemList(){//new code ()blank
+    //returning the list of gems
+    public ObservableList<Gems>getGemList(){
 
        ObservableList<Gems>gemList=FXCollections.observableArrayList();
 
+        //specifing the sql query
         query=" SELECT * FROM cityofgems.inventory ";
        // Statement st;
 
-        //new new uncoment this
+
         ResultSet rs=null;
 
         try {
@@ -206,6 +152,7 @@ ObservableList<Gems>dataList;
             rs=st.executeQuery();
             Gems gems;
 
+            //iterate the resultset while resultset has elements
             while (rs.next()){
                 gemList.add(new Gems(
                         rs.getString("gemId"),
@@ -248,7 +195,7 @@ void searchGem(){
         con=dbconnect.getConnection();
         ObservableList<Gems>list=getGemList();
 
-        //set values to the column
+        //set values to the columns in the layout
         viewgemID.setCellValueFactory(new PropertyValueFactory<>("gemId"));
         viewgemDescription.setCellValueFactory(new PropertyValueFactory<>("gemDescription"));
         viewgemWeight.setCellValueFactory(new PropertyValueFactory<>("gemWeight"));
@@ -260,36 +207,7 @@ void searchGem(){
 
         GemTV.setItems(list);
     }
-/*public void searchGem(){
 
-//wrap the observable
-    FilteredList<Gems> filteredData = new FilteredList<>(gemsList,b ->true);
-
-    //2
-    src.textProperty().addListener((observable,oldValue,newValue) ->{
-        filteredData.setPredicate(Gems ->{
-            //if filter text is empty
-            if(newValue==null || newValue.isEmpty()){
-                return true;
-            }
-            //compare
-            String lowerCaseFilter=newValue.toLowerCase();
-
-            if (Gems.getGemId().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                return true;//filter matches gemid
-            }else if (Gems.getGemShape().toLowerCase().indexOf(lowerCaseFilter)!=-1)
-                return true;//filter matches gem shape
-                else
-                    return false;//does not match
-            });
-        });
-    //3 wrap the filterdlist in a sorted list
-    SortedList<Gems>sortedData=new SortedList<>(filteredData);
-    //4 bind the sorted list
-    sortedData.comparatorProperty().bind(GemTV.comparatorProperty());
-    //5 add sorted data to the table
-    GemTV.setItems(sortedData);
-    }*/
 
 
 public void search(ActionEvent ae3) throws SQLException {
@@ -316,33 +234,7 @@ public void search(ActionEvent ae3) throws SQLException {
 
 }
 
-//new code
-  /*  public ObservableList<Gems> searchGems(String gemId)throws ClassNotFoundException,SQLException{
-        String sql="SELECT * FROM cityofgems.inventory WHERE gemId= "+gemId;
-        try {
-            ResultSet rs=null;
-            st=con.prepareStatement(sql);
-            rs=st.executeQuery();
-            ObservableList<Gems>list= getGemList(rs);
-            return list;
 
-        }catch (SQLException e){
-            System.out.println("Erro"+e);
-            e.printStackTrace();
-            throw e;
-        }
-    }*/
-    //end
-
-    //new code
-   /* public void demoData()  {
-        Connect();
-
-        Gems gem3=new Gems("gem12","Hardness: 7n","16.87","Cushion","6 x 15.6 mm","2","1","160,000");
-        gemList.add(gem3);
-
-    }*/
-    //emd
 public void genReport(){
 
     try {
@@ -530,36 +422,5 @@ public void genReport(){
         addnew.show();
         addnew.setResizable(false);
     }
-   /* @FXML
-    private void searchGems() {
-        //Wrap the ObservableList in a FilteredList (initially display all data)
-        FilteredList<Gems> filteredGemsDetails = new FilteredList<>(gemList, b -> true);
-        //Set the filter Predicate whenever the filter changes
-        src.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredGemsDetails.setPredicate(gems -> {
-                //If filter text is empty, display all employees
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                //Compare employee name, employee type, and employee ID of every person with filter text
-                String lowerCaseFIlter = newValue.toLowerCase();
-                if (gems.getGemId().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee name
-                } else if (gems.getGemShape().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee type
-                } else if (gems.getGemDescription().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee ID
-                } else
-                    return false;//Does not match
-            });
-        });
-        //Wrap the FilteredList in a SortedList
-        SortedList<Gems> sortedGemsDetails = new SortedList<>( filteredGemsDetails);
-        //Bind the SortedList comparator to the EmployeeTableView comparator
-        //Otherwise, sorting the EmployeeTableView would have no effect
-        sortedGemsDetails.comparatorProperty().bind(GemTV.comparatorProperty());
-        //Add sorted (and filtered) data to the table
-        GemTV.setItems( sortedGemsDetails);
-    }*/
 
 }

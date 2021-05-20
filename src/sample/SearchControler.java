@@ -244,38 +244,7 @@ public class SearchControler implements Initializable{
                 }
             });
 
-            //new code
 
-  /*          //Wrap the ObservableList in a FilteredList (initially display all data)
-        FilteredList<Gems> filteredGemsDetails = new FilteredList<>(dataList, b -> true);
-        //Set the filter Predicate whenever the filter changes
-            src.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredGemsDetails.setPredicate(gems -> {
-                //If filter text is empty, display all employees
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                //Compare employee name, employee type, and employee ID of every person with filter text
-                String lowerCaseFIlter = newValue.toLowerCase();
-                if (gems.getGemId().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee name
-                } else if (gems.getGemShape().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee type
-                } else if (gems.getGemDescription().toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches employee ID
-                } else
-                    return false;//Does not match
-            });
-        });
-        //Wrap the FilteredList in a SortedList
-        SortedList<Gems> sortedGemsDetails = new SortedList<>(filteredGemsDetails);
-        //Bind the SortedList comparator to the EmployeeTableView comparator
-        //Otherwise, sorting the EmployeeTableView would have no effect
-            sortedGemsDetails.comparatorProperty().bind(GemTableView.comparatorProperty());//comparatorProperty());
-        //Add sorted (and filtered) data to the table
-            GemTableView.setItems(sortedGemsDetails);
-
-    }*/
 
         }
     }

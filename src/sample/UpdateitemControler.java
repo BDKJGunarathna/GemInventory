@@ -110,53 +110,6 @@ public class UpdateitemControler implements Initializable {
             alert.setContentText("Error occurred while updating");
             alert.showAndWait();
         }
-        //data validations
-        //new code
-
-        /*if(gemDesc.isEmpty()||gemWeight.isEmpty()||gemShape.isEmpty()||gemDimension.isEmpty()||gemQuantity.isEmpty()){
-            //alert error box
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Please Fill All the fields");
-            alert.showAndWait();
-        }
-        else{
-            //saving data
-            String query="UPDATE inventory SET description=?,weight=?,shape=?,dimension=?,unitsInStock=? WHERE gemId='"+upgemid.getText()+"'";
-            Connection connection=st.getConnection();
-            try{
-                st=con.prepareStatement(query);
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-           try{
-
-               st.setString(1,upgemdesc.getText());
-               st.setString(2,upgemweight.getText());
-               st.setString(3,upgemshp.getText());
-               st.setString(4,upgemdim.getText());
-               st.setString(5,upgemqty.getText());
-
-               st.executeUpdate();
-
-               Alert updateAlert=new Alert(Alert.AlertType.INFORMATION);
-               updateAlert.setHeaderText(null);
-               updateAlert.setContentText("Successfully updated");
-               updateAlert.show();
-           }catch (SQLException e2){
-               e2.printStackTrace();
-           }
-
-
-
-            st=connection.prepareStatement(query);
-
-        }*/
-        //end of new code
-
-        //int status = st.executeUpdate();
-        //get data
-        //notify the user
 
 
 

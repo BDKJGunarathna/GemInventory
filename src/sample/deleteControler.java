@@ -24,20 +24,7 @@ public class deleteControler implements Initializable {
     @FXML
     private TextField deleteGemId;
 
-    @FXML
-    private TextField  deleteGemWeight;
 
-    @FXML
-    private TextField  deleteGemShape;
-
-    @FXML
-    private TextField  deleteGemDimension;
-
-    @FXML
-    private TextField  deleteGemQuantity;
-
-    @FXML
-    private TextArea  deleteGemDescription;
 
     @FXML
     private Button btnDeleteClose;
