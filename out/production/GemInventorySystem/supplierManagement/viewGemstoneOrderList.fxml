@@ -73,7 +73,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <TextField fx:id="GOSearchField" layoutX="871.0" layoutY="75.0" prefHeight="31.0" prefWidth="198.0" promptText="Search by gem description" style="-fx-background-color: cornsilk;" />
+                <TextField fx:id="GOSearchField" layoutX="871.0" layoutY="75.0" prefHeight="31.0" prefWidth="198.0" promptText="Search" style="-fx-background-color: cornsilk;" />
             <JFXButton fx:id="deleteOrderButton" buttonType="RAISED" layoutX="32.0" layoutY="738.0" onAction="#deleteOrderButtonOnAction" prefHeight="45.0" prefWidth="208.0" style="-fx-background-color: #EEFF41;" text="Delete Order">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -152,6 +152,11 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </AnchorPane>
+            <Label layoutX="540.0" layoutY="79.0" text="Search by: Gem description, Supplier name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </center>

@@ -1,9 +1,6 @@
 package supplierManagement;
 
 import com.jfoenix.controls.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +20,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class NewSupplierController implements Initializable {
-
+///------------------------variable declaration------------------------------------
         //title bar
         @FXML
         private JFXButton newsupplierhomebtn;
@@ -88,7 +85,6 @@ public class NewSupplierController implements Initializable {
         private JFXCheckBox CB12rockcrystal;
         @FXML
         private JFXCheckBox CB13citrine;
-
         //end of checklist
 
         //Buttons
@@ -96,9 +92,6 @@ public class NewSupplierController implements Initializable {
         private JFXButton nssupplieradd;
         @FXML
         private JFXButton nssupplierreset;
-        @FXML
-        private JFXButton nssupplierCancelButton;
-
 
 
         @Override
@@ -106,19 +99,21 @@ public class NewSupplierController implements Initializable {
 
         }
 
-        //navPane MAINUI
+/////-----------------scene transitions--------------------------------------------------------------------------
+        //to go to dashboard/home
         @FXML
-        public void newSupCheckGemstoneOnAction(ActionEvent event) throws IOException {
-            nssuppliercheckgemstonesbtn.getScene().getWindow().hide();
+        public void newSupplierToHome(ActionEvent event) throws IOException {
+            newsupplierhomebtn.getScene().getWindow().hide();
 
-            Stage newSupCheckGembtn = new Stage();
-            Parent newSupchCheckroot2 = FXMLLoader.load(getClass().getResource("/supplierManagement/mainUI.fxml"));
-            Scene newSupCheckscene3 = new Scene(newSupchCheckroot2);
-            newSupCheckGembtn.setScene(newSupCheckscene3);
-            newSupCheckGembtn.show();
-            newSupCheckGembtn.setResizable(false);
+            Stage supStage = new Stage();
+            Parent parentSup = FXMLLoader.load(getClass().getResource("/supplierManagement/Dashboard.fxml"));
+            Scene supToDash = new Scene(parentSup);
+            supStage.setScene(supToDash);
+            supStage.show();
+            supStage.setResizable(false);
         }
 
+        //to log out
         @FXML
         public void logoutnewsupplierAction(ActionEvent newsupev1) throws IOException {
             newsupplierlogout.getScene().getWindow().hide();
@@ -131,6 +126,7 @@ public class NewSupplierController implements Initializable {
             logoutnewsupplier.setResizable(false);
         }
 
+        //to load own page
         @FXML
         public void newsuppliermenubuttonAction(ActionEvent newsupev2) throws IOException {
             nssuppliernewsupplierbtn.getScene().getWindow().hide();
@@ -143,6 +139,7 @@ public class NewSupplierController implements Initializable {
             newsupbtn.setResizable(false);
         }
 
+        //to go to new purchase order
         @FXML
         public void newpurchaseordermenubuttonAction(ActionEvent newsupev2) throws IOException {
             nssupplierpurchaseorderbtn.getScene().getWindow().hide();
@@ -155,12 +152,40 @@ public class NewSupplierController implements Initializable {
             purchordbtn.setResizable(false);
         }
 
+        //to go to gemstone order list window
+        @FXML
+        public void newSupToGorderList(ActionEvent event) throws IOException {
+            nssuppliergemstonebtn.getScene().getWindow().hide();
+
+            Stage supStage1 = new Stage();
+            Parent parentSup1 = FXMLLoader.load(getClass().getResource("/supplierManagement/viewGemstoneOrderList.fxml"));
+            Scene supToGlist = new Scene(parentSup1);
+            supStage1.setScene(supToGlist);
+            supStage1.show();
+            supStage1.setResizable(false);
+        }
+
+       //to go to supplier list window
+        @FXML
+        public void newSupToSupList(ActionEvent event) throws IOException {
+            nssuppliersuplistbtn.getScene().getWindow().hide();
+
+            Stage supStage3 = new Stage();
+            Parent parentSup = FXMLLoader.load(getClass().getResource("/supplierManagement/supplierList.fxml"));
+            Scene supToSList = new Scene(parentSup);
+            supStage3.setScene(supToSList);
+            supStage3.show();
+            supStage3.setResizable(false);
+        }
+
+    ////---------------------------------INSERT-------------------------------------------------------------------------------------------------------
 
         //method to display the selected checkbox items in the label
         @FXML
         private void checkEvent(ActionEvent event){
             String message = "";
 
+            //checking which items are checked by the user
             if(CB1diamonds.isSelected()){
                 message += CB1diamonds.getText() + "\n";
             }
@@ -200,13 +225,17 @@ public class NewSupplierController implements Initializable {
             if(CB13citrine.isSelected()){
                 message += CB13citrine.getText() + "\n";
             }
-            LabelSelectedGType.setText(message);
+            LabelSelectedGType.setText(message); //setting the selected checked item type to display in label
         }
 
+        //event handler for add supplier button to create Supplier
         @FXML
         public void addSupplierButtonOnAction(ActionEvent event) {
-            //Validating fields
-            if (nssuppliername.getText().isEmpty() | nssupplierphonenumber.getText().isEmpty() | nssupplieremail.getText().isEmpty() | LabelSelectedGType.getText().isEmpty() | nssuppliercountry.getText().isEmpty()) {
+
+            //Validating empty fields (supplier name, supplier phone, supplier email, supplying gemstone types, country)
+            if (nssuppliername.getText().isEmpty() || nssupplierphonenumber.getText().isEmpty() || nssupplieremail.getText().isEmpty() || LabelSelectedGType.getText().isEmpty() || nssuppliercountry.getText().isEmpty()) {
+
+                //Alert box to warn user of empty fields
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Field validation");
                 alert.setHeaderText("Empty fields!");
@@ -215,12 +244,13 @@ public class NewSupplierController implements Initializable {
                 alert.setHeight(400);
                 alert.showAndWait();
             } else {
-                insertSupplierDetails();
+                insertSupplierDetails(); //calling the method to insert data into database
 
+                //showing a notification that supplier is created successfully
                 Notifications notificationBuilder = Notifications.create();
                 notificationBuilder.title("Notification");
-                notificationBuilder.text("Saved Supplier Details Successfully");
-                notificationBuilder.hideAfter(Duration.seconds(3));
+                notificationBuilder.text("New Supplier added successfully");
+                notificationBuilder.hideAfter(Duration.seconds(5));
                 notificationBuilder.position(Pos.BOTTOM_CENTER);
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
@@ -261,6 +291,7 @@ public class NewSupplierController implements Initializable {
             }
         }
 
+      //-------------resetForm----------------------
         //resetForm button On Action method
         @FXML
         public void SupplierResetButtonOnAction(ActionEvent event){
@@ -284,22 +315,7 @@ public class NewSupplierController implements Initializable {
 
         }
 
-            //cancel button OnAction method
-            @FXML
-            public void SupplierCancelButtonOnAction(ActionEvent event){
 
-                //Confirmation
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Exit Confirmation");
-                alert.setHeaderText("CANCEL!");
-                alert.setContentText("Are you sure you want to cancel?");
-                alert.setHeight(400);
-                alert.showAndWait();
-
-                Stage stage2 =(Stage) nssupplierCancelButton.getScene().getWindow();
-                stage2.close();
-
-            }
 
 }
 

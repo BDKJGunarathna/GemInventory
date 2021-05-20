@@ -72,7 +72,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-            <TextField fx:id="supplierSearchField" layoutX="883.0" layoutY="75.0" promptText="Search by gemstone types" style="-fx-background-color: cornsilk;" />
+            <TextField fx:id="supplierSearchField" layoutX="883.0" layoutY="75.0" promptText="Search" style="-fx-background-color: cornsilk;" />
             <AnchorPane layoutX="1114.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="535.0" style="-fx-background-color: #2D3447; -fx-border-color: white;">
                <children>
                   <Label alignment="CENTER" layoutX="181.0" layoutY="17.0" text="UPDATE SUPPLIER" textAlignment="CENTER" textFill="#a0a2ab">
@@ -145,6 +145,11 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </AnchorPane>
+            <Label layoutX="410.0" layoutY="76.0" text="Search by: Supplier name, country, supplying gemstone types" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </center>

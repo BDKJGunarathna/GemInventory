@@ -19,7 +19,7 @@
     <top>
         <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton fx:id="newpurchhome" layoutX="827.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+                <JFXButton fx:id="newpurchhome" layoutX="827.0" layoutY="22.0" onAction="#newPurchToHome" text="HOME" textFill="#a0a2ab">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -56,7 +56,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="27.0" layoutY="443.0" text="Gem ID *" textFill="#2196f3">
+                <Label layoutX="24.0" layoutY="443.0" text="Gem ID *" textFill="#2196f3">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -219,7 +219,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <TextField fx:id="checkGemstoneSearchField" layoutX="617.0" layoutY="77.0" opacity="0.9" prefHeight="31.0" prefWidth="172.0" promptText="Search by Unit Price" />
+            <TextField fx:id="checkGemstoneSearchField" layoutX="617.0" layoutY="77.0" opacity="0.9" prefHeight="31.0" prefWidth="172.0" promptText="Search by Unit Price" style="-fx-background-color: cornsilk;" />
             <Label layoutX="22.0" layoutY="553.0" text="Supplier ID" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -233,6 +233,11 @@
                   <ColorAdjust brightness="1.0" />
                </effect>
             </TextField>
+            <Label layoutX="475.0" layoutY="82.0" text="Filter by: Unit Price" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </center>
