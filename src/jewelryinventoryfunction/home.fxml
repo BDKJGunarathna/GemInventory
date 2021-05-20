@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -84,16 +83,16 @@
     <left>
         <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="gem" layoutX="1.0" layoutY="313.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Store Recieved Gem">
+            <JFXButton fx:id="gem" layoutX="1.0" layoutY="313.0" mnemonicParsing="false" onAction="#storeGemOnAction" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Store Recieved Gem">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </JFXButton>
-            <Button fx:id="reportbtn" layoutX="1.0" layoutY="385.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Report">
+            <JFXButton fx:id="reportbtn" layoutX="1.0" layoutY="385.0" mnemonicParsing="false" onAction="#getReportButtonOnAction" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Genarate Stock Report">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
-            </Button>
+            </JFXButton>
             <JFXButton fx:id="deletebtn2" layoutX="1.0" layoutY="242.0" mnemonicParsing="false" onAction="#deleteJewelryOnAction" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #e6f0ff;" text="Delete Jewelry">
                <font>
                   <Font name="System Bold Italic" size="20.0" />

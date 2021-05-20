@@ -1,5 +1,12 @@
 package jewelryinventoryfunction;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,12 +24,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-    public class homecontroller implements Initializable {
+public class homecontroller implements Initializable {
 
 
         @FXML
@@ -58,6 +66,8 @@ import java.util.ResourceBundle;
         private JFXButton notibtn;
         @FXML
         private JFXButton home;
+        @FXML
+        private JFXButton reportbtn;
 
         Jewelry jew;
         PreparedStatement pst;
@@ -165,8 +175,90 @@ import java.util.ResourceBundle;
             }
         }
 
+    //event handler for get report button
+    public void getReportButtonOnAction(ActionEvent actionEvent) {
+        if (actionEvent.getSource().equals(reportbtn))
+            generateJewelryReport(); //calling report generating method
+    }
 
-        //database connection
+    //method to generate the report
+    private void generateJewelryReport() {
+        try{
+
+            String report_name = "C:\\Users\\LENOVO\\IdeaProjects\\jewelryinventoryfunction\\src\\jewelryinventoryfunction\\test.pdf";
+            //create Document object
+            Document document = new Document();
+            //set pdf instance
+            PdfWriter.getInstance(document,new FileOutputStream(report_name));
+            //open the document
+            document.open();
+
+            Font bold = new Font(Font.FontFamily.HELVETICA,30,Font.BOLD);
+            Paragraph p = new Paragraph("                                                 Available Jewelry Details");
+            document.add(p);
+
+
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+
+
+
+
+            //get jewelry details with result set
+            Connection conn = getConnection();
+            String query1 = "SELECT * FROM jewelry";
+            Statement st1;
+            ResultSet r;
+
+            try {
+                st1 = conn.createStatement();
+                r = st1.executeQuery(query1);
+
+                if (r != null) {
+                    while (r.next()) {
+                        PdfPTable table = new PdfPTable(7);
+
+                        PdfPCell c1 = new PdfPCell(new Phrase("id"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("name"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("type"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("meterial"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("weight"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("quantity"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("price"));
+                        table.addCell(c1);
+
+                        table.setHeaderRows(1);
+
+                        table.addCell(String.valueOf(r.getInt("id")));
+                        table.addCell(String.valueOf(r.getString("name")));
+                        table.addCell(String.valueOf(r.getString("type")));
+                        table.addCell(String.valueOf(r.getString("meterial")));
+                        table.addCell(String.valueOf(r.getDouble("weight")));
+                        table.addCell(String.valueOf(r.getInt("quantity")));
+                        table.addCell(String.valueOf(r.getDouble("price")));
+
+                        document.add(table);
+                    }
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            document.close();
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
+    //database connection
         public Connection getConnection() {
             Connection conn;
             try {

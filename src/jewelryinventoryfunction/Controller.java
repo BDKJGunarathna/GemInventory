@@ -85,7 +85,7 @@ public class Controller implements Initializable {
         homedash.setResizable(false);
     }
     @FXML
-    public void fhomeOnAction(ActionEvent event){
+    public void fhomeOnAction1(ActionEvent event){
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
