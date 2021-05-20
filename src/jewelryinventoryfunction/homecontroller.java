@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -179,13 +180,18 @@ public class homecontroller implements Initializable {
     public void getReportButtonOnAction(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(reportbtn))
             generateJewelryReport(); //calling report generating method
+        Alert alert=new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Generate Report");
+        alert.setHeaderText(null);
+        alert.setContentText("Report Generated Successfully!");
+        alert.showAndWait();
     }
 
     //method to generate the report
     private void generateJewelryReport() {
         try{
 
-            String report_name = "C:\\Users\\LENOVO\\IdeaProjects\\jewelryinventoryfunction\\src\\jewelryinventoryfunction\\test.pdf";
+            String report_name = "C:\\Users\\LENOVO\\IdeaProjects\\jewelryinventoryfunction\\src\\jewelryinventoryfunction\\Jewelery Stock Report.pdf";
             //create Document object
             Document document = new Document();
             //set pdf instance
@@ -194,7 +200,7 @@ public class homecontroller implements Initializable {
             document.open();
 
             Font bold = new Font(Font.FontFamily.HELVETICA,30,Font.BOLD);
-            Paragraph p = new Paragraph("                                                 Available Jewelry Details");
+            Paragraph p = new Paragraph("                                   -------------Available Jewelry Details-------------");
             document.add(p);
 
 
@@ -316,7 +322,7 @@ public class homecontroller implements Initializable {
         private void searchJewelryDetails() {
             ObservableList<Jewelry> list = getJewelryList();
 
-            //Wrap the ObservableList in a FilteredList (initially display all data)
+            //to initially display all data
             FilteredList<Jewelry> filteredJewelryDetails = new FilteredList<>(list, b -> true);
 
             //Set the filter Predicate whenever the filter changes
