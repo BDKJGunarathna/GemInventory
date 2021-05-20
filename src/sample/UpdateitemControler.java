@@ -44,6 +44,8 @@ public class UpdateitemControler implements Initializable {
 
     @FXML
     private Button btnup;
+    @FXML
+    private Button btndemo;
 
     Connection con;
     PreparedStatement st;
@@ -174,6 +176,25 @@ public class UpdateitemControler implements Initializable {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void demodataupdate(){
+
+        Connect();
+        String gemid="gem2";
+        String description="RUBY RED";
+        String weight="0.86";
+        String shape="Pear";
+        String dimensions="6 x 15.6 mm";
+        String quantity="3";
+
+        upgemid.setText(gemid);
+        upgemdesc.setText(description);
+       upgemweight.setText(weight);
+       upgemshp.setText(shape);
+        upgemdim.setText(dimensions);
+        upgemqty.setText(quantity);
+
+
     }
 }
 
