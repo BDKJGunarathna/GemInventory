@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cms.contoller.CustomerRegController">
+   <top>
+      <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="787.0" layoutY="22.0" text="LOGOUT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="698.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+            <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="625.0" prefWidth="978.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tx_f_name" layoutX="369.0" layoutY="109.0" prefHeight="31.0" prefWidth="417.0" promptText="Enter Customer's First Name" />
+            <TextField fx:id="tx_l_name" layoutX="369.0" layoutY="168.0" prefHeight="31.0" prefWidth="417.0" promptText="Enter Customer's Last Name" />
+            <TextField fx:id="tx_email" layoutX="369.0" layoutY="237.0" prefHeight="31.0" prefWidth="417.0" promptText="Enter Customer's Email Address" />
+            <TextField fx:id="tx_address" layoutX="369.0" layoutY="297.0" prefHeight="31.0" prefWidth="417.0" promptText="Enter Customer's Address" />
+            <TextField fx:id="tx_cnct_no" layoutX="369.0" layoutY="361.0" prefHeight="31.0" prefWidth="417.0" promptText="Enter Customer's Contact Number" />
+            <Label layoutX="105.0" layoutY="114.0" text="First Name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="106.0" layoutY="173.0" text="Last Name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="106.0" layoutY="242.0" text="Email" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="106.0" layoutY="302.0" text="Address" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="104.0" layoutY="366.0" text="Contact Number" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="104.0" layoutY="431.0" text="Registered Date" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <JFXButton fx:id="btn_submit" layoutX="300.0" layoutY="515.0" onAction="#register" prefWidth="300.0" style="-fx-background-color: #2196f3;" text="SUBMIT">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></JFXButton>
+            <Label layoutX="309.0" layoutY="39.0" text="CUSTOMER REGISTRATION" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font></Label>
+            <DatePicker fx:id="tx_date" layoutX="369.0" layoutY="426.0" prefHeight="31.0" prefWidth="417.0" />
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

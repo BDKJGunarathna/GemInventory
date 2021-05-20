@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cms.contoller.CustomerDeleteController">
+   <top>
+      <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="698.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="787.0" layoutY="22.0" text="LOGOUT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="625.0" prefWidth="916.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btn_del" layoutX="342.0" layoutY="511.0" onAction="#delete" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: #f82d2d;" text="DELETE ACCOUNT">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="311.0" layoutY="39.0" text="DELETE CUSTOMER'S ACCOUNT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <VBox layoutX="113.0" layoutY="116.0" prefHeight="341.0" prefWidth="309.0">
+               <children>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Customer ID" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="First Name" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Last Name" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Email" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Address" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Contact Number" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="316.0" text="Registered Date" textFill="#2196f3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="468.0" layoutY="116.0" prefHeight="341.0" prefWidth="337.0">
+               <children>
+                  <Label fx:id="cust_id" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cust_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="last_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cust_email" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="address" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cust_contact" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cust_reg_date" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

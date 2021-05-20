@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cms.contoller.CustomerSearchController">
+   <top>
+      <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="698.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="787.0" layoutY="22.0" text="LOGOUT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+            <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="625.0" prefWidth="905.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="290.0" layoutY="50.0" text="SEARCH CUSTOMER'S PROFILE" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font></Label>
+            <Label layoutX="136.0" layoutY="149.0" text="Customer ID" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="136.0" layoutY="313.0" text="Customer's First Name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="cus_id" layoutX="136.0" layoutY="192.0" prefHeight="31.0" prefWidth="629.0" promptText="Enter Customer's ID" />
+            <TextField fx:id="name" layoutX="136.0" layoutY="352.0" prefHeight="31.0" prefWidth="628.0" promptText="Enter Customer's First Name" />
+            <JFXButton layoutX="300.0" layoutY="479.0" onAction="#search" prefHeight="38.0" prefWidth="300.0" style="-fx-background-color: #2196f3;" text="SEARCH">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></JFXButton>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

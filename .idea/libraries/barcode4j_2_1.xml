@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="barcode4j-2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/barcode4j-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/com-jaspersoft-ireport-components.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/com-jaspersoft-ireport-jasperserver.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/com-jaspersoft-ireport.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/com-jaspersoft-jrx.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/commons-beanutils-1.8.2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/commons-digester-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/commons-javaflow-20060411.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/commons-logging-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/dom4j-1.6.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/groovy-all-2.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/iText-2.1.7.js2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/jasper-compiler-jdt.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/jasperreports-5.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ITP jar Files/jars/jaspersoft/log4j-1.2.15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

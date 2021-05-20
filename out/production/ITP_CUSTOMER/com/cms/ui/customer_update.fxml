@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cms.contoller.CustomerUpdateController">
+   <top>
+      <Pane prefHeight="75.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="698.0" layoutY="22.0" text="HOME" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="787.0" layoutY="22.0" text="LOGOUT" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="14.0" layoutY="53.0" size="45.0" />
+            <Label layoutX="70.0" layoutY="20.0" text="CITY" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="20.0" text="OF" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="155.0" layoutY="20.0" text="GEMS" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="625.0" prefWidth="907.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="313.0" layoutY="31.0" text="UPDATE CUSTOMER'S DETAILS" textFill="#a0a2ab">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="163.0" text="First Name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="113.0" layoutY="227.0" text="Last Name" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="113.0" layoutY="292.0" text="Email" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="113.0" layoutY="353.0" text="Address" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="110.0" layoutY="414.0" text="Contact Number" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="112.0" layoutY="472.0" text="Registered Date" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <JFXButton layoutX="324.0" layoutY="544.0" onAction="#update" prefWidth="300.0" style="-fx-background-color: #35ea3e;" text="Update Details">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></JFXButton>
+            <TextField fx:id="name" layoutX="357.0" layoutY="158.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="l_name" layoutX="357.0" layoutY="222.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="email" layoutX="357.0" layoutY="287.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="addres" layoutX="357.0" layoutY="348.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="contact" layoutX="357.0" layoutY="409.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="cust_id" layoutX="357.0" layoutY="98.0" prefHeight="31.0" prefWidth="417.0" />
+            <Label layoutX="113.0" layoutY="103.0" text="Customer ID" textFill="#2196f3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="r_date" layoutX="357.0" layoutY="467.0" prefHeight="31.0" prefWidth="417.0" />
+         </children>
+      </Pane>
+   </left>
+</BorderPane>
