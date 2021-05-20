@@ -52,7 +52,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-            <TextField fx:id="viewempdetailssearch" alignment="BASELINE_RIGHT" layoutX="1089.0" layoutY="65.0" onAction="#searchEmpDetails" promptText="Search Employee ID" style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
+            <TextField fx:id="viewempdetailssearch" alignment="BASELINE_RIGHT" layoutX="1089.0" layoutY="65.0" onAction="#searchEmpDetails" promptText="Search Employee " style="-fx-background-color: transparent; -fx-border-color: #2196f3;">
                <font>
                   <Font size="14.0" />
                </font>
