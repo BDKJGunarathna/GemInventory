@@ -12,7 +12,7 @@ public  class CustomerData {
     public static final String VALID = "VALID";
 
 
-    //For email validation
+    //For the email validation
     public  static boolean emailValidate(String email) {
         //Regular expression
         String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
