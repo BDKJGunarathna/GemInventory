@@ -1,5 +1,9 @@
 package supplierManagement;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +24,7 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -46,6 +51,8 @@ public class ViewGemstoneOrderListController implements Initializable {
     private JFXButton deleteOrderButton;
     @FXML
     private JFXButton sendEmailButton;
+    @FXML
+    private JFXButton getReportButton;
 
     //Nav pane buttons
     @FXML
@@ -390,21 +397,105 @@ public class ViewGemstoneOrderListController implements Initializable {
 
     }
 
+//-----------------Report Generation------------------------------------------------------------------------
+    //event handler for get report button
+    public void getReportButtonOnAction(ActionEvent actionEvent) {
+        if (actionEvent.getSource().equals(getReportButton))
+        generatePurchaseOrderListReport(); //calling report generating method
+        Notifications notificationBuilder = Notifications.create();
+        notificationBuilder.title("Notification");
+        notificationBuilder.text("Report created Successfully");
+        notificationBuilder.hideAfter(Duration.seconds(5));
+        notificationBuilder.position(Pos.BOTTOM_CENTER);
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+        }
+
+    //method to generate the report
+        private void generatePurchaseOrderListReport() {
+        try {
+
+            String report_name = "C:\\Users\\Dewni\\Desktop\\Reports\\Gemstone Purchase Order List.pdf";
+            //create Document object
+            Document document = new Document();
+            //set pdf instance
+            PdfWriter.getInstance(document, new FileOutputStream(report_name));
+            //open the document
+            document.open();
+
+            Font bold = new Font(Font.FontFamily.HELVETICA, 30, Font.BOLD);
+            Paragraph p = new Paragraph("GEMSTONE PURCHASE ORDER LIST");
+            document.add(p);
+
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
 
 
 
 
+            //get gemstones order details with result set
+            Connection conn = getConnection();
+            String query1 = "SELECT * FROM cityofgems.purchase_order_table WHERE P_order_status != 'Processing'";
+            Statement st1;
+            ResultSet r;
+
+            try {
+                st1 = conn.createStatement();
+                r = st1.executeQuery(query1);
 
 
+                if (r != null) {
+                    PdfPTable table = null;
+                    while (r.next()) {
+                        table = new PdfPTable(9);
+
+                            PdfPCell c1 = new PdfPCell(new Phrase("Order ID"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Ordered Date"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Gem ID"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Gem Description"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Quantity"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Supplier ID"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Supplier Name"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Expected delivery date"));
+                            table.addCell(c1);
+                            c1 = new PdfPCell(new Phrase("Order Status"));
+                            table.addCell(c1);
+                            table.setHeaderRows(1);
+
+                        table.addCell(String.valueOf(r.getInt("p_OrderId")));
+                        table.addCell(String.valueOf(r.getDate("p_ordered_date")));
+                        table.addCell(String.valueOf(r.getInt("g_id")));
+                        table.addCell(String.valueOf(r.getString("g_description")));
+                        table.addCell(String.valueOf(r.getDouble("g_quantity")));
+                        table.addCell(String.valueOf(r.getInt("supp_id")));
+                        table.addCell(String.valueOf(r.getString("g_sup_name")));
+                        table.addCell(String.valueOf(r.getDate("expected_delivery_date")));
+                        table.addCell(String.valueOf(r.getString("p_order_status")));
+                        document.add(table);
+                    }
+
+                }
 
 
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
+            document.close();
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
 
-
-
-
-
-
+    }
 
 
 }

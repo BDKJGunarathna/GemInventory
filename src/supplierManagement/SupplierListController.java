@@ -1,5 +1,12 @@
 package supplierManagement;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -8,15 +15,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 
-
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -91,6 +101,8 @@ public class SupplierListController implements Initializable {
     private Button save;
     @FXML
     private Button clear;
+    @FXML
+    private Button generateReportBtn;
 
     @FXML
     private TextField supplierSearchField; //search textField
@@ -334,6 +346,8 @@ public class SupplierListController implements Initializable {
             txtUpdateSDescription.setText("" +supList.getS_description());
         }
 
+
+
         ///-----------------------------SEARCH-------------------------------------------------------------------------------------------------//
         private void SearchField() {
             ObservableList<SupplierListTableView> supplierList = getSupplierList();
@@ -366,5 +380,108 @@ public class SupplierListController implements Initializable {
 
             supplierTableView.setItems(sortedSupplierDetails); //add sorted data to table
         }
+
+
+
+
+        //////-----------------Report Generation---------------------------------------------------------------------------------------------
+        //event handler for get report button
+        public void generateReportBtnOnAction(ActionEvent actionEvent) {
+            if (actionEvent.getSource().equals(generateReportBtn))
+                generatePurchaseOrderListReport(); //calling report generating method
+            Notifications notificationBuilder = Notifications.create();
+            notificationBuilder.title("Notification");
+            notificationBuilder.text("Report created Successfully");
+            notificationBuilder.hideAfter(Duration.seconds(5));
+            notificationBuilder.position(Pos.BOTTOM_CENTER);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
+        }
+
+    //method to generate the report
+    private void generatePurchaseOrderListReport() {
+        try {
+
+            String report_name = "C:\\Users\\Dewni\\Desktop\\Reports\\Supplier List.pdf";
+            //create Document object
+            Document doc = new Document();
+            //set pdf instance
+            PdfWriter.getInstance(doc, new FileOutputStream(report_name));
+            //open the document
+            doc.open();
+
+            Font bold = new Font(Font.FontFamily.HELVETICA, 30, Font.BOLD);
+            Paragraph p = new Paragraph("SUPPLIER LIST");
+            doc.add(p);
+
+            doc.add(new Paragraph(" "));
+            doc.add(new Paragraph(" "));
+            doc.add(new Paragraph(" "));
+
+
+
+
+            //get gemstones order details with result set
+            Connection conn = getConnection();
+            String query1 = "SELECT * FROM cityofgems.supplier_info_table";
+            Statement st2;
+            ResultSet r;
+
+            try {
+                st2 = conn.createStatement();
+                r = st2.executeQuery(query1);
+
+
+                if (r != null) {
+                    PdfPTable table = null;
+                    while (r.next()) {
+                        table = new PdfPTable(9);
+
+                        PdfPCell c1 = new PdfPCell(new Phrase("Supplier ID"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Name"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Phone"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Email"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Website"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Supplier Description"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Address"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Supplying gemstone types"));
+                        table.addCell(c1);
+                        c1 = new PdfPCell(new Phrase("Country"));
+                        table.addCell(c1);
+                        table.setHeaderRows(1);
+
+                        table.addCell(String.valueOf(r.getInt("supplierID")));
+                        table.addCell(String.valueOf(r.getString("s_name")));
+                        table.addCell(String.valueOf(r.getString("s_phone")));
+                        table.addCell(String.valueOf(r.getString("s_email")));
+                        table.addCell(String.valueOf(r.getString("s_website")));
+                        table.addCell(String.valueOf(r.getString("s_description")));
+                        table.addCell(String.valueOf(r.getString("s_address")));
+                        table.addCell(String.valueOf(r.getString("supp_gemstoneTypes")));
+                        table.addCell(String.valueOf(r.getString("s_country")));
+                        doc.add(table);
+                    }
+
+                }
+
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            doc.close();
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
 
 }

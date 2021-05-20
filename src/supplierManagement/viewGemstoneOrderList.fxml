@@ -68,7 +68,7 @@
                   <TableColumn fx:id="orderStatusCol" prefWidth="101.0" text=" Order&#10;Status" />
                     </columns>
                 </TableView>
-                <JFXButton fx:id="cancelOrderButton" buttonType="RAISED" layoutX="304.0" layoutY="739.0" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: Cyan;" text="Cancel Order">
+                <JFXButton fx:id="getReportButton" buttonType="RAISED" layoutX="304.0" layoutY="739.0" onAction="#getReportButtonOnAction" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: Cyan;" text="Get Report">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

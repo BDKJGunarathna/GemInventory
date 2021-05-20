@@ -20,5 +20,6 @@
     <orderEntry type="library" name="fontawesomefx-8.9" level="application" />
     <orderEntry type="library" name="jfoenix-8.0.10" level="application" />
     <orderEntry type="library" name="controlsfx-8.40.13" level="application" />
+    <orderEntry type="library" name="itextpdf-5.5.9" level="application" />
   </component>
 </module>

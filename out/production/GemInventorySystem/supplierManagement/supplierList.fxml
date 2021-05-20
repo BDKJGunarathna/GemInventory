@@ -150,6 +150,11 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <JFXButton fx:id="generateReportBtn" buttonType="RAISED" layoutX="507.0" layoutY="716.0" onAction="#generateReportBtnOnAction" prefHeight="63.0" prefWidth="289.0" style="-fx-background-color: lightcoral;" text="Generate&#10; Report">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
             </children>
         </Pane>
     </center>
