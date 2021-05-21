@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="993.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.IncomeExpensesController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="26.0" prefWidth="882.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="156.0" prefWidth="900.0" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <JFXButton fx:id="insertHome" layoutX="740.0" layoutY="19.0" onAction="#IncomeExpensesToHome" text="HOME" textFill="#a0a2ab" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="insertlogout" layoutX="819.0" layoutY="33.0" text="LOGOUT" textFill="#a0a2ab" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIconView fill="#42dcff" glyphName="DIAMOND" layoutX="24.0" layoutY="63.0" size="45.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
+                  <Label layoutX="80.0" layoutY="30.0" text="CITY" textFill="#2196f3" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="130.0" layoutY="30.0" text="OF" textFill="#a0a2ab" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="165.0" layoutY="30.0" text="GEMS" textFill="#2196f3" AnchorPane.leftAnchor="183.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="700.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton fx:id="incomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#addIncomeExpensesOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="Income &amp; Expenses" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="searchIncomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#addSearchIncomeExpensesOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Search Income &amp; Expenses" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="100.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="600.0" prefWidth="794.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="131.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="467.0" style="-fx-background-color: #2D3447;">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="480.0">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <HBox>
+                           <children>
+                              <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="88.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="incomeExpensesDescription" prefHeight="31.0" prefWidth="293.0">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="83.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="90.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="incomeExpensesType" prefHeight="31.0" prefWidth="292.0">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="114.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="91.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <DatePicker fx:id="incomeExpensesDate" onAction="#showIncomeExpenses" prefHeight="31.0" prefWidth="292.0">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="145.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="89.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="incomeExpensesAmount" prefHeight="31.0" prefWidth="292.0">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="140.0" prefWidth="457.0">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton fx:id="saveBtn" alignment="CENTER" onAction="#saveIncomeExpensesOnAction" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #2196f3;" text="Save" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="60.0" right="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="cancelBtn" alignment="CENTER" layoutX="177.0" layoutY="34.0" onAction="#incomeExpensesDetailsClear" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #646464;" text="Cancel" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Text fill="WHITE" layoutX="253.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income and Expenses" wrappingWidth="300.6708984375" AnchorPane.bottomAnchor="564.9140625" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="238.3291015625" AnchorPane.topAnchor="42.0">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="225.0" top="30.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="804.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.UpdateIncomeExpensesController">
+    <children>
+        <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="795.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane prefHeight="705.0" prefWidth="800.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label layoutX="287.0" layoutY="34.0" text="Update Income and Expenses" textFill="WHITE" AnchorPane.bottomAnchor="640.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.0" AnchorPane.topAnchor="30.0">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="updateIncomeExpensesTable" layoutX="24.0" layoutY="83.0" prefHeight="253.0" prefWidth="954.0" AnchorPane.bottomAnchor="303.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="82.0">
+                            <columns>
+                                <TableColumn fx:id="updateIncomeExpensesId" prefWidth="70.0" style="-fx-alignment: center;" text="ID" />
+                                <TableColumn fx:id="updateIncomeExpensesTableDescription" prefWidth="221.0" style="-fx-alignment: center;" text="Description" />
+                                <TableColumn fx:id="updateIncomeExpensesTableType" minWidth="92.0" prefWidth="198.0" style="-fx-alignment: center;" text="Type" />
+                                <TableColumn fx:id="updateIncomeExpensesTableDate" prefWidth="137.0" style="-fx-alignment: center;" text="Date" />
+                                <TableColumn fx:id="updateIncomeExpensesTableAmount" maxWidth="1.7976931348623157E308" prefWidth="136.0" style="-fx-alignment: center;" text="Amount" />
+                            </columns>
+                        </TableView>
+                  <AnchorPane layoutX="5.0" layoutY="471.0" prefHeight="289.0" prefWidth="991.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="795.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="88.6708984375">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="descriptionTxt" prefHeight="31.0" prefWidth="230.0">
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="100.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="200.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="83.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="90.6708984375">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox fx:id="typeTxt" prefHeight="31.0" prefWidth="230.0">
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="100.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="200.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="114.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="91.6708984375">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateTxt" prefHeight="31.0" prefWidth="230.0">
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="100.0" />
+                                       </HBox.margin>
+                                    </DatePicker>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="200.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="145.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="89.6708984375">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="amountTxt" prefHeight="31.0" prefWidth="230.0">
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="100.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="200.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="989.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <JFXButton fx:id="updateBtn" alignment="CENTER" onAction="#updateBtnIncomeExpensesOnAction" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #2196f3;" text="Update" textFill="WHITE">
+                                       <padding>
+                                          <Insets right="8.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="40.0" right="15.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="updateCancelBtn" alignment="CENTER" layoutX="177.0" layoutY="34.0" onAction="#UpdatencomeExpensesDetailsClear" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #646464;" text="Cancel" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="8.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
