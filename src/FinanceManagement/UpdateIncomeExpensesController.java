@@ -95,250 +95,7 @@ public class UpdateIncomeExpensesController implements Initializable {
         showUpdateIncomeExpenses();
     }
 
-    //Get dashboard UI
-    @FXML
-    public void UpdateIncomeExpensesToHome(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-            Stage updateDashboard = (Stage) updateHome.getScene().getWindow();
-            updateDashboard.setTitle("City of Gems");
-            updateDashboard.setScene(new Scene(root, 993, 705));
-            updateDashboard.show();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
-
-    }
-
-    //Log out
-    @FXML
-    public void UpdateIncomeExpensesLogoutAction(ActionEvent updateInEx1) throws IOException {
-        updateLogoutBtn.getScene().getWindow().hide();
-
-        Stage updatelogout = new Stage();
-        Parent updateInExroot4 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
-        Scene updateInExScene4 = new Scene(updateInExroot4);
-        updatelogout.setScene(updateInExScene4);
-        updatelogout.show();
-        updatelogout.setResizable(false);
-    }
-
-    @FXML
-    private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-/*
-    @FXML
-    private void getAddView(MouseEvent event) {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-*/
-
-    @FXML
-    private void refreshTable() {
-
-        list.clear();
-        ResultSet resultSet = null;
-        connection = DBConnection.getConnection();
-        String query = "SELECT * FROM `incomeandexpenses`";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                list.add(new UpdateIncomeExpenses(
-                        resultSet.getInt("id"),
-                        resultSet.getString("description"),
-                        resultSet.getString("type"),
-                        resultSet.getDate("date"),
-                        resultSet.getDouble("amount")));
-                updateIncomeExpensesTable.setItems(list);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-    /*
-
-    @FXML
-    private void print(MouseEvent event) {
-    }
-
-    private void loadDate() {
-
-        connection = DbConnect.getConnect();
-        refreshTable();
-
-*/
-
-
- /*
-    //check connection
-    public Connection getConnection() {
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cityofgems", "root", "Dasuni2020#");
-            return conn;
-        } catch (Exception ex) {
-            System.out.println("Error!" + ex.getMessage());
-            return null;
-        }
-    }
-
-
-     */
-
-
-    //get income and expenses list
-    public ObservableList<FinanceManagement.UpdateIncomeExpenses> getUpdateIncomeExpensesList() {
-        ObservableList<FinanceManagement.UpdateIncomeExpenses> UpdateIncomeExpensesList = FXCollections.observableArrayList();
-        //Connection conn = getConnection();
-        FinanceManagement.DBConnection.getConnection();
-        String query = "SELECT * FROM incomeandexpenses";
-        Statement st;
-        ResultSet rs;
-
-        try {
-            //st = conn.createStatement();
-            st = FinanceManagement.DBConnection.getConnection().createStatement();
-            rs = st.executeQuery(query);
-            FinanceManagement.UpdateIncomeExpenses updateIncomeExpenses;
-
-            while (rs.next()) {
-                updateIncomeExpenses = new FinanceManagement.UpdateIncomeExpenses(rs.getInt("id"), rs.getString("description"), rs.getString("type"), rs.getDate("date"), rs.getDouble("amount"));
-                UpdateIncomeExpensesList.add(updateIncomeExpenses);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return UpdateIncomeExpensesList;
-    }
-
-    //get income and expenses details
-    public void showUpdateIncomeExpenses() {
-        list = getUpdateIncomeExpensesList();
-
-        //set values to the columns
-        updateIncomeExpensesId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        updateIncomeExpensesTableDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        updateIncomeExpensesTableType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        updateIncomeExpensesTableDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        updateIncomeExpensesTableAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-
-        updateIncomeExpensesTable.setItems(list);
-
-    }
-
-
-    //Cancel button method (Clear Fields method)
-    @FXML
-    private void UpdatencomeExpensesDetailsClear() {
-        //Set all the form inputs to null
-        descriptionTxt.setText(null);
-        typeTxt.setValue(null);
-        dateTxt.setValue(null);
-        amountTxt.setText(null);
-    }
-
-
-    //query to update
-    private void updateIncomeExpensesRecord() {
-
-        String query = "UPDATE incomeandexpenses SET description= " + descriptionTxt.getText() + " , type = '" + typeTxt.getValue() + "',date = '" + dateTxt.getValue() + "',  amount = " + amountTxt.getText() + " WHERE id= " + incomeExpensesId;
-
-    }
-
-
-    private void executeUpdate() {
-        //Connection conn = getConnection();
-        try {
-            Connection con = FinanceManagement.DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement(
-                    "UPDATE incomeandexpenses SET description= ? , type = ?, date = ?, amount = ? WHERE id = ? "
-            );
-
-            ps.setString(1, descriptionTxt.getText().toString());
-            ps.setString(2, typeTxt.getValue().toString());
-            ps.setDate(3, java.sql.Date.valueOf(dateTxt.getValue()));
-            ps.setDouble(4, Double.parseDouble(amountTxt.getText()));
-            ps.setInt(5, incomeExpensesId);
-            ps.executeUpdate();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-
-    public void setTextField(int income_expenses_id, String desciption, String type, LocalDate toLocalDate, double amount) {
-        incomeExpensesId = income_expenses_id;
-        descriptionTxt.setText("" + desciption);
-        typeTxt.setStyle("-fx-text-inner-color: #fff");
-        typeTxt.setValue(type);
-        dateTxt.setValue(toLocalDate);
-        amountTxt.setText("" + amount);
-
-    }
-
-    public void setUpdate(boolean b) {
-        this.update = b;
-    }
-
-/*
-    // update button
-    @FXML
-    public void updateBtnIncomeExpensesOnAction(ActionEvent updateInEx2) {
-
-
-        executeUpdate();
-
-
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        refreshTable();
-
-
-
-        try {
-            PauseTransition updateorderpt2 = new PauseTransition();
-            updateorderpt2.setDuration(Duration.seconds(3));
-            updateorderpt2.setOnFinished(ev -> {
-                System.out.println("Order Update Successfully");
-            });
-            updateorderpt2.play();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-
-    }
-
-
-
-*/
 
     // Update button method
     @FXML
@@ -351,7 +108,7 @@ public class UpdateIncomeExpensesController implements Initializable {
                 Parent root = FXMLLoader.load(getClass().getResource("updateIncomeExpenses.fxml"));
                 Stage saveInsert = (Stage) updateBtn.getScene().getWindow();
                 saveInsert.setTitle("City of Gems");
-                saveInsert.setScene(new Scene(root, 993, 705));
+                saveInsert.setScene(new Scene(root, 804, 705));
                 saveInsert.show();
             }
             catch(Exception ex){
@@ -372,11 +129,7 @@ public class UpdateIncomeExpensesController implements Initializable {
 
         }
 
-
-
     }
-
-
 
 
     // Form Validation methods
@@ -441,6 +194,138 @@ public class UpdateIncomeExpensesController implements Initializable {
             return false;
         }
     }
+
+
+
+    //get income and expenses list
+    public ObservableList<FinanceManagement.UpdateIncomeExpenses> getUpdateIncomeExpensesList() {
+        ObservableList<FinanceManagement.UpdateIncomeExpenses> UpdateIncomeExpensesList = FXCollections.observableArrayList();
+        //Connection conn = getConnection();
+        FinanceManagement.DBConnection.getConnection();
+        String query = "SELECT * FROM incomeandexpenses";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            //st = conn.createStatement();
+            st = FinanceManagement.DBConnection.getConnection().createStatement();
+            rs = st.executeQuery(query);
+            FinanceManagement.UpdateIncomeExpenses updateIncomeExpenses;
+
+            while (rs.next()) {
+                updateIncomeExpenses = new FinanceManagement.UpdateIncomeExpenses(rs.getInt("id"), rs.getString("description"), rs.getString("type"), rs.getDate("date"), rs.getDouble("amount"));
+                UpdateIncomeExpensesList.add(updateIncomeExpenses);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return UpdateIncomeExpensesList;
+    }
+
+    //get income and expenses details
+    public void showUpdateIncomeExpenses() {
+        list = getUpdateIncomeExpensesList();
+
+        // Set values to the columns
+        updateIncomeExpensesId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        updateIncomeExpensesTableDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        updateIncomeExpensesTableType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        updateIncomeExpensesTableDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        updateIncomeExpensesTableAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        updateIncomeExpensesTable.setItems(list);
+
+    }
+
+    // SQL query to update
+    private void updateIncomeExpensesRecord() {
+
+        String query = "UPDATE incomeandexpenses SET description= " + descriptionTxt.getText() + " , type = '" + typeTxt.getValue() + "',date = '" + dateTxt.getValue() + "',  amount = " + amountTxt.getText() + " WHERE id= " + incomeExpensesId;
+    }
+
+    private void executeUpdate() {
+        //Connection conn = getConnection();
+        try {
+            Connection con = FinanceManagement.DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "UPDATE incomeandexpenses SET description= ? , type = ?, date = ?, amount = ? WHERE id = ? "
+            );
+
+            ps.setString(1, descriptionTxt.getText().toString());
+            ps.setString(2, typeTxt.getValue().toString());
+            ps.setDate(3, java.sql.Date.valueOf(dateTxt.getValue()));
+            ps.setDouble(4, Double.parseDouble(amountTxt.getText()));
+            ps.setInt(5, incomeExpensesId);
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void setUpdate(boolean b) {
+        this.update = b;
+    }
+
+    public void setTextField(int income_expenses_id, String desciption, String type, LocalDate toLocalDate, double amount) {
+        incomeExpensesId = income_expenses_id;
+        descriptionTxt.setText("" + desciption);
+        typeTxt.setStyle("-fx-text-inner-color: #fff");
+        typeTxt.setValue(type);
+        dateTxt.setValue(toLocalDate);
+        amountTxt.setText("" + amount);
+
+    }
+
+
+
+    //refreshTable (Refresh the table view after update income and expenses details)
+    @FXML
+    private void refreshTable() {
+
+        list.clear();
+        ResultSet resultSet = null;
+        connection = DBConnection.getConnection();
+        String query = "SELECT * FROM `incomeandexpenses`";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                list.add(new UpdateIncomeExpenses(
+                        resultSet.getInt("id"),
+                        resultSet.getString("description"),
+                        resultSet.getString("type"),
+                        resultSet.getDate("date"),
+                        resultSet.getDouble("amount")));
+                updateIncomeExpensesTable.setItems(list);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Cancel button method (Clear Fields method)
+    @FXML
+    private void UpdateIncomeExpensesDetailsClear() {
+        //Set all the form inputs to null
+        descriptionTxt.setText(null);
+        typeTxt.setValue(null);
+        dateTxt.setValue(null);
+        amountTxt.setText(null);
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 public class IncomeExpensesController implements Initializable {
 
-    //text inputs
+    //Text inputs
     @FXML
     private TextField incomeExpensesDescription;
     @FXML
@@ -34,7 +34,7 @@ public class IncomeExpensesController implements Initializable {
     @FXML
     private TextField incomeExpensesAmount;
 
-
+    //Buttons
     @FXML
     private Button incomeExpensesMenu;
     @FXML
@@ -47,94 +47,36 @@ public class IncomeExpensesController implements Initializable {
     private Button saveBtn;
     @FXML
     private JFXButton insertlogout;
-    @FXML
-    private JFXButton btn_description;
 
 
-    //Create type selection list
+
+    //Create income and expenses type selection list
     ObservableList<String> incomeExpensestypelist = FXCollections.observableArrayList("Income", "Expenditure");
 
     //declare variables
     private Connection connection;
 
 
+    public void initialize(URL url, ResourceBundle rb) {
 
-    //Direct to dashboard page
-    @FXML
-    public void IncomeExpensesToHome(ActionEvent event){
-        try {
+        //Initialize the type combobox
+        incomeExpensesType.setItems(incomeExpensestypelist);
 
-            Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-            Stage insertDashboard = (Stage) insertHome.getScene().getWindow();
-            insertDashboard.setTitle("City of Gems");
-            insertDashboard.setScene(new Scene(root, 993, 705));
-            insertDashboard.show();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
     }
 
 
-    //Logout Method(Direct to login page)
-    @FXML
-    public void logoutAction(ActionEvent ev3) throws IOException {
-        insertlogout.getScene().getWindow().hide();
-
-        Stage logout = new Stage();//Create a Stage
-        logout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
-        //Setup the Scene
-        Parent root2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
-        Scene scene2 = new Scene(root2);//Create a scene
-        logout.setScene(scene2);//Set Scene object on the Stage
-        logout.show();//Show the Stage which create above (makes the Stage visible and the exits)
-        logout.setResizable(false);//User cannot resize the frame
-    }
-
-
-
-    // Nav bar
-    //Income and Expenses Button method (Direct to Income and Employee page)
-    @FXML
-    public void addIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
-            Stage addInEx = (Stage) incomeExpensesMenu.getScene().getWindow();
-            addInEx.setTitle("City of Gems");
-            addInEx.setScene(new Scene(root, 993,705));
-            addInEx.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    //Search Income and Expenses Button method (Direct to Search Income and Employee page)
-    @FXML
-    public void addSearchIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("searchIncomeExpenses.fxml"));
-            Stage addSeInEx = (Stage) searchIncomeExpensesMenu.getScene().getWindow();
-            addSeInEx.setTitle("City of Gems");
-            addSeInEx.setScene(new Scene(root, 993,705));
-            addSeInEx.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    // Save income and expenses button method
+    //Save Button method (Direct to "Income and Expenses" page)
     @FXML
     public void saveIncomeExpensesOnAction(ActionEvent event){
 
+        //Validate data (If any data does not input to insert form popup alert error box else Insert data into Database or clear inputs from form)
         if(checkUnfilledFieldsValidation() && checkAmountFieldValidation() && checkAmountFieldZeroValidation() ) {
             insertIncomeExpensesRecord();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
                 Stage saveInsert = (Stage) saveBtn.getScene().getWindow();
                 saveInsert.setTitle("City of Gems");
-                saveInsert.setScene(new Scene(root, 993, 705));
+                saveInsert.setScene(new Scene(root, 1050, 780));
                 saveInsert.show();
             }
             catch(Exception ex){
@@ -152,6 +94,28 @@ public class IncomeExpensesController implements Initializable {
                 ex.printStackTrace();
             }
 
+        }
+    }
+
+
+    // SQL query to insert data
+    private void insertIncomeExpensesRecord(){
+        String query = "INSERT into incomeandexpenses VALUES ("+0+",'"+ incomeExpensesDescription.getText() +"','"+ incomeExpensesType.getValue() +"','" +incomeExpensesDate.getValue()+"',"+incomeExpensesAmount.getText()+")";
+        executeQuery(query);
+        //showIncomeExpenses();
+    }
+
+    private void executeQuery(String query) {
+        //Connection conn = getConnection();
+        DBConnection.getConnection();
+        Statement st;
+
+        try {
+            //st = conn.createStatement();
+            st = DBConnection.getConnection().createStatement();
+            st.executeUpdate(query);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -221,9 +185,6 @@ public class IncomeExpensesController implements Initializable {
 
 
 
-
-
-
     //Cancel button method (Clear Fields method)
     @FXML
     private void incomeExpensesDetailsClear() {
@@ -236,87 +197,68 @@ public class IncomeExpensesController implements Initializable {
 
 
 
-    public void initialize(URL url, ResourceBundle rb) {
-
-        //Initialize the type combobox
-        incomeExpensesType.setItems(incomeExpensestypelist);
-
-        showIncomeExpenses();
-    }
-
-
-    //check connection
-    public Connection getConnection() {
-        Connection conn;
+    //"Home" Button method (Direct to "Dashboard" page)
+    @FXML
+    public void IncomeExpensesToHome(ActionEvent event){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cityofgems", "root", "Dasuni2020#");
-            return conn;
-        } catch (Exception ex) {
-            System.out.println("Error!" + ex.getMessage());
-            return null;
+
+            Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
+            Stage insertDashboard = (Stage) insertHome.getScene().getWindow();
+            insertDashboard.setTitle("City of Gems");
+            insertDashboard.setScene(new Scene(root, 1050, 780));
+            insertDashboard.show();
         }
-    }
-
-    public ObservableList<IncomeExpenses> getIncomeExpensesList() {
-        ObservableList<IncomeExpenses> IncomeExpensesList = FXCollections.observableArrayList();
-        Connection conn = getConnection();
-        String query = "SELECT * FROM incomeandexpenses";
-        Statement st;
-        ResultSet rs;
-
-        try {
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-            IncomeExpenses incomeandexpenses;
-
-            while (rs.next()) {
-                incomeandexpenses = new IncomeExpenses(rs.getInt("id"), rs.getString("description"), rs.getString("type"), rs.getDate("date"), rs.getDouble("amount"));
-                IncomeExpensesList.add(incomeandexpenses);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return IncomeExpensesList;
-    }
-
-
-    public void showIncomeExpenses() {
-        ObservableList<IncomeExpenses> list = getIncomeExpensesList();
-
-        //set values to the columns
-       // incomeExpensesId.setCellValueFactory(new PropertyValueFactory<IncomeExpenses, Integer>("id"));
-        //incomeExpensesTableDescription.setCellValueFactory(new PropertyValueFactory<IncomeExpenses, String>("description"));
-       // incomeExpensesTableType.setCellValueFactory(new PropertyValueFactory<IncomeExpenses, String>("type"));
-        //incomeExpensesTableDate.setCellValueFactory(new PropertyValueFactory<IncomeExpenses, Date>("date"));
-       // incomeExpensesTableAmount.setCellValueFactory(new PropertyValueFactory<IncomeExpenses, Double>("amount"));
-
-      //  incomeExpensesTable.setItems(list);
-
-    }
-
-
-
-
-
-    //query to insert
-    private void insertIncomeExpensesRecord(){
-        String query = "INSERT into incomeandexpenses VALUES ("+0+",'"+ incomeExpensesDescription.getText() +"','"+ incomeExpensesType.getValue() +"','" +incomeExpensesDate.getValue()+"',"+incomeExpensesAmount.getText()+")";
-        executeQuery(query);
-       //showIncomeExpenses();
-    }
-
-    private void executeQuery(String query) {
-        //Connection conn = getConnection();
-        DBConnection.getConnection();
-        Statement st;
-
-        try {
-            //st = conn.createStatement();
-            st = DBConnection.getConnection().createStatement();
-            st.executeUpdate(query);
-        } catch (Exception ex) {
+        catch(Exception ex){
             ex.printStackTrace();
         }
     }
+
+    //"Logout" Button method (Direct to "login" page)
+    @FXML
+    public void logoutAction(ActionEvent ev3) throws IOException {
+        insertlogout.getScene().getWindow().hide();
+
+        Stage logout = new Stage();//Create a Stage
+        logout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
+        //Setup the Scene
+        Parent root2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
+        Scene scene2 = new Scene(root2);//Create a scene
+        logout.setScene(scene2);//Set Scene object on the Stage
+        logout.show();//Show the Stage which create above (makes the Stage visible and the exits)
+        logout.setResizable(false);//User cannot resize the frame
+    }
+
+
+
+    // Nav bar
+    //"Income and Expenses" Button method (Direct to "Income and Expenses" page)
+    @FXML
+    public void addIncomeExpensesOnAction(ActionEvent event){
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
+            Stage addInEx = (Stage) incomeExpensesMenu.getScene().getWindow();
+            addInEx.setTitle("City of Gems");
+            addInEx.setScene(new Scene(root, 1050,780));
+            addInEx.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //"Search Income and Expenses" Button method (Direct to "Search Income and Expenses" page)
+    @FXML
+    public void addSearchIncomeExpensesOnAction(ActionEvent event){
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("searchIncomeExpenses.fxml"));
+            Stage addSeInEx = (Stage) searchIncomeExpensesMenu.getScene().getWindow();
+            addSeInEx.setTitle("City of Gems");
+            addSeInEx.setScene(new Scene(root, 1050,780));
+            addSeInEx.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="993.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.IncomeExpensesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1050.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.IncomeExpensesController">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -52,16 +52,16 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="700.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="633.0" prefWidth="225.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <JFXButton fx:id="incomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#addIncomeExpensesOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="Income &amp; Expenses" textFill="WHITE">
+                        <JFXButton fx:id="incomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#addIncomeExpensesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="INCOME &amp; EXPENSES" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="searchIncomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#addSearchIncomeExpensesOnAction" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: #2196f3;" text="Search Income &amp; Expenses" textFill="WHITE">
+                        <JFXButton fx:id="searchIncomeExpensesMenu" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#addSearchIncomeExpensesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3;" text="SEARCH INCOME &amp; EXPENSES" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -70,14 +70,17 @@
                   </Pane>
                </children>
                <BorderPane.margin>
-                  <Insets bottom="100.0" />
+                  <Insets bottom="120.0" />
                </BorderPane.margin>
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane prefHeight="600.0" prefWidth="794.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="703.0" prefWidth="558.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="120.0" top="20.0" />
+               </BorderPane.margin>
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="131.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="467.0" style="-fx-background-color: #2D3447;">
+                  <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="467.0" style="-fx-background-color: #2D3447;">
                      <children>
                         <VBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="480.0">
                            <VBox.margin>
@@ -86,17 +89,17 @@
                         </VBox>
                         <HBox>
                            <children>
-                              <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="88.6708984375">
+                              <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="100.6708984375">
                                  <HBox.margin>
                                     <Insets left="60.0" />
                                  </HBox.margin>
                                  <font>
-                                    <Font name="Arial Bold" size="15.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="incomeExpensesDescription" prefHeight="31.0" prefWidth="293.0">
+                              <TextField fx:id="incomeExpensesDescription" prefHeight="31.0" prefWidth="284.0" promptText="Enter Description">
                                  <HBox.margin>
-                                    <Insets left="50.0" />
+                                    <Insets left="60.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
@@ -111,12 +114,12 @@
                                     <Insets left="60.0" />
                                  </HBox.margin>
                                  <font>
-                                    <Font name="Arial Bold" size="15.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <ComboBox fx:id="incomeExpensesType" prefHeight="31.0" prefWidth="292.0">
+                              <ComboBox fx:id="incomeExpensesType" prefHeight="31.0" prefWidth="292.0" promptText="Select Type">
                                  <HBox.margin>
-                                    <Insets left="50.0" />
+                                    <Insets left="70.0" />
                                  </HBox.margin>
                               </ComboBox>
                            </children>
@@ -131,12 +134,12 @@
                                     <Insets left="60.0" />
                                  </HBox.margin>
                                  <font>
-                                    <Font name="Arial Bold" size="15.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="incomeExpensesDate" onAction="#showIncomeExpenses" prefHeight="31.0" prefWidth="292.0">
+                              <DatePicker fx:id="incomeExpensesDate" prefHeight="31.0" prefWidth="292.0" promptText="Select Date">
                                  <HBox.margin>
-                                    <Insets left="50.0" />
+                                    <Insets left="70.0" />
                                  </HBox.margin>
                               </DatePicker>
                            </children>
@@ -151,12 +154,12 @@
                                     <Insets left="60.0" />
                                  </HBox.margin>
                                  <font>
-                                    <Font name="Arial Bold" size="15.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="incomeExpensesAmount" prefHeight="31.0" prefWidth="292.0">
+                              <TextField fx:id="incomeExpensesAmount" prefHeight="31.0" prefWidth="292.0" promptText="Enter Amount">
                                  <HBox.margin>
-                                    <Insets left="50.0" />
+                                    <Insets left="70.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
@@ -192,15 +195,12 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Text fill="WHITE" layoutX="253.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income and Expenses" wrappingWidth="300.6708984375" AnchorPane.bottomAnchor="564.9140625" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="238.3291015625" AnchorPane.topAnchor="42.0">
+                  <Text fill="WHITE" layoutX="278.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income and Expenses" wrappingWidth="300.6708984375">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
                </children>
-               <BorderPane.margin>
-                  <Insets bottom="225.0" top="30.0" />
-               </BorderPane.margin>
             </AnchorPane>
          </center>
       </BorderPane>

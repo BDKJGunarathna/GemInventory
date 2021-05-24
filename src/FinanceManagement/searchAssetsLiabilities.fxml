@@ -13,19 +13,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1050.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.SearchIncomeExpensesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1050.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.SearchAssetsLiabilitiesController">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="26.0" prefWidth="882.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="156.0" prefWidth="900.0" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <JFXButton fx:id="searchHome" layoutX="611.0" layoutY="21.0" onAction="#SearchIncomeExpensesToHome" text="HOME" textFill="#a0a2ab" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
+                  <JFXButton fx:id="searchAssetsLiabilitieHome" layoutX="611.0" layoutY="21.0" onAction="#SearchAssetsLiabilitiesToHome" text="HOME" textFill="#a0a2ab" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="logout" layoutX="703.0" layoutY="21.0" text="LOGOUT" textFill="#a0a2ab" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <JFXButton layoutX="703.0" layoutY="21.0" text="LOGOUT" textFill="#a0a2ab" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -50,16 +50,16 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="700.0" prefWidth="225.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="638.0" prefWidth="225.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="200.0" prefWidth="225.0">
                      <children>
-                        <JFXButton fx:id="incomeExpensesMenu1" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#SearchIncomeExpensesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3;" text="INCOME &amp; EXPENSES" textFill="WHITE">
+                        <JFXButton fx:id="assetsLiabilitiesMenu1" alignment="BASELINE_LEFT" layoutY="105.0" onAction="#SearchAssetsLiabilitiesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3;" text="ASSETS &amp; LIABILITIES" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="searchIncomeExpensesMenu1" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#SearchSearchIncomeExpensesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="SEARCH INCOME &amp; EXPENSES" textFill="WHITE">
+                        <JFXButton fx:id="searchAssetsLiabilitiesMenu1" alignment="BASELINE_LEFT" layoutY="180.0" onAction="#SearchSearchAssetsLiabilitiesOnAction" prefHeight="75.0" prefWidth="225.0" style="-fx-border-color: #2196f3; -fx-background-color: #2196f3;" text="SEARCH ASSETS &amp; LIABILITIES" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -68,36 +68,36 @@
                   </Pane>
                </children>
                <BorderPane.margin>
-                  <Insets bottom="120.0" />
+                  <Insets bottom="195.0" />
                </BorderPane.margin>
             </AnchorPane>
          </left>
          <center>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="823.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="WHITE" layoutX="296.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Income and Expenses" wrappingWidth="341.6708984375" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="35.0">
+                  <Text fill="WHITE" layoutX="241.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Assets and Liabilities" wrappingWidth="341.6708984375" AnchorPane.bottomAnchor="641.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="240.3291015625" AnchorPane.topAnchor="35.0">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="searchIncomeExpensesTable" layoutX="18.0" layoutY="242.0" prefHeight="368.0" prefWidth="900.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="241.0">
+                  <TableView fx:id="searchAssetsLiabilitiesTable" layoutX="18.0" layoutY="242.0" prefHeight="368.0" prefWidth="900.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="241.0">
                      <columns>
-                        <TableColumn fx:id="searchIncomeExpensesId" prefWidth="60.0" style="-fx-alignment: center;" text="ID" />
-                        <TableColumn fx:id="searchIncomeExpensesTableDescription" prefWidth="199.0" style="-fx-alignment: center;" text="Description" />
-                        <TableColumn fx:id="searchIncomeExpensesTableType" minWidth="92.0" prefWidth="139.0" style="-fx-alignment: center;" text="Type" />
-                        <TableColumn fx:id="searchIncomeExpensesTableDate" prefWidth="120.0" style="-fx-alignment: center;" text="Date" />
-                        <TableColumn fx:id="searchIncomeExpensesTableAmount" prefWidth="140.0" style="-fx-alignment: center;" text="Amount" />
-                        <TableColumn fx:id="searchIncomeExpensesTableAction" prefWidth="100.0" style="-fx-alignment: center;" text="Action" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesId" prefWidth="60.0" style="-fx-alignment: center;" text="ID" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesTableDescription" prefWidth="199.0" style="-fx-alignment: center;" text="Description" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesTableType" minWidth="92.0" prefWidth="139.0" style="-fx-alignment: center;" text="Type" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesTableDate" prefWidth="120.0" style="-fx-alignment: center;" text="Date" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesTableAmount" prefWidth="140.0" style="-fx-alignment: center;" text="Amount" />
+                        <TableColumn fx:id="searchAssetsLiabilitiesTableAction" prefWidth="100.0" style="-fx-alignment: center;" text="Action" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="search" layoutX="146.0" layoutY="165.0" prefHeight="46.0" prefWidth="269.0" promptText="Search by ID, Description, Type" AnchorPane.bottomAnchor="493.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="409.0" AnchorPane.topAnchor="164.0" />
+                  <TextField fx:id="searchAssetsLiabilities" layoutX="146.0" layoutY="165.0" prefHeight="41.0" prefWidth="269.0" promptText="Search by ID, Description, Type" AnchorPane.bottomAnchor="498.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="409.0" AnchorPane.topAnchor="164.0" />
                   <Label fx:id="txtSearch" layoutX="60.0" layoutY="165.0" text="Search" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIconView fx:id="refresh" fill="#2196f3" glyphName="REFRESH" layoutX="717.0" layoutY="217.0" onMouseClicked="#refreshTable" size="25.0" AnchorPane.bottomAnchor="403.9402904510498" AnchorPane.leftAnchor="717.0" AnchorPane.rightAnchor="56.571428298950195" AnchorPane.topAnchor="195.5714282989502" />
-                  <FontAwesomeIconView fx:id="printBtn" fill="#2196f3" glyphName="PRINT" layoutX="667.0" layoutY="218.0" onMouseClicked="#print" size="30" text="" AnchorPane.bottomAnchor="402.1283473968506" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="100.14285659790039" AnchorPane.topAnchor="192.2857151031494" />
+                  <FontAwesomeIconView fx:id="refresh1" fill="#2196f3" glyphName="REFRESH" layoutX="717.0" layoutY="217.0" onMouseClicked="#refreshTable1" size="25.0" AnchorPane.bottomAnchor="403.9402904510498" AnchorPane.leftAnchor="717.0" AnchorPane.rightAnchor="56.571428298950195" AnchorPane.topAnchor="195.5714282989502" />
+                  <FontAwesomeIconView fx:id="printBtn1" fill="#2196f3" glyphName="PRINT" layoutX="667.0" layoutY="218.0" onMouseClicked="#print1" size="30" text="" AnchorPane.bottomAnchor="402.1283473968506" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="100.14285659790039" AnchorPane.topAnchor="192.2857151031494" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="120.0" top="10.0" />

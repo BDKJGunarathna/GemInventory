@@ -1,13 +1,5 @@
 package FinanceManagement;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
 import com.itextpdf.html2pdf.HtmlConverter;
 import javafx.scene.control.Alert;
 
@@ -18,20 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.lang.*;
 
 public class reportIncomeExpensesController {
-
-
-    @FXML
-    private Button incomeExpensesMenu4;
-    @FXML
-    private Button searchIncomeExpensesMenu4;
-    @FXML
-    private Button updateIncomeExpensesMenu4;
-    @FXML
-    private Button reportIncomeExpensesMenu4;
-
 
     //declare variables
     private String HTML, HTML1, HTML2, HTML3, HTML4;
@@ -42,9 +22,8 @@ public class reportIncomeExpensesController {
     private ResultSet resultSet = null;
 
 
-
     public reportIncomeExpensesController() throws SQLException {
-        //Initialize DBHandler class
+        //Initialize DBConnection class
         handler = new DBConnection();
         //Establishing a Connection
         connection = handler.getConnection();
@@ -52,7 +31,7 @@ public class reportIncomeExpensesController {
         //Declare a variable
         String data = "";
 
-        //SQL QUERY (RETRIEVE Data using Count and Group By Closure)
+        //SQL QUERY (RETRIEVE Data using Group By Clause)
         query = "SELECT description,amount FROM cityofgems.incomeandexpenses GROUP BY description";
 
         //Create a statement using connection object
@@ -100,7 +79,7 @@ public class reportIncomeExpensesController {
         String totEx = resultSet.getString("TE");
         Double totalEx = Double.parseDouble(totEx);
 
-        /* SQL QUERY to get total income */
+        // SQL QUERY to get total income
         query_i = "SELECT SUM(amount) as 'TI' FROM incomeandexpenses WHERE type='Income'";
         preparedStatement = connection.prepareStatement(query_i);
         resultSet = preparedStatement.executeQuery();
@@ -122,7 +101,7 @@ public class reportIncomeExpensesController {
     public void createPdf(){
         try{
             //Convert HTML to PDF
-            //PDF Name : Types_of_Employee_Report.pdf
+            //PDF Name : Monthly_Income_and_Expenses_Report.pdf
             HtmlConverter.convertToPdf(HTML, new FileOutputStream("Income and Expenses Report.pdf"));
 
             //Alert Information box
@@ -133,69 +112,6 @@ public class reportIncomeExpensesController {
         }catch(FileNotFoundException ex){
             System.out.println(ex);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
-    @FXML
-    public void ReportIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
-            Stage reportInEx4 = (Stage) incomeExpensesMenu4.getScene().getWindow();
-            reportInEx4.setTitle("City of Gems");
-            reportInEx4.setScene(new Scene(root, 1250,800));
-            reportInEx4.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void ReportSearchIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("searchIncomeExpenses.fxml"));
-            Stage reportSeInEx4 = (Stage) searchIncomeExpensesMenu4.getScene().getWindow();
-            reportSeInEx4.setTitle("City of Gems");
-            reportSeInEx4.setScene(new Scene(root, 1250,800));
-            reportSeInEx4.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void ReportUpdateIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("updateIncomeExpenses.fxml"));
-            Stage reportUpInEx4 = (Stage) updateIncomeExpensesMenu4.getScene().getWindow();
-            reportUpInEx4.setTitle("City of Gems");
-            reportUpInEx4.setScene(new Scene(root, 1250,800));
-            reportUpInEx4.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-
-
-    @FXML
-    public void ReportReportIncomeExpensesOnAction(ActionEvent event){
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("reportIncomeExpenses.fxml"));
-            Stage reportReInEx4 = (Stage) reportIncomeExpensesMenu4.getScene().getWindow();
-            reportReInEx4.setTitle("City of Gems");
-            reportReInEx4.setScene(new Scene(root, 1250,800));
-            reportReInEx4.show();
-        }catch (Exception e){
             e.printStackTrace();
         }
     }

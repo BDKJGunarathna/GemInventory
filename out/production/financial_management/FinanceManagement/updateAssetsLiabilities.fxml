@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="804.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinanceManagement.UpdateAssetsLiabilitiesController">
+    <children>
+        <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="795.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane prefHeight="705.0" prefWidth="800.0" style="-fx-border-color: #2196f3;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label layoutX="264.0" layoutY="56.0" text="Update Assets and Liabilities" textFill="WHITE" AnchorPane.bottomAnchor="618.0" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="56.0">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                  <AnchorPane layoutX="5.0" layoutY="471.0" prefHeight="289.0" prefWidth="991.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
+                  <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="213.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="648.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="99.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="assetsLiabilitiesDescriptionTxt" prefHeight="31.0" prefWidth="230.0" promptText="Enter Description">
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="100.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="200.0" />
+                           </padding>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="83.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="90.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="assetsLiabilitiesTypeTxt" prefHeight="31.0" prefWidth="230.0" promptText="Select Type">
+                                 <HBox.margin>
+                                    <Insets left="60.0" right="100.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="200.0" />
+                           </padding>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="114.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="91.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <DatePicker fx:id="assetsLiabilitiesDateTxt" prefHeight="31.0" prefWidth="230.0" promptText="Select Date">
+                                 <HBox.margin>
+                                    <Insets left="60.0" right="100.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="200.0" />
+                           </padding>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="145.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="89.6708984375">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="assetsLiabilitiesAmountTxt" prefHeight="31.0" prefWidth="230.0" promptText="Enter Amount">
+                                 <HBox.margin>
+                                    <Insets left="60.0" right="100.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="200.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="989.0">
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton fx:id="assetsLiabilitiesUpdateBtn" alignment="CENTER" onAction="#updateBtnAssetsLiabilitiesOnAction" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #2196f3;" text="Update" textFill="WHITE">
+                                 <padding>
+                                    <Insets right="8.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="177.0" layoutY="34.0" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: #646464;" text="Cancel" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

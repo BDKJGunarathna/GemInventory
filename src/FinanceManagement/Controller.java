@@ -90,11 +90,11 @@ public class Controller implements Initializable {
     @FXML
     public void financeOnAction(ActionEvent event){
         try {
-            //switch to OrderHistory.fxml
-            Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
+            //switch to financeHome.fxml
+            Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
             Stage orderUI = (Stage) btnhomFinance.getScene().getWindow();
             orderUI.setTitle("Gem Merchant System");
-            orderUI.setScene(new Scene(root, 993, 705));
+            orderUI.setScene(new Scene(root, 1050, 780));
             orderUI.show();
         }
         catch(Exception ex){
@@ -102,16 +102,6 @@ public class Controller implements Initializable {
         }
     }
 
-    /*@FXML
-    public void dashEmployeeAction(ActionEvent dashev2) throws IOException {
-        btnhomemp.getScene().getWindow().hide();
 
-        Stage empdash = new Stage();
-        Parent dashroot4 = FXMLLoader.load(getClass().getResource("/employeemanagement/employeemanagementhome.fxml"));
-        Scene dashscene4 = new Scene(dashroot4);
-        empdash.setScene(dashscene4);
-        empdash.show();
-        empdash.setResizable(false);
-    }*/
 
 }
