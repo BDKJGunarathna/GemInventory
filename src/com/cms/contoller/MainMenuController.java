@@ -6,9 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -16,13 +13,13 @@ import javafx.stage.Stage;
 public class MainMenuController {
 
     @FXML
-    private Button btn_reg, btn_view, btn_srch;
+    private Button btn_register, btn_view_details, btn_search;
 
 
 
 
     public void menuSelect(ActionEvent event) throws Exception{
-        if(event.getSource() == btn_reg){
+        if(event.getSource() == btn_register){
             //To load the fxml file
             Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource("com/cms/ui/customer_registration.fxml"));
             Stage stage = new Stage();
@@ -31,7 +28,7 @@ public class MainMenuController {
             stage.setScene(new Scene(pane));
             stage.show();
         }
-        else if(event.getSource() == btn_view){
+        else if(event.getSource() == btn_view_details){
             //To load the fxml file
             Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource("com/cms/ui/customer_detail.fxml"));
             Stage stage = new Stage();
@@ -40,7 +37,7 @@ public class MainMenuController {
             stage.setScene(new Scene(pane));
             stage.show();
         }
-        else if(event.getSource() == btn_srch){
+        else if(event.getSource() == btn_search){
             //To load the fxml file
             Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource("com/cms/ui/customer_search.fxml"));
             Stage stage = new Stage();

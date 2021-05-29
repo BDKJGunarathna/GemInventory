@@ -5,19 +5,15 @@ import com.cms.config.DBConnection;
 import com.cms.dbcontroller.CustomerDbController;
 import com.cms.modle.*;
 
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -43,28 +39,28 @@ import net.sf.jasperreports.view.JasperViewer;
 public class CustomerDetailViewController implements Initializable {
 
     @FXML
-    private TableView table_cust;
+    private TableView table_customer;
 
     @FXML
-    private TableColumn<Customer, Initializable> custId;
+    private TableColumn<Customer, Initializable> customerId;
 
     @FXML
-    private TableColumn<Customer, String> name;
+    private TableColumn<Customer, String> first_name;
 
     @FXML
-    private TableColumn<?, ?> l_name;
+    private TableColumn<?, ?> last_name;
 
     @FXML
     private TableColumn<?, ?> email;
 
     @FXML
-    private TableColumn<?, ?> address;
+    private TableColumn<?, ?> cus_address;
 
     @FXML
-    private TableColumn<?, ?> contactno;
+    private TableColumn<?, ?> contact_number;
 
     @FXML
-    private TableColumn<?, ?> regdate;
+    private TableColumn<?, ?> registered_date;
 
     @FXML
     private TableColumn<?, Button> action;
@@ -142,13 +138,13 @@ public class CustomerDetailViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        custId.setCellValueFactory(new PropertyValueFactory<>("custId"));
-        name.setCellValueFactory(new PropertyValueFactory<>("fristName"));
-        l_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        customerId.setCellValueFactory(new PropertyValueFactory<>("custId"));
+        first_name.setCellValueFactory(new PropertyValueFactory<>("fristName"));
+        last_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        address.setCellValueFactory(new PropertyValueFactory<>("address"));
-        contactno.setCellValueFactory(new PropertyValueFactory<>("contactNo"));
-        regdate.setCellValueFactory(new PropertyValueFactory<>("registeredDate"));
+        cus_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        contact_number.setCellValueFactory(new PropertyValueFactory<>("contactNo"));
+        registered_date.setCellValueFactory(new PropertyValueFactory<>("registeredDate"));
         action.setCellValueFactory(new PropertyValueFactory<>("update"));
         delete.setCellValueFactory(new PropertyValueFactory<>("delete"));
 
@@ -157,7 +153,7 @@ public class CustomerDetailViewController implements Initializable {
 
         CustomerDbController customerDbController = new CustomerDbController();
         //To set the values
-        table_cust.setItems(FXCollections.observableArrayList(customerDbController.findAll()));
+        table_customer.setItems(FXCollections.observableArrayList(customerDbController.findAll()));
 
     }
 }

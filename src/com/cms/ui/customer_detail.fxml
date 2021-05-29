@@ -44,15 +44,15 @@
    <left>
       <Pane prefHeight="625.0" prefWidth="1006.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="table_cust" layoutX="10.0" layoutY="155.0" prefHeight="303.0" prefWidth="880.0">
+            <TableView fx:id="table_customer" layoutX="10.0" layoutY="155.0" prefHeight="303.0" prefWidth="880.0">
               <columns>
-                <TableColumn fx:id="custId" prefWidth="57.0" text="Cust ID" />
-                <TableColumn fx:id="name" prefWidth="90.0" text="First Name" />
-                  <TableColumn fx:id="l_name" prefWidth="93.0" text="Last Name" />
+                <TableColumn fx:id="customerId" prefWidth="57.0" text="Cust ID" />
+                <TableColumn fx:id="first_name" prefWidth="90.0" text="First Name" />
+                  <TableColumn fx:id="last_name" prefWidth="93.0" text="Last Name" />
                   <TableColumn fx:id="email" minWidth="1.0" prefWidth="102.0" text="Email" />
-                  <TableColumn fx:id="address" prefWidth="133.0" text="Address" />
-                  <TableColumn fx:id="contactno" prefWidth="112.0" text="Contact No" />
-                  <TableColumn fx:id="regdate" prefWidth="120.0" text="Registered Date" />
+                  <TableColumn fx:id="cus_address" prefWidth="133.0" text="Address" />
+                  <TableColumn fx:id="contact_number" prefWidth="112.0" text="Contact No" />
+                  <TableColumn fx:id="registered_date" prefWidth="120.0" text="Registered Date" />
                   <TableColumn fx:id="action" prefWidth="87.0" text="Update" />
                   <TableColumn fx:id="delete" prefWidth="85.0" text="Delete" />
               </columns>

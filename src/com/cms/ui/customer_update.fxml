@@ -76,18 +76,18 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></JFXButton>
-            <TextField fx:id="name" layoutX="357.0" layoutY="158.0" prefHeight="31.0" prefWidth="417.0" />
-            <TextField fx:id="l_name" layoutX="357.0" layoutY="222.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="first_name" layoutX="357.0" layoutY="158.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="last_name" layoutX="357.0" layoutY="222.0" prefHeight="31.0" prefWidth="417.0" />
             <TextField fx:id="email" layoutX="357.0" layoutY="287.0" prefHeight="31.0" prefWidth="417.0" />
-            <TextField fx:id="addres" layoutX="357.0" layoutY="348.0" prefHeight="31.0" prefWidth="417.0" />
-            <TextField fx:id="contact" layoutX="357.0" layoutY="409.0" prefHeight="31.0" prefWidth="417.0" />
-            <TextField fx:id="cust_id" layoutX="357.0" layoutY="98.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="address" layoutX="357.0" layoutY="348.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="contact_no" layoutX="357.0" layoutY="409.0" prefHeight="31.0" prefWidth="417.0" />
+            <TextField fx:id="cus_id" layoutX="357.0" layoutY="98.0" prefHeight="31.0" prefWidth="417.0" />
             <Label layoutX="113.0" layoutY="103.0" text="Customer ID" textFill="#2196f3">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="r_date" layoutX="357.0" layoutY="467.0" prefHeight="31.0" prefWidth="417.0" />
+            <DatePicker fx:id="reg_date" layoutX="357.0" layoutY="467.0" prefHeight="31.0" prefWidth="417.0" />
          </children>
       </Pane>
    </left>

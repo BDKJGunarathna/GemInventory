@@ -21,25 +21,25 @@ import java.util.ResourceBundle;
 public class CustomerUpdateController implements Initializable {
 
     @FXML
-    private TextField cust_id;
+    private TextField cus_id;
 
     @FXML
-    private TextField name;
+    private TextField first_name;
 
     @FXML
-    private TextField l_name;
+    private TextField last_name;
 
     @FXML
     private TextField email;
 
     @FXML
-    private TextField addres;
+    private TextField address;
 
     @FXML
-    private TextField contact;
+    private TextField contact_no;
 
     @FXML
-    private DatePicker r_date;
+    private DatePicker reg_date;
 
 
     CustomerDbController customerDbController = new CustomerDbController();
@@ -51,13 +51,13 @@ public class CustomerUpdateController implements Initializable {
         Customer customer = new Customer();
 
         //To get the values from the textfields and set them
-        customer.setCustId(Integer.parseInt(cust_id.getText()));
-        customer.setFristName(name.getText());
+        customer.setCustId(Integer.parseInt(cus_id.getText()));
+        customer.setFristName(first_name.getText());
+        customer.setLastName(last_name.getText());
         customer.setEmail(email.getText());
-        customer.setAddress(addres.getText());
-        customer.setContactNo(contact.getText());
-        customer.setLastName(l_name.getText());
-        LocalDate localDate = r_date.getValue();
+        customer.setAddress(address.getText());
+        customer.setContactNo(contact_no.getText());
+        LocalDate localDate = reg_date.getValue();
         customer.setRegisteredDate(localDate.toString());
 
         String validationMsg = CustomerData.validation(customer);
@@ -84,14 +84,14 @@ public class CustomerUpdateController implements Initializable {
         Customer customer = customerDbController.findById(CustomerData.id);
 
         //To get the details and set them in the textfields
-        cust_id.setText(customer.getCustId().toString());
-        cust_id.setDisable(true);
-        name.setText(customer.getFristName());
-        l_name.setText(customer.getLastName());
+        cus_id.setText(customer.getCustId().toString());
+        cus_id.setDisable(true);
+        first_name.setText(customer.getFristName());
+        last_name.setText(customer.getLastName());
         email.setText(customer.getEmail());
-        addres.setText(customer.getAddress());
-        contact.setText(customer.getContactNo());
-        r_date.setValue(LOCAL_DATE(customer.getRegisteredDate()));
+        address.setText(customer.getAddress());
+        contact_no.setText(customer.getContactNo());
+        reg_date.setValue(LOCAL_DATE(customer.getRegisteredDate()));
     }
 
     public static final LocalDate LOCAL_DATE (String dateString){

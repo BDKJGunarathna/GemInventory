@@ -47,7 +47,7 @@
          <children>
             <VBox layoutX="284.0" layoutY="185.0" minHeight="200.0" minWidth="333.0" prefHeight="200.0" prefWidth="333.0">
                <children>
-                  <Button fx:id="btn_reg" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="REGISTER NEW CUSTOMER">
+                  <Button fx:id="btn_register" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="REGISTER NEW CUSTOMER">
                      <VBox.margin>
                         <Insets bottom="40.0" />
                      </VBox.margin>
@@ -55,7 +55,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_view" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="VIEW CUSTOMERS' DETAILS">
+                  <Button fx:id="btn_view_details" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="VIEW CUSTOMERS' DETAILS">
                      <VBox.margin>
                         <Insets bottom="40.0" />
                      </VBox.margin>
@@ -63,7 +63,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_srch" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="SEARCH CUSTOMER">
+                  <Button fx:id="btn_search" mnemonicParsing="false" onAction="#menuSelect" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: #2196F3;" text="SEARCH CUSTOMER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>

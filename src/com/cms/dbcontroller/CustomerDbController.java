@@ -4,9 +4,6 @@ import com.cms.config.DBConnection;
 import com.cms.contoller.CustomerDetailViewController;
 import com.cms.modle.*;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.sql.Connection;

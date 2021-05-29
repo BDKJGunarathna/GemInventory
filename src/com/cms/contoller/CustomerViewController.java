@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -23,28 +22,28 @@ import java.util.ResourceBundle;
 public class CustomerViewController implements Initializable {
 
     @FXML
-    private Label cust_id;
+    private Label cus_id;
 
     @FXML
-    private Label cust_name;
+    private Label cus_first_name;
 
     @FXML
-    private Label cust_email;
+    private Label cus_email;
 
     @FXML
-    private Label address;
+    private Label cus_address;
 
     @FXML
-    private Label cust_contact;
+    private Label cus_contact_no;
 
     @FXML
-    private Label cust_reg_date;
+    private Label cus_registered_date;
 
     @FXML
     private Button btn_del;
 
     @FXML
-    private Label last_name;
+    private Label cus_last_name;
 
 
     private Integer id;
@@ -64,7 +63,7 @@ public class CustomerViewController implements Initializable {
     @FXML
     public void update(ActionEvent event){
         try {
-            CustomerData.id = Integer.parseInt(cust_id.getText());
+            CustomerData.id = Integer.parseInt(cus_id.getText());
             //To load the fxml file
             Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource("com/cms/ui/customer_update.fxml"));
             Stage stage = new Stage();
@@ -81,7 +80,7 @@ public class CustomerViewController implements Initializable {
     @FXML
     public void delete(ActionEvent event) {
         try {
-            CustomerData.id = Integer.parseInt(cust_id.getText());
+            CustomerData.id = Integer.parseInt(cus_id.getText());
             //To load the fxml file
             Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource("com/cms/ui/customer_delete.fxml"));
             Stage stage = new Stage();
@@ -96,18 +95,17 @@ public class CustomerViewController implements Initializable {
     }
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Customer customer = customerDbController.findById(CustomerData.id);
 
         //To display the values
-        cust_id.setText(customer.getCustId().toString());
-        cust_name.setText(customer.getFristName());
-        last_name.setText(customer.getLastName());
-        cust_email.setText(customer.getEmail());
-        address.setText(customer.getAddress());
-        cust_contact.setText(customer.getContactNo());
-        cust_reg_date.setText(customer.getRegisteredDate());
+        cus_id.setText(customer.getCustId().toString());
+        cus_first_name.setText(customer.getFristName());
+        cus_last_name.setText(customer.getLastName());
+        cus_email.setText(customer.getEmail());
+        cus_address.setText(customer.getAddress());
+        cus_contact_no.setText(customer.getContactNo());
+        cus_registered_date.setText(customer.getRegisteredDate());
     }
 }

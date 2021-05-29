@@ -2,32 +2,25 @@ package com.cms.contoller;
 
 import com.cms.config.CustomerData;
 import com.cms.dbcontroller.CustomerDbController;
-import com.cms.modle.Customer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 
 public class CustomerSearchController {
 
     @FXML
-    private TextField cus_id;
+    private TextField cust_id;
 
     @FXML
-    private TextField name;
+    private TextField first_name;
 
 
 
@@ -49,20 +42,20 @@ public class CustomerSearchController {
         Integer id = 0;
 
         System.out.println("Search");
-        System.out.println("id   : " +cus_id.getText());
-        System.out.println("nsme : " +name.getText());
+        System.out.println("id   : " +cust_id.getText());
+        System.out.println("nsme : " +first_name.getText());
 
-        if(cus_id.getText().isEmpty()){
+        if(cust_id.getText().isEmpty()){
             //If the user did not input the ID, then the ID will be assigned to -1
             id = -1;
         }
         else{
             //To assign the ID to the user entered value
-            id = Integer.parseInt(cus_id.getText());
+            id = Integer.parseInt(cust_id.getText());
         }
 
         try {
-            id = customerDbController.findByIdAndName( id , name.getText());
+            id = customerDbController.findByIdAndName( id , first_name.getText());
 
             if(id > 0){
                 CustomerData.id = id;

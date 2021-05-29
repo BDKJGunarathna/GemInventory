@@ -1,7 +1,6 @@
 package com.cms.contoller;
 
 import com.cms.config.CustomerData;
-import com.cms.config.DBConnection;
 import com.cms.dbcontroller.CustomerDbController;
 import com.cms.modle.*;
 
@@ -14,10 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -30,10 +26,10 @@ public class CustomerRegController implements Initializable {
     private Button btn_submit;
 
     @FXML
-    private TextField tx_email,tx_address,tx_cnct_no,tx_f_name, tx_l_name;
+    private TextField txt_first_name,txt_last_name,txt_email,txt_address,txt_contact_no;
 
     @FXML
-    private DatePicker tx_date;
+    private DatePicker txt_registered_date;
 
 
 
@@ -41,12 +37,12 @@ public class CustomerRegController implements Initializable {
         Customer customer = new Customer();
 
         //To get the values from the textfields and set them
-        customer.setFristName(tx_f_name.getText());
-        customer.setLastName(tx_l_name.getText());
-        customer.setEmail(tx_email.getText());
-        customer.setAddress(tx_address.getText());
-        customer.setContactNo(tx_cnct_no.getText());
-        LocalDate localDate = tx_date.getValue() == null ? LocalDate.now() : tx_date.getValue();
+        customer.setFristName(txt_first_name.getText());
+        customer.setLastName(txt_last_name.getText());
+        customer.setEmail(txt_email.getText());
+        customer.setAddress(txt_address.getText());
+        customer.setContactNo(txt_contact_no.getText());
+        LocalDate localDate = txt_registered_date.getValue() == null ? LocalDate.now() : txt_registered_date.getValue();
         customer.setRegisteredDate(localDate.toString());
 
         String validationMsg = CustomerData.validation(customer);
@@ -69,6 +65,6 @@ public class CustomerRegController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tx_date.setValue(LocalDate.now());
+        txt_registered_date.setValue(LocalDate.now());
     }
 }

@@ -93,13 +93,13 @@
             </VBox>
             <VBox layoutX="468.0" layoutY="116.0" prefHeight="341.0" prefWidth="337.0">
                <children>
-                  <Label fx:id="cust_id" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="cust_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="last_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="cust_email" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="address" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="cust_contact" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
-                  <Label fx:id="cust_reg_date" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_id" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_first_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_last_name" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_email" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_address" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_contact_no" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
+                  <Label fx:id="cus_registered_date" prefHeight="51.0" prefWidth="341.0" textFill="WHITE" />
                </children>
             </VBox>
          </children>
