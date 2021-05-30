@@ -1,13 +1,14 @@
 package OrderManagement;
 
 public class Product {
-
+        //declare variables
         private int pId;
         private String pName;
         private String pType;
         private double pPrice;
         private int pQty;
 
+        //constructor
         public Product(int pId, String pName, String pType, double pPrice, int pQty) {
             this.pId = pId;
             this.pName = pName;
@@ -16,6 +17,7 @@ public class Product {
             this.pQty = pQty;
         }
 
+        //getters and setters
 
         public int getPId() {
 

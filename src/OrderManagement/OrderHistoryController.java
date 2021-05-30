@@ -74,10 +74,8 @@ public class OrderHistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        // initialize order history method
-        OrderHistory();
 
-        //initialize search filter method
+        OrderHistory();
         searchOrderDetails();
     }
 
@@ -141,22 +139,22 @@ public class OrderHistoryController implements Initializable {
 
         try {
 
-            String report_name = "C:\\Users\\Dinuka\\IdeaProjects\\Order_Management\\src\\OrderManagement\\Order_Details_of_current_month.pdf";
+            String order_report_name = "C:\\Users\\Dinuka\\IdeaProjects\\Order_Management\\src\\OrderManagement\\Order_Details_of_current_month.pdf";
             //create Document object
-            Document document = new Document();
+            Document orderDocument = new Document();
             //set pdf instance
-            PdfWriter.getInstance(document, new FileOutputStream(report_name));
+            PdfWriter.getInstance(orderDocument, new FileOutputStream(order_report_name));
             //open the document
-            document.open();
+            orderDocument.open();
 
-            Font bold = new Font(Font.FontFamily.HELVETICA, 30, Font.BOLD);
-            Paragraph p = new Paragraph("Jewelry_Order_Details_Of_The_Current_Month");
-            document.add(p);
+            Font bold = new Font(Font.FontFamily.HELVETICA, 28, Font.BOLD);
+            Paragraph p = new Paragraph("***********************Jewelry_Order_Details_Of_The_Current_Month********************");
+            orderDocument.add(p);
 
-            document.add(new Paragraph("  "));
-            document.add(new Paragraph("  "));
-            document.add(new Paragraph("  "));
-            document.add(new Paragraph("  "));
+            orderDocument.add(new Paragraph("  "));
+            orderDocument.add(new Paragraph("  "));
+            orderDocument.add(new Paragraph("  "));
+            orderDocument.add(new Paragraph("  "));
 
 
 
@@ -175,49 +173,49 @@ public class OrderHistoryController implements Initializable {
                 rs = st.executeQuery(query);
 
                 if (rs != null) {
-                    PdfPTable table = null;
+                    PdfPTable order_table = null;
                     while (rs.next()) {
-                        table = new PdfPTable(10);
+                        order_table = new PdfPTable(10);
 
 
-                        PdfPCell c1 = new PdfPCell(new Phrase("Order ID"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Invoice No"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Cus ID"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Pro ID"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Pro Name"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("un Price "));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Quantity"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Total"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Ordered Date"));
-                        table.addCell(c1);
-                        c1 = new PdfPCell(new Phrase("Status"));
-                        table.addCell(c1);
-                        table.setHeaderRows(1);
+                        PdfPCell order_cell = new PdfPCell(new Phrase("Order ID"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Invoice No"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Cus ID"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Pro ID"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Pro Name"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("un Price "));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Quantity"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Total"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Ordered Date"));
+                        order_table.addCell(order_cell);
+                        order_cell = new PdfPCell(new Phrase("Status"));
+                        order_table.addCell(order_cell);
+                        order_table.setHeaderRows(1);
 
-                        table.addCell(String.valueOf(rs.getInt("id")));
-                        table.addCell(String.valueOf(rs.getString("invoiceNo")));
-                        table.addCell(String.valueOf(rs.getInt("cusid")));
-                        table.addCell(String.valueOf(rs.getInt("proid")));
-                        table.addCell(String.valueOf(rs.getString("proname")));
-                        table.addCell(String.valueOf(rs.getDouble("unprice")));
-                        table.addCell(String.valueOf(rs.getInt("qty")));
-                        table.addCell(String.valueOf(rs.getDouble("total")));
-                        table.addCell(String.valueOf(rs.getDate("date")));
-                        table.addCell(String.valueOf(rs.getString("status")));
-                        document.add(table);
+                        order_table.addCell(String.valueOf(rs.getInt("id")));
+                        order_table.addCell(String.valueOf(rs.getString("invoiceNo")));
+                        order_table.addCell(String.valueOf(rs.getInt("cusid")));
+                        order_table.addCell(String.valueOf(rs.getInt("proid")));
+                        order_table.addCell(String.valueOf(rs.getString("proname")));
+                        order_table.addCell(String.valueOf(rs.getDouble("unprice")));
+                        order_table.addCell(String.valueOf(rs.getInt("qty")));
+                        order_table.addCell(String.valueOf(rs.getDouble("total")));
+                        order_table.addCell(String.valueOf(rs.getDate("date")));
+                        order_table.addCell(String.valueOf(rs.getString("status")));
+                        orderDocument.add(order_table);
                     }
                 }
 
 
-            document.close();
+            orderDocument.close();
 
 
             //Alert Information box
@@ -243,40 +241,39 @@ public class OrderHistoryController implements Initializable {
     private void searchOrderDetails() {
         ObservableList<OrderManagement.Order> list = getOrderList();
 
-        //Wrap the ObservableList in a FilteredList (initially display all data)
+
         FilteredList<Order> filteredOrderDetails = new FilteredList<>(list, b -> true);
 
-        //Set the filter Predicate whenever the filter changes(). search by the filtered list
-        txtSearchJewelryOrder.textProperty().addListener((observable, oldValue, newValue) -> {
+
+        txtSearchJewelryOrder.textProperty().addListener((ordObservable, OFValue, ONValue) -> {
             filteredOrderDetails.setPredicate(order -> {
-                //If filter text is empty, display all employees
-                if (newValue == null || newValue.isEmpty()) {
+
+                if (ONValue == null || ONValue.isEmpty()) {
                     return true;
                 }
 
-                //Compare employee name, employee type, and employee ID of every person with filter text
-                String lowerCaseFIlter = newValue.toLowerCase();// convert entered value to the lowercase letters
 
-                if (String.valueOf(order.getId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches Order ID
+                String lowerValueFilter = ONValue.toLowerCase();
+
+                if (String.valueOf(order.getId()).toLowerCase().indexOf(lowerValueFilter) != -1) {
+                    return true;
                 }
-                else if (String.valueOf(order.getCusId()).toLowerCase().indexOf(lowerCaseFIlter) != -1) {
-                    return true;//Filter matches customer ID
+                else if (String.valueOf(order.getCusId()).toLowerCase().indexOf(lowerValueFilter) != -1) {
+                    return true;
 
                 }
                else
-                    return false;//Does not match
+                    return false;
             });
         });
 
-        //Wrap the FilteredList in a SortedList
+
         SortedList<Order> sortedOrderDetails = new SortedList<>(filteredOrderDetails);
 
-        //Bind the SortedList comparator to the OrderTableView comparator
-        //Otherwise, sorting the orderTableView would have no effect
+
         sortedOrderDetails.comparatorProperty().bind(tvOrder.comparatorProperty());
 
-        //Add sorted (and filtered) data to the table
+
         tvOrder.setItems(sortedOrderDetails);
     }
 
@@ -326,34 +323,34 @@ public class OrderHistoryController implements Initializable {
         col_ordereddate.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        //add cell of button edit
-        Callback<TableColumn<OrderManagement.Order, String>, TableCell<OrderManagement.Order, String>> cellFoctory = (TableColumn<OrderManagement.Order, String> param) -> {
-            // make cell containing buttons
-            final TableCell<OrderManagement.Order, String> cell = new TableCell<OrderManagement.Order, String>() {
+        //add  edit and delete button to the cell
+        Callback<TableColumn<OrderManagement.Order, String>, TableCell<OrderManagement.Order, String>> orderCellFactory = (TableColumn<OrderManagement.Order, String> param) -> {
+            // make order table's cell containing update ,edit buttons
+            final TableCell<OrderManagement.Order, String> orderCell = new TableCell<OrderManagement.Order, String>() {
                 @Override
                 public void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
+                    //empty records cell
                     if (empty) {
                         setGraphic(null);
                         setText(null);
 
                     } else {
 
-                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+                        FontAwesomeIconView deleteOrderIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView editOrderIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
 
-                        deleteIcon.setStyle(
+                        deleteOrderIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                        + "-glyph-size:28px;"
+                                        + "-glyph-size:26px;"
                                         + "-fx-fill:#ff1744;"
                         );
-                        editIcon.setStyle(
+                        editOrderIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                        + "-glyph-size:28px;"
+                                        + "-glyph-size:26px;"
                                         + "-fx-fill:#00E676;"
                         );
-                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+                        deleteOrderIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
                                 OrderManagement.Order order = tvOrder.getSelectionModel().getSelectedItem();
@@ -364,6 +361,8 @@ public class OrderHistoryController implements Initializable {
                                 Statement st = DBConnection.getConnection().createStatement();
                                 st.execute(query);
                                 OrderHistory();
+
+
                             } catch (SQLException ex) {
                                 Logger.getLogger(OrderHistoryController.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -372,7 +371,7 @@ public class OrderHistoryController implements Initializable {
                         });
 
 
-                        editIcon.setOnMouseClicked((MouseEvent event) -> {
+                        editOrderIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             Order order = tvOrder.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
@@ -399,12 +398,12 @@ public class OrderHistoryController implements Initializable {
 
 
 
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                        HBox manageorderbtn = new HBox(editOrderIcon, deleteOrderIcon);
+                        manageorderbtn.setStyle("-fx-alignment:center");
+                        HBox.setMargin(deleteOrderIcon, new Insets(2, 2, 0, 3));
+                        HBox.setMargin(editOrderIcon, new Insets(2, 3, 0, 2));
 
-                        setGraphic(managebtn);
+                        setGraphic(manageorderbtn);
 
                         setText(null);
 
@@ -413,9 +412,9 @@ public class OrderHistoryController implements Initializable {
 
             };
 
-            return cell;
+            return orderCell;
         };
-        col_action.setCellFactory(cellFoctory);
+        col_action.setCellFactory(orderCellFactory);
 
         tvOrder.setItems(list);
 

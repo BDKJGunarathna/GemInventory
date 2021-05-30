@@ -1,11 +1,14 @@
 package OrderManagement;
 
 public class Customer {
+    //declare variables
     private int cId;
     private String cFName;
     private String cLName;
     private String cTelephone;
 
+
+    //constructor
     public Customer(int cId, String cFName, String cLName,  String cTelephone) {
         this.cId = cId;
         this.cFName = cFName;
@@ -13,10 +16,13 @@ public class Customer {
         this.cTelephone = cTelephone;
     }
 
+
     public Customer(int cId){
         this.cId = cId;
     }
 
+
+    //getters and setters
     public int getCId() {
         return cId;
     }

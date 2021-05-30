@@ -92,7 +92,7 @@ public class UpdateorderController implements Initializable{
     Order order;
 
 
-    //switch to home
+    //switch to dashboard from updateorder UI
     @FXML
     public void OrderHistoryToHome(ActionEvent event){
         try {
@@ -113,7 +113,7 @@ public class UpdateorderController implements Initializable{
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-
+                //display available jewelry details in Table
                 showProductsDetails();
 
         }
@@ -131,7 +131,7 @@ public class UpdateorderController implements Initializable{
         }
 
 
-    //getProduct list method (2)
+    //get jewelry list method (2)
     public ObservableList<OrderManagement.Product> getProductList(){
         ObservableList<OrderManagement.Product> productList = FXCollections.observableArrayList();
         // Connection conn = getConnection();
@@ -174,20 +174,8 @@ public class UpdateorderController implements Initializable{
 
     @FXML
         public void updateorderAction(ActionEvent updateordev2) {
-
+        //call update method
         updateRecord();
-
-        /*try {
-            PauseTransition updateorderpt2 = new PauseTransition();
-            updateorderpt2.setDuration(Duration.seconds(3));
-            updateorderpt2.setOnFinished(ev -> {
-                System.out.println("Order Update Successfully");
-            });
-            updateorderpt2.play();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }*/
 
         try {
             //switch to OrderHistory.fxml
@@ -214,7 +202,7 @@ public class UpdateorderController implements Initializable{
     }
 
 
-
+//executeUpdate method
     private void executeUpdate(String query) {
         //Connection conn = getConnection();
         OrderManagement.DBConnection.getConnection();

@@ -199,7 +199,7 @@ public class CreateOrderController implements Initializable {
     */
 
 
-    //switch to home
+    //switch to dashboard from CreateOrder UI
     @FXML
     public void CreateOrderToHome(ActionEvent event){
         try {
@@ -215,7 +215,7 @@ public class CreateOrderController implements Initializable {
         }
     }
 
-
+//cancel button of the CreateOrder UI
     @FXML
     public void cancelOrderOnAction(ActionEvent event){
 
@@ -232,7 +232,7 @@ public class CreateOrderController implements Initializable {
         }
     }
 
-
+// order Create button OnAction method
     @FXML
     public void createOrderOnAction(ActionEvent event){
 
@@ -259,8 +259,9 @@ public class CreateOrderController implements Initializable {
         showCustomerDetails();
     }
 
+    /*
     //check connection
-   /* public Connection getConnection(){
+    public Connection getConnection(){
         Connection conn;
         try{
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cityofgems", "root", "Gaya02");
@@ -272,7 +273,7 @@ public class CreateOrderController implements Initializable {
         }
     }*/
 
-    //getProduct list method (2)
+    //retrieve jewelry inventory tale to CreateOrder UI
     public ObservableList<Product> getProductList(){
         ObservableList<Product> productList = FXCollections.observableArrayList();
        // Connection conn = getConnection();
@@ -298,7 +299,7 @@ public class CreateOrderController implements Initializable {
         return productList;
     }
 
-    //get Product details (3)
+    //set jewelry inventory details to the tableview(3)
     public void showProductsDetails(){
         ObservableList<Product> list = getProductList();
 

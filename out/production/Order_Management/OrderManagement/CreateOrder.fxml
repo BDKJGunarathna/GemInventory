@@ -47,9 +47,9 @@
 
       <TableView fx:id="tvProduct" layoutX="554.0" layoutY="125.0" onMouseClicked="#setProDetailsOnMouseClicked" prefHeight="200.0" prefWidth="461.0">
         <columns>
-          <TableColumn fx:id="colProID" prefWidth="83.0" text="proID" />
-          <TableColumn fx:id="colProName" prefWidth="114.0" text="proName" />
-            <TableColumn fx:id="colProType" prefWidth="101.0" text="Type" />
+          <TableColumn fx:id="colProID" prefWidth="58.0" text="proID" />
+          <TableColumn fx:id="colProName" prefWidth="154.0" text="proName" />
+            <TableColumn fx:id="colProType" prefWidth="86.0" text="Type" />
             <TableColumn fx:id="colProPrice" prefWidth="107.0" text="Price" />
             <TableColumn fx:id="colProQty" prefWidth="55.0" text="Qty" />
         </columns>

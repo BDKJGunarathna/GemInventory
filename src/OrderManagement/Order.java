@@ -3,6 +3,7 @@ package OrderManagement;
 import java.sql.Date;
 
 public class Order {
+    //declare variables
     private int id;
     private String invoiceNo;
     private int cusId;
@@ -14,6 +15,7 @@ public class Order {
     private Date date;
     private String status;
 
+    //constructor
     public Order(int id, String invoiceNo, int cusId,int proId, String proName,   double unPrice, int qty, double total, Date date, String status) {
         this.id = id;
         this.invoiceNo = invoiceNo;
@@ -27,6 +29,7 @@ public class Order {
         this.status = status;
     }
 
+    //getters and setters
     public int getId() {
         return id;
     }
