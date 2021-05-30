@@ -310,15 +310,17 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     }
 
 
-    //Generate Report Method
+    //Generate Assets and Liabilities Report Method
     @FXML
     private void print1(javafx.scene.input.MouseEvent event) throws SQLException {
-
         reportAssetsLiabilitiesController AssetsLiabilitiesReport = new reportAssetsLiabilitiesController();
-        //Create Assets Liabilities Report
-        AssetsLiabilitiesReport.generatePDF1();
+        AssetsLiabilitiesReport.generateAssetsLiabilitiesReport();
+        Alert alert=new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Generate Report");
+        alert.setHeaderText(null);
+        alert.setContentText("Assets and Liabilities Report Successfully Downloaded");
+        alert.showAndWait();
     }
-
 
 
     //"Home" Button method (Direct to "financeHome" page)

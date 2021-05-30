@@ -311,11 +311,16 @@ public class SearchIncomeExpensesController implements Initializable {
     }
 
 
-    //Generate Report Method
+    //Generate Income and Expenses Report Method
     @FXML
     private void print(javafx.scene.input.MouseEvent event) throws SQLException {
         reportIncomeExpensesController IncomeExpensesReport = new reportIncomeExpensesController();
-        IncomeExpensesReport.generatePDF();
+        IncomeExpensesReport.generateIncomeExpensesReport();
+        Alert alert=new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Generate Report");
+        alert.setHeaderText(null);
+        alert.setContentText("Income and Expenses Report Successfully Downloaded");
+        alert.showAndWait();
     }
 
 
