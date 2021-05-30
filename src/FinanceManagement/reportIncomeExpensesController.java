@@ -34,7 +34,6 @@ public class reportIncomeExpensesController {
         //SQL QUERY (RETRIEVE Data using Group By Clause)
         query = "SELECT description,amount FROM cityofgems.incomeandexpenses GROUP BY description";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query);
         //Execute the query
         resultSet = preparedStatement.executeQuery();
@@ -63,12 +62,10 @@ public class reportIncomeExpensesController {
         //SQL QUERY to get total expenditure
         query_e = "SELECT SUM(amount) as 'TE' FROM incomeandexpenses WHERE type='Expenditure'";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query_e);
 
         //Execute the query
         resultSet = preparedStatement.executeQuery();
-
 
         //Process the ResultSet object
         resultSet.next();
@@ -98,10 +95,9 @@ public class reportIncomeExpensesController {
 
 
     //Create PDF Method
-    public void createPdf(){
+    public void generatePDF(){
         try{
-            //Convert HTML to PDF
-            //PDF Name : Monthly_Income_and_Expenses_Report.pdf
+            //Convert HTML to PDF called Monthly_Income_and_Expenses_Report.pdf
             HtmlConverter.convertToPdf(HTML, new FileOutputStream("Income and Expenses Report.pdf"));
 
             //Alert Information box

@@ -3,6 +3,7 @@ package FinanceManagement;
         import com.itextpdf.html2pdf.HtmlConverter;
         import javafx.scene.control.Alert;
 
+        import java.awt.geom.Line2D;
         import java.io.FileNotFoundException;
         import java.io.FileOutputStream;
         import java.io.IOException;
@@ -15,7 +16,7 @@ package FinanceManagement;
 public class reportAssetsLiabilitiesController {
 
     //declare variables
-    private String HTML, HTML1, HTML2, HTML3, HTML4, HTML5;
+    private String HTML, HTML1, HTML2, HTML3, HTML4;
     private DBConnection handler;
     private Connection connection;
     private String query, query_a, query_l, query_e;
@@ -35,7 +36,6 @@ public class reportAssetsLiabilitiesController {
         //SQL QUERY (RETRIEVE Data using Group By Clause)
         query = "SELECT assetsliabilities_description,assetsliabilities_amount FROM cityofgems.assetsandliabilities GROUP BY assetsliabilities_description";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query);
 
         //Execute the query
@@ -65,7 +65,6 @@ public class reportAssetsLiabilitiesController {
         //SQL QUERY to get total Assets
         query_a = "SELECT SUM(assetsliabilities_amount) as 'TA' FROM assetsandliabilities WHERE assetsliabilities_type='Asset'";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query_a);
 
         //Execute the query
@@ -86,7 +85,6 @@ public class reportAssetsLiabilitiesController {
         // SQL QUERY to get total Liabilities
         query_l = "SELECT SUM(assetsliabilities_amount) as 'TL' FROM assetsandliabilities WHERE assetsliabilities_type='Liability'";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query_l);
 
         //Execute the query
@@ -100,13 +98,12 @@ public class reportAssetsLiabilitiesController {
 
         //Convert total Assets into double
         String totLi = resultSet.getString("TL");
-        double totalLi = Double.parseDouble(totLi);
-
+        System.out.println("Total: " +totLi);
+        Double totalLi = Double.parseDouble(totLi);
 
         // SQL QUERY to get total Equity
         query_e = "SELECT SUM(assetsliabilities_amount) as 'TE' FROM assetsandliabilities WHERE assetsliabilities_type='Equity'";
 
-        //Create a statement using connection object
         preparedStatement = connection.prepareStatement(query_e);
 
         //Execute the query
@@ -120,32 +117,19 @@ public class reportAssetsLiabilitiesController {
 
         //Convert total Assets into double
         String totEq = resultSet.getString("TE");
-        double totalEq = Double.parseDouble(totEq);
+        Double totalEq = Double.parseDouble(totEq);
 
+        //HTML5 = "<h4>Assets : " + (totalLi + totalEq) + "</h4>";
 
-
-
-
-
-
-
-
-
-
-
-
-        HTML5 = "<h4>Assets : " + (totalLi + totalEq) + "</h4>";
-
-        HTML = HTML1 + HTML3 + HTML2 + HTML4 + HTML5;
+        HTML = HTML1 + HTML3 + HTML2 + HTML4 ;
 
     }
 
 
     //Create PDF Method
-    public void createPdf1(){
+    public void generatePDF1(){
         try{
-            //Convert HTML to PDF
-            //PDF Name : Monthly_Assets_and_Liabilities_Report.pdf
+            //Convert HTML to PDF called Monthly_Assets_and_Liabilities_Report.pdf
             HtmlConverter.convertToPdf(HTML, new FileOutputStream("Assets and Liabilities Report.pdf"));
 
             //Alert Information box

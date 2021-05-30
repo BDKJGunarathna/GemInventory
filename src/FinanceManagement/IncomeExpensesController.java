@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -59,7 +57,7 @@ public class IncomeExpensesController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Initialize the type combobox
+        //Initialize the income expenses type combobox
         incomeExpensesType.setItems(incomeExpensestypelist);
 
     }
@@ -69,13 +67,13 @@ public class IncomeExpensesController implements Initializable {
     @FXML
     public void saveIncomeExpensesOnAction(ActionEvent event){
 
-        //Validate data (If any data does not input to insert form popup alert error box else Insert data into Database or clear inputs from form)
+        //Check when the save button is clicked, inserting values are matching to the validations
         if(checkUnfilledFieldsValidation() && checkAmountFieldValidation() && checkAmountFieldZeroValidation() ) {
             insertIncomeExpensesRecord();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
                 Stage saveInsert = (Stage) saveBtn.getScene().getWindow();
-                saveInsert.setTitle("City of Gems");
+                saveInsert.setTitle("Gem Merchant System");
                 saveInsert.setScene(new Scene(root, 1050, 780));
                 saveInsert.show();
             }
@@ -102,16 +100,14 @@ public class IncomeExpensesController implements Initializable {
     private void insertIncomeExpensesRecord(){
         String query = "INSERT into incomeandexpenses VALUES ("+0+",'"+ incomeExpensesDescription.getText() +"','"+ incomeExpensesType.getValue() +"','" +incomeExpensesDate.getValue()+"',"+incomeExpensesAmount.getText()+")";
         executeQuery(query);
-        //showIncomeExpenses();
     }
 
     private void executeQuery(String query) {
-        //Connection conn = getConnection();
+        //Establishing a Connection
         DBConnection.getConnection();
         Statement st;
 
         try {
-            //st = conn.createStatement();
             st = DBConnection.getConnection().createStatement();
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -127,10 +123,11 @@ public class IncomeExpensesController implements Initializable {
     private boolean checkUnfilledFieldsValidation(){
 
         if(incomeExpensesDescription.getText().isEmpty() || incomeExpensesType.getValue().isEmpty() || incomeExpensesDate.getEditor().getText().isEmpty() ||incomeExpensesAmount.getText().isEmpty()){
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter All values into the fields.");
+            alert.setContentText("Please enter all values into the fields.");
             alert.showAndWait();
 
             return false;
@@ -154,10 +151,11 @@ public class IncomeExpensesController implements Initializable {
             return true;
         }
         else{
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter only a number to the Amount field.");
+            alert.setContentText("Please enter only numbers to the Amount field.");
             alert.showAndWait();
 
             return false;
@@ -172,11 +170,11 @@ public class IncomeExpensesController implements Initializable {
         }
 
         else{
-
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the amount greater than 0");
+            alert.setContentText("Please enter an amount greater than 0");
             alert.showAndWait();
 
             return false;
@@ -185,7 +183,7 @@ public class IncomeExpensesController implements Initializable {
 
 
 
-    //Cancel button method (Clear Fields method)
+    //Cancel button method (Fields will be cleared)
     @FXML
     private void incomeExpensesDetailsClear() {
         //Set all the form inputs to null
@@ -197,14 +195,14 @@ public class IncomeExpensesController implements Initializable {
 
 
 
-    //"Home" Button method (Direct to "Dashboard" page)
+    //"Home" Button method (Direct to "Finance Home" page)
     @FXML
     public void IncomeExpensesToHome(ActionEvent event){
         try {
 
             Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
             Stage insertDashboard = (Stage) insertHome.getScene().getWindow();
-            insertDashboard.setTitle("City of Gems");
+            insertDashboard.setTitle("Gem Merchant System");
             insertDashboard.setScene(new Scene(root, 1050, 780));
             insertDashboard.show();
         }
@@ -218,14 +216,13 @@ public class IncomeExpensesController implements Initializable {
     public void logoutAction(ActionEvent ev3) throws IOException {
         insertlogout.getScene().getWindow().hide();
 
-        Stage logout = new Stage();//Create a Stage
-        logout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
-        //Setup the Scene
+        Stage logout = new Stage();
+        logout.setTitle("CITY OF GEMS - LOGIN");
         Parent root2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
-        Scene scene2 = new Scene(root2);//Create a scene
-        logout.setScene(scene2);//Set Scene object on the Stage
-        logout.show();//Show the Stage which create above (makes the Stage visible and the exits)
-        logout.setResizable(false);//User cannot resize the frame
+        Scene scene2 = new Scene(root2);
+        logout.setScene(scene2);
+        logout.show();
+        logout.setResizable(false);
     }
 
 
@@ -238,7 +235,7 @@ public class IncomeExpensesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
             Stage addInEx = (Stage) incomeExpensesMenu.getScene().getWindow();
-            addInEx.setTitle("City of Gems");
+            addInEx.setTitle("Gem Merchant System");
             addInEx.setScene(new Scene(root, 1050,780));
             addInEx.show();
         }catch (Exception e){
@@ -253,7 +250,7 @@ public class IncomeExpensesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("searchIncomeExpenses.fxml"));
             Stage addSeInEx = (Stage) searchIncomeExpensesMenu.getScene().getWindow();
-            addSeInEx.setTitle("City of Gems");
+            addSeInEx.setTitle("Gem Merchant System");
             addSeInEx.setScene(new Scene(root, 1050,780));
             addSeInEx.show();
         }catch (Exception e){

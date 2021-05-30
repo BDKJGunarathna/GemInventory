@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,25 +20,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-//import javafx.scene.input.MouseEvent;
 
 
 public class SearchIncomeExpensesController implements Initializable {
@@ -63,19 +49,17 @@ public class SearchIncomeExpensesController implements Initializable {
     @FXML
     private TableColumn<SearchIncomeExpenses, String> searchIncomeExpensesTableAction;
 
+    //Buttons
     @FXML
     private Button incomeExpensesMenu1;
     @FXML
     private Button searchIncomeExpensesMenu1;
-    //@FXML
-    //private Button insertIncomeExpensesBtn;
     @FXML
     private Button searchHome;
-
     @FXML
     private FontAwesomeIconView printBtn;
 
-
+    //declare variables
     String query = null;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -83,21 +67,17 @@ public class SearchIncomeExpensesController implements Initializable {
     SearchIncomeExpenses SearchIncomeExpenses = null;
 
 
-
-
     ObservableList<SearchIncomeExpenses> list = FXCollections.observableArrayList();
-
-    private SearchIncomeExpenses order = null;
 
     //Initializes the controller class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         ShowSearchIncomeExpenses();
 
         //initialize search filter method
         searchIncomeExpensesDetails();
     }
+
 
 
 
@@ -153,7 +133,7 @@ public class SearchIncomeExpensesController implements Initializable {
     private void ShowSearchIncomeExpenses() {
 
         FinanceManagement.DBConnection.getConnection();
-       refreshTable();
+       refreshIncomeExpensesTable();
 
             //Retrieve and set values to the columns
             searchIncomeExpensesId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -177,7 +157,7 @@ public class SearchIncomeExpensesController implements Initializable {
 
                         } else {
 
-                            //Define fontawesome icons
+                            //Define update and delete fontawesome icons
                             FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
                             FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
 
@@ -195,15 +175,14 @@ public class SearchIncomeExpensesController implements Initializable {
                                             + "-fx-fill:#00E676;"
                             );
 
+                            //Delete Icon Method
                             deleteIcon.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
 
                                 try {
                                     FinanceManagement.SearchIncomeExpenses searchIncomeExpenses = searchIncomeExpensesTable.getSelectionModel().getSelectedItem();
                                     //SQL QUERY (DELETE)
                                     String query = "DELETE FROM incomeandexpenses WHERE id  =" + searchIncomeExpenses.getId() ;
-                                    //Establishing a Connection
                                     DBConnection.getConnection();
-                                    //Create a statement using connection object
                                     Statement st = DBConnection.getConnection().createStatement();
                                     st.execute(query);
                                     ShowSearchIncomeExpenses();
@@ -236,12 +215,10 @@ public class SearchIncomeExpensesController implements Initializable {
                                     Logger.getLogger(SearchIncomeExpensesController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
 
-                                //get the Controller
                                 UpdateIncomeExpensesController updateIncomeExpensesController = loader.getController();
-                                //Parameter pass to setUpdate method create on update income and expenses details
                                 updateIncomeExpensesController.setUpdate(true);
 
-                                //set income and expenses details want to update
+                                //set income and expenses details need to be updated
                                 updateIncomeExpensesController.setTextField(searchIncomeExpenses.getId(), searchIncomeExpenses.getDescription(),
                                         searchIncomeExpenses.getType(), searchIncomeExpenses.getDate(), searchIncomeExpenses.getAmount());
                                 Parent parent = loader.getRoot();
@@ -282,14 +259,12 @@ public class SearchIncomeExpensesController implements Initializable {
     //get income and expenses list
     public ObservableList<FinanceManagement.SearchIncomeExpenses> getSearchIncomeExpensesList(){
         ObservableList<FinanceManagement.SearchIncomeExpenses> searchIncomeExpensesList = FXCollections.observableArrayList();
-        //Connection conn = getConnection();
         FinanceManagement.DBConnection.getConnection();
         String query = "SELECT * FROM incomeandexpenses";
         Statement st;
         ResultSet rs;
 
         try {
-            //st = conn.createStatement();
             st = FinanceManagement.DBConnection.getConnection().createStatement();
             rs = st.executeQuery(query);
             FinanceManagement.SearchIncomeExpenses searchIncomeExpenses;
@@ -306,9 +281,9 @@ public class SearchIncomeExpensesController implements Initializable {
     }
 
 
-    //refreshTable (Refresh the table view after update or delete income and expenses details)
+    //refreshTable method (Refresh the table view after update or delete income and expenses details)
     @FXML
-    private void refreshTable() {
+    private void refreshIncomeExpensesTable() {
         try {
             list.clear();
 
@@ -339,10 +314,8 @@ public class SearchIncomeExpensesController implements Initializable {
     //Generate Report Method
     @FXML
     private void print(javafx.scene.input.MouseEvent event) throws SQLException {
-        //Create Generate Types of Employee Object
         reportIncomeExpensesController IncomeExpensesReport = new reportIncomeExpensesController();
-        //Create Types of Employee PDF
-        IncomeExpensesReport.createPdf();
+        IncomeExpensesReport.generatePDF();
     }
 
 
@@ -353,7 +326,7 @@ public class SearchIncomeExpensesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
             Stage searchDashboard = (Stage) searchHome.getScene().getWindow();
-            searchDashboard.setTitle("City of Gems");
+            searchDashboard.setTitle("Gem Merchant System");
             searchDashboard.setScene(new Scene(root, 1050, 780));
             searchDashboard.show();
         }
@@ -370,7 +343,7 @@ public class SearchIncomeExpensesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("incomeExpenses.fxml"));
             Stage searchInEx1 = (Stage) incomeExpensesMenu1.getScene().getWindow();
-            searchInEx1.setTitle("City of Gems");
+            searchInEx1.setTitle("Gem Merchant System");
             searchInEx1.setScene(new Scene(root, 1050, 780));
             searchInEx1.show();
         } catch (Exception e) {
@@ -385,7 +358,7 @@ public class SearchIncomeExpensesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("searchIncomeExpenses.fxml"));
             Stage searchSeInEx1 = (Stage) searchIncomeExpensesMenu1.getScene().getWindow();
-            searchSeInEx1.setTitle("City of Gems");
+            searchSeInEx1.setTitle("Gem Merchant System");
             searchSeInEx1.setScene(new Scene(root, 1050, 780));
             searchSeInEx1.show();
         } catch (Exception e) {

@@ -1,28 +1,27 @@
 package FinanceManagement;
 
-        import com.jfoenix.controls.JFXButton;
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.fxml.Initializable;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.*;
-        import javafx.scene.control.cell.PropertyValueFactory;
-        import javafx.stage.Stage;
+import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-        import java.io.IOException;
-        import java.net.URL;
-        import java.sql.Connection;
-        import java.sql.DriverManager;
-        import java.sql.ResultSet;
-        import java.sql.Statement;
-        import java.util.Date;
-        import java.util.ResourceBundle;
-        import java.util.regex.Matcher;
-        import java.util.regex.Pattern;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AssetsLiabilitiesController implements Initializable {
 
@@ -75,33 +74,23 @@ public class AssetsLiabilitiesController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Initialize the type combobox
+        //Initialize the assets liabilities type combobox
         assetsLiabilitiesType.setItems(assetsLiabilitiestypelist);
         showIncomeExpensesDetails();
 
     }
 
-    @FXML
-    private void setProDetailsOnMouseClicked(ActionEvent event){
-        UpdateIncomeExpenses assetsIncomeExpenses = assetsIncomeExpensesTable.getSelectionModel().getSelectedItem();
-        assetsIncomeExpensesTableId.setText(""+ assetsIncomeExpensesTable.getId());
-        assetsIncomeExpensesTableDescription.setText(assetsIncomeExpenses.getDescription());
-        assetsIncomeExpensesTableType.setText(""+assetsIncomeExpenses.getType());
-        assetsIncomeExpensesTableDate.setText(""+assetsIncomeExpenses.getDate());
-        assetsIncomeExpensesTableAmount.setText(""+assetsIncomeExpenses.getAmount());
-    }
-
-    //getIncomeExpenses list method (2)
+    // Table view
+    //get assets liabilities list method
     public ObservableList<UpdateIncomeExpenses> getIncomeExpensesList(){
         ObservableList<UpdateIncomeExpenses> incomeExpensesList = FXCollections.observableArrayList();
-        // Connection conn = getConnection();
+        //Establishing a Connection
         DBConnection.getConnection();
         String query = "SELECT id, description, type, date, amount FROM incomeandexpenses ";
         Statement st;
         ResultSet rs;
 
         try{
-            //st = conn.createStatement();
             st = DBConnection.getConnection().createStatement();
             rs = st.executeQuery(query);
             UpdateIncomeExpenses inEX;
@@ -117,7 +106,7 @@ public class AssetsLiabilitiesController implements Initializable {
         return incomeExpensesList;
     }
 
-    //get income and expenses details
+    //get assets and liabilities details
     public void showIncomeExpensesDetails(){
         ObservableList<UpdateIncomeExpenses> list = getIncomeExpensesList();
 
@@ -137,13 +126,13 @@ public class AssetsLiabilitiesController implements Initializable {
     @FXML
     public void saveAssetsLiabilitiesOnAction(ActionEvent event){
 
-        //Validate data (If any data does not input to insert form popup alert error box else Insert data into Database or clear inputs from form)
+        //Check when the save button is clicked, inserting values are matching to the validations
         if(checkUnfilledFieldsValidation() && checkAmountFieldValidation() && checkAmountFieldZeroValidation() ) {
             insertAssetsLiabilitiesRecord();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("assetsLiabilities.fxml"));
                 Stage saveInsert = (Stage) assetsLiabilitiesSaveBtn.getScene().getWindow();
-                saveInsert.setTitle("City of Gems");
+                saveInsert.setTitle("Gem Merchant System");
                 saveInsert.setScene(new Scene(root, 1050, 780));
                 saveInsert.show();
             }
@@ -170,16 +159,14 @@ public class AssetsLiabilitiesController implements Initializable {
     private void insertAssetsLiabilitiesRecord(){
         String query = "INSERT into assetsandliabilities VALUES ("+0+",'"+ assetsLiabilitiesDescription.getText() +"','"+ assetsLiabilitiesType.getValue() +"','" +assetsLiabilitiesDate.getValue()+"',"+assetsLiabilitiesAmount.getText()+")";
         executeQuery(query);
-        //showAssetsLiabilities();
     }
 
     private void executeQuery(String query) {
-        //Connection conn = getConnection();
+        //Establishing a Connection
         DBConnection.getConnection();
         Statement st;
 
         try {
-            //st = conn.createStatement();
             st = DBConnection.getConnection().createStatement();
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -190,15 +177,16 @@ public class AssetsLiabilitiesController implements Initializable {
 
     // Form Validation methods
 
-    // (1)check if any unfilled fields in income and expenses form
+    // (1)check if any unfilled fields in assets and liabilities form
     @FXML
     private boolean checkUnfilledFieldsValidation(){
 
         if(assetsLiabilitiesDescription.getText().isEmpty() || assetsLiabilitiesType.getValue().isEmpty() || assetsLiabilitiesDate.getEditor().getText().isEmpty() ||assetsLiabilitiesAmount.getText().isEmpty()){
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter All values into the fields.");
+            alert.setContentText("Please enter all values into the fields.");
             alert.showAndWait();
 
             return false;
@@ -222,10 +210,11 @@ public class AssetsLiabilitiesController implements Initializable {
             return true;
         }
         else{
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter only a number to the Amount field.");
+            alert.setContentText("Please enter only numbers to the Amount field.");
             alert.showAndWait();
 
             return false;
@@ -240,11 +229,11 @@ public class AssetsLiabilitiesController implements Initializable {
         }
 
         else{
-
+            //Alert Information box
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the amount greater than 0");
+            alert.setContentText("Please enter an amount greater than 0");
             alert.showAndWait();
 
             return false;
@@ -253,7 +242,7 @@ public class AssetsLiabilitiesController implements Initializable {
 
 
 
-    //Cancel button method (Clear Fields method)
+    //Cancel button method (Fields will be cleared)
     @FXML
     private void assetsLiabilitiesDetailsClear() {
         //Set all the form inputs to null
@@ -272,7 +261,7 @@ public class AssetsLiabilitiesController implements Initializable {
 
             Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
             Stage insertDashboard = (Stage) assetsLiabilitiesHome.getScene().getWindow();
-            insertDashboard.setTitle("City of Gems");
+            insertDashboard.setTitle("Gem Merchant System");
             insertDashboard.setScene(new Scene(root, 1050, 780));
             insertDashboard.show();
         }
@@ -286,14 +275,13 @@ public class AssetsLiabilitiesController implements Initializable {
     public void AssetsLiabilitieslogoutAction(ActionEvent ev3) throws IOException {
         assetsLiabilitiesLogout.getScene().getWindow().hide();
 
-        Stage logout = new Stage();//Create a Stage
-        logout.setTitle("CITY OF GEMS - LOGIN");//Set Title of interface
-        //Setup the Scene
+        Stage logout = new Stage();
+        logout.setTitle("CITY OF GEMS - LOGIN");
         Parent root2 = FXMLLoader.load(getClass().getResource("/loginregister/login.fxml"));
-        Scene scene2 = new Scene(root2);//Create a scene
-        logout.setScene(scene2);//Set Scene object on the Stage
-        logout.show();//Show the Stage which create above (makes the Stage visible and the exits)
-        logout.setResizable(false);//User cannot resize the frame
+        Scene scene2 = new Scene(root2);
+        logout.setScene(scene2);
+        logout.show();
+        logout.setResizable(false);
     }
 
 
@@ -306,7 +294,7 @@ public class AssetsLiabilitiesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("assetsLiabilities.fxml"));
             Stage addInEx = (Stage) assetsLiabilitiesMenu.getScene().getWindow();
-            addInEx.setTitle("City of Gems");
+            addInEx.setTitle("Gem Merchant System");
             addInEx.setScene(new Scene(root, 1050,780));
             addInEx.show();
         }catch (Exception e){
@@ -314,14 +302,14 @@ public class AssetsLiabilitiesController implements Initializable {
         }
     }
 
-    //Search Income and Expenses Button method (Direct to Search Income and Employee page)
+    //Search Income and Expenses Button method (Direct to Search Income and Expenses page)
     @FXML
     public void addSearchAssetsLiabilitiesOnAction(ActionEvent event){
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("searchAssetsLiabilities.fxml"));
             Stage addSeInEx = (Stage) searchAssetsLiabilitiesMenu.getScene().getWindow();
-            addSeInEx.setTitle("City of Gems");
+            addSeInEx.setTitle("Gem Merchant System");
             addSeInEx.setScene(new Scene(root, 1050,780));
             addSeInEx.show();
         }catch (Exception e){

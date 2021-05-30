@@ -96,7 +96,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIconView fx:id="refresh1" fill="#2196f3" glyphName="REFRESH" layoutX="717.0" layoutY="217.0" onMouseClicked="#refreshTable1" size="25.0" AnchorPane.bottomAnchor="403.9402904510498" AnchorPane.leftAnchor="717.0" AnchorPane.rightAnchor="56.571428298950195" AnchorPane.topAnchor="195.5714282989502" />
+                  <FontAwesomeIconView fx:id="refresh1" fill="#2196f3" glyphName="REFRESH" layoutX="717.0" layoutY="217.0" onMouseClicked="#refreshAssetsLiabilitiesTable" size="25.0" AnchorPane.bottomAnchor="403.9402904510498" AnchorPane.leftAnchor="717.0" AnchorPane.rightAnchor="56.571428298950195" AnchorPane.topAnchor="195.5714282989502" />
                   <FontAwesomeIconView fx:id="printBtn1" fill="#2196f3" glyphName="PRINT" layoutX="667.0" layoutY="218.0" onMouseClicked="#print1" size="30" text="" AnchorPane.bottomAnchor="402.1283473968506" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="100.14285659790039" AnchorPane.topAnchor="192.2857151031494" />
                </children>
                <BorderPane.margin>

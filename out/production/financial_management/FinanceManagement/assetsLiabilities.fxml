@@ -194,7 +194,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="assetsIncomeExpensesTable" layoutX="12.0" layoutY="101.0" onMouseClicked="#setProDetailsOnMouseClicked" prefHeight="286.0" prefWidth="776.0" AnchorPane.bottomAnchor="318.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="101.0">
+                  <TableView fx:id="assetsIncomeExpensesTable" layoutX="12.0" layoutY="101.0"  prefHeight="286.0" prefWidth="776.0" AnchorPane.bottomAnchor="318.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="101.0">
                      <columns>
                         <TableColumn fx:id="assetsIncomeExpensesTableId" prefWidth="60.0" style="-fx-alignment: center;" text="ID" />
                         <TableColumn fx:id="assetsIncomeExpensesTableDescription" prefWidth="254.0" style="-fx-alignment: center;" text="Description" />

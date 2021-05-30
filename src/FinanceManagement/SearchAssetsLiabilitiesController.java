@@ -27,7 +27,6 @@ import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import javafx.scene.input.MouseEvent;
 
 
 public class SearchAssetsLiabilitiesController implements Initializable {
@@ -51,6 +50,7 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     @FXML
     private TableColumn<SearchAssetsLiabilities, String> searchAssetsLiabilitiesTableAction;
 
+    //Buttons
     @FXML
     private Button assetsLiabilitiesMenu1;
     @FXML
@@ -58,11 +58,9 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     @FXML
     private Button searchAssetsLiabilitieHome;
     @FXML
-    private Button closeBtn;
-    @FXML
     private FontAwesomeIconView printBtn1;
 
-
+    //declare variables
     String query = null;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -71,12 +69,9 @@ public class SearchAssetsLiabilitiesController implements Initializable {
 
     ObservableList<SearchAssetsLiabilities> list = FXCollections.observableArrayList();
 
-    private SearchAssetsLiabilities order = null;
-
     //Initializes the controller class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         ShowSearchAssetsLiabilities();
 
         //initialize search filter method
@@ -137,7 +132,7 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     private void ShowSearchAssetsLiabilities() {
 
         FinanceManagement.DBConnection.getConnection();
-        refreshTable1();
+        refreshAssetsLiabilitiesTable();
 
 
         //Retrieve and set values to the columns
@@ -162,7 +157,7 @@ public class SearchAssetsLiabilitiesController implements Initializable {
 
                     } else {
 
-                        //Define fontawesome icons
+                        //Define update and delete fontawesome icons
                         FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
 
@@ -180,15 +175,14 @@ public class SearchAssetsLiabilitiesController implements Initializable {
                                         + "-fx-fill:#00E676;"
                         );
 
+                        //Delete Icon Method
                         deleteIcon.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
 
                             try {
                                 FinanceManagement.SearchAssetsLiabilities searchAssetsLiabilities = searchAssetsLiabilitiesTable.getSelectionModel().getSelectedItem();
                                 //SQL QUERY (DELETE)
                                 String query = "DELETE FROM assetsandliabilities WHERE assetsliabilities_id  =" + searchAssetsLiabilities.getAssetsliabilities_id() ;
-                                //Establishing a Connection
                                 DBConnection.getConnection();
-                                //Create a statement using connection object
                                 Statement st = DBConnection.getConnection().createStatement();
                                 st.execute(query);
                                 ShowSearchAssetsLiabilities();
@@ -221,12 +215,10 @@ public class SearchAssetsLiabilitiesController implements Initializable {
                                 Logger.getLogger(SearchAssetsLiabilitiesController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
-                            //get the Controller
                             UpdateAssetsLiabilitiesController updateAssetsLiabilitiesController = loader.getController();
-                            //Parameter pass to setUpdate method create on update assets and liabilities details
                             updateAssetsLiabilitiesController.setUpdate(true);
 
-                            //set assets and liabilities details want to update
+                            //set assets and liabilities details need to be updateed
                             updateAssetsLiabilitiesController.setTextField(searchAssetsLiabilities.getAssetsliabilities_id(), searchAssetsLiabilities.getAssetsliabilities_description(),
                                     searchAssetsLiabilities.getAssetsliabilities_type(), searchAssetsLiabilities.getAssetsliabilities_date(), searchAssetsLiabilities.getAssetsliabilities_amount());
                             Parent parent = loader.getRoot();
@@ -266,14 +258,12 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     //get Assets and Liabilities List
     public ObservableList<FinanceManagement.SearchAssetsLiabilities> getSearchAssetsLiabilitiesList(){
         ObservableList<FinanceManagement.SearchAssetsLiabilities> searchAssetsLiabilitiesList = FXCollections.observableArrayList();
-        //Connection conn = getConnection();
         FinanceManagement.DBConnection.getConnection();
         String query = "SELECT * FROM assetsandliabilities";
         Statement st;
         ResultSet rs;
 
         try {
-            //st = conn.createStatement();
             st = FinanceManagement.DBConnection.getConnection().createStatement();
             rs = st.executeQuery(query);
             FinanceManagement.SearchAssetsLiabilities searchAssetsLiabilities;
@@ -290,9 +280,9 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     }
 
 
-    //refreshTable (Refresh the table view after update or delete assets and liabilities details)
+    //refreshTable method (Refresh the table view after update or delete assets and liabilities details)
     @FXML
-    private void refreshTable1() {
+    private void refreshAssetsLiabilitiesTable() {
         try {
             list.clear();
 
@@ -323,10 +313,10 @@ public class SearchAssetsLiabilitiesController implements Initializable {
     //Generate Report Method
     @FXML
     private void print1(javafx.scene.input.MouseEvent event) throws SQLException {
-        //Create Generate Types of Employee Object
+
         reportAssetsLiabilitiesController AssetsLiabilitiesReport = new reportAssetsLiabilitiesController();
-        //Create Types of Employee PDF
-        AssetsLiabilitiesReport.createPdf1();
+        //Create Assets Liabilities Report
+        AssetsLiabilitiesReport.generatePDF1();
     }
 
 
@@ -337,7 +327,7 @@ public class SearchAssetsLiabilitiesController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("financeHome.fxml"));
             Stage searchDashboard = (Stage) searchAssetsLiabilitieHome.getScene().getWindow();
-            searchDashboard.setTitle("City of Gems");
+            searchDashboard.setTitle("Gem Merchant System");
             searchDashboard.setScene(new Scene(root, 1050, 780));
             searchDashboard.show();
         }
@@ -349,14 +339,14 @@ public class SearchAssetsLiabilitiesController implements Initializable {
 
 
     // Nav bar
-    //"Income and Expenses" Button method (Direct to "Assets and Liabilities" page)
+    //"Assets and Liabilities" Button method (Direct to "Assets and Liabilities" page)
     @FXML
     public void SearchAssetsLiabilitiesOnAction(ActionEvent event) {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("assetsLiabilities.fxml"));
             Stage searchInEx1 = (Stage) assetsLiabilitiesMenu1.getScene().getWindow();
-            searchInEx1.setTitle("City of Gems");
+            searchInEx1.setTitle("Gem Merchant System");
             searchInEx1.setScene(new Scene(root, 1050, 780));
             searchInEx1.show();
         } catch (Exception e) {
@@ -364,14 +354,14 @@ public class SearchAssetsLiabilitiesController implements Initializable {
         }
     }
 
-    //"Search Income and Expenses" Button method (Direct to "Search Assets and Liabilities" page)
+    //"Search Assets and Liabilities" Button method (Direct to "Search Assets and Liabilities" page)
     @FXML
     public void SearchSearchAssetsLiabilitiesOnAction(ActionEvent event) {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("searchAssetsLiabilities.fxml"));
             Stage searchSeInEx1 = (Stage) searchAssetsLiabilitiesMenu1.getScene().getWindow();
-            searchSeInEx1.setTitle("City of Gems");
+            searchSeInEx1.setTitle("Gem Merchant System");
             searchSeInEx1.setScene(new Scene(root, 1050, 780));
             searchSeInEx1.show();
         } catch (Exception e) {

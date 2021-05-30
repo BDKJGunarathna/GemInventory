@@ -7,15 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,6 +41,7 @@ public class UpdateIncomeExpensesController implements Initializable {
     @FXML
     private TableColumn<UpdateIncomeExpenses, Double> updateIncomeExpensesTableAmount;
 
+    //Text inputs
     @FXML
     private TextField descriptionTxt;
     @FXML
@@ -53,22 +51,14 @@ public class UpdateIncomeExpensesController implements Initializable {
     @FXML
     private TextField amountTxt;
 
-
-    @FXML
-    private JFXButton insertIncomeExpensesBtn;
-    @FXML
-    private JFXButton updateHome;
-    @FXML
-    private Button updateClose;
+    //Buttons
     @FXML
     private JFXButton updateBtn;
     @FXML
     private JFXButton updateCancelBtn;
-    @FXML
-    private JFXButton updateLogoutBtn;
 
 
-    //Create type selection list
+    //Create income and expenses type selection list
     ObservableList<String> incomeExpensestypelist = FXCollections.observableArrayList("Income", "Expenditure");
 
 
@@ -87,7 +77,7 @@ public class UpdateIncomeExpensesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Initialize the type combobox
+        //Initialize the income expenses type combobox
         typeTxt.setItems(incomeExpensestypelist);
 
 
@@ -96,18 +86,17 @@ public class UpdateIncomeExpensesController implements Initializable {
     }
 
 
-
-    // Update button method
+    //Update button method (Direct to "Update Income and Expenses" page)
     @FXML
     public void updateBtnIncomeExpensesOnAction(ActionEvent event){
 
-
+        //Check when the save button is clicked, inserting values are matching to the validations
         if(checkUpdateUiUnfilledFieldsValidation() && checkUpdateUiAmountFieldValidation() && checkUpdateUiAmountFieldZeroValidation() ) {
             executeUpdate();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("updateIncomeExpenses.fxml"));
                 Stage saveInsert = (Stage) updateBtn.getScene().getWindow();
-                saveInsert.setTitle("City of Gems");
+                saveInsert.setTitle("Gem Merchant System");
                 saveInsert.setScene(new Scene(root, 804, 705));
                 saveInsert.show();
             }
@@ -142,7 +131,7 @@ public class UpdateIncomeExpensesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter All values into the fields.");
+            alert.setContentText("Please enter all values into the fields.");
             alert.showAndWait();
 
             return false;
@@ -169,7 +158,7 @@ public class UpdateIncomeExpensesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter only a number to the Amount field.");
+            alert.setContentText("Please enter only numbers to the Amount field.");
             alert.showAndWait();
 
             return false;
@@ -188,7 +177,7 @@ public class UpdateIncomeExpensesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the amount greater than 0");
+            alert.setContentText("Please enter an amount greater than 0");
             alert.showAndWait();
 
             return false;
@@ -200,14 +189,12 @@ public class UpdateIncomeExpensesController implements Initializable {
     //get income and expenses list
     public ObservableList<FinanceManagement.UpdateIncomeExpenses> getUpdateIncomeExpensesList() {
         ObservableList<FinanceManagement.UpdateIncomeExpenses> UpdateIncomeExpensesList = FXCollections.observableArrayList();
-        //Connection conn = getConnection();
         FinanceManagement.DBConnection.getConnection();
         String query = "SELECT * FROM incomeandexpenses";
         Statement st;
         ResultSet rs;
 
         try {
-            //st = conn.createStatement();
             st = FinanceManagement.DBConnection.getConnection().createStatement();
             rs = st.executeQuery(query);
             FinanceManagement.UpdateIncomeExpenses updateIncomeExpenses;
@@ -245,7 +232,6 @@ public class UpdateIncomeExpensesController implements Initializable {
     }
 
     private void executeUpdate() {
-        //Connection conn = getConnection();
         try {
             Connection con = FinanceManagement.DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(
@@ -280,7 +266,7 @@ public class UpdateIncomeExpensesController implements Initializable {
 
 
 
-    //refreshTable (Refresh the table view after update income and expenses details)
+    //refreshTable (Refresh the table view after update the income and expenses details)
     @FXML
     private void refreshTable() {
 
@@ -307,7 +293,7 @@ public class UpdateIncomeExpensesController implements Initializable {
         }
     }
 
-    //Cancel button method (Clear Fields method)
+    //Cancel button method (Fields will be cleared)
     @FXML
     private void UpdateIncomeExpensesDetailsClear() {
         //Set all the form inputs to null
@@ -316,16 +302,6 @@ public class UpdateIncomeExpensesController implements Initializable {
         dateTxt.setValue(null);
         amountTxt.setText(null);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

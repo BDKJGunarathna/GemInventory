@@ -1,49 +1,32 @@
 package FinanceManagement;
 
-        import com.jfoenix.controls.JFXButton;
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.fxml.Initializable;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.*;
-        import javafx.scene.control.cell.PropertyValueFactory;
-        import javafx.scene.input.MouseEvent;
-        import javafx.stage.Stage;
+import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-        import java.io.IOException;
-        import java.net.URL;
-        import java.sql.Connection;
-        import java.sql.PreparedStatement;
-        import java.sql.ResultSet;
-        import java.sql.Statement;
-        import java.time.LocalDate;
-        import java.util.Date;
-        import java.util.ResourceBundle;
-        import java.util.regex.Matcher;
-        import java.util.regex.Pattern;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UpdateAssetsLiabilitiesController implements Initializable {
 
-    //Table
-    @FXML
-    private TableView<UpdateAssetsLiabilities> updateAssetsLiabilitiesTable;
-    @FXML
-    private TableColumn<UpdateAssetsLiabilities, Integer> updateIncomeExpensesId;
-    @FXML
-    private TableColumn<UpdateAssetsLiabilities, String> updateAssetsLiabilitiesTableDescription;
-    @FXML
-    private TableColumn<UpdateAssetsLiabilities, String> updateAssetsLiabilitiesTableType;
-    @FXML
-    private TableColumn<UpdateAssetsLiabilities, Date> updateAssetsLiabilitiesTableDate;
-    @FXML
-    private TableColumn<UpdateAssetsLiabilities, Double> updateAssetsLiabilitiesTableAmount;
-
-
+    //Text inputs
     @FXML
     private TextField assetsLiabilitiesDescriptionTxt;
     @FXML
@@ -53,22 +36,14 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
     @FXML
     private TextField assetsLiabilitiesAmountTxt;
 
-
-    @FXML
-    private JFXButton insertAssetsLiabilitiesBtn;
-    @FXML
-    private JFXButton updateHome;
-    @FXML
-    private Button updateClose;
+    //Buttons
     @FXML
     private JFXButton assetsLiabilitiesUpdateBtn;
     @FXML
     private JFXButton updateAssetsLiabilitiesCancelBtn;
-    @FXML
-    private JFXButton updateLogoutBtn;
 
 
-    //Create type selection list
+    //Create Assets and Liabilities type selection list
     ObservableList<String> assetsLiabilitiestypelist = FXCollections.observableArrayList("Asset", "Liability", "Equity");
 
 
@@ -87,28 +62,24 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Initialize the type combobox
+        //Initialize the assets liabilities type combobox
         assetsLiabilitiesTypeTxt.setItems(assetsLiabilitiestypelist);
 
-
-        // TODO
-       // showUpdateAssetsLiabilities();
     }
 
 
-
-    // Update button method
+    //Update button method (Direct to "Assets and Liabilities" page)
     @FXML
     public void updateBtnAssetsLiabilitiesOnAction(ActionEvent event){
 
-
+        //Check when the save button is clicked, inserting values are matching to the validations
         if(checkUpdateUiUnfilledFieldsValidation() && checkUpdateUiAmountFieldValidation() && checkUpdateUiAmountFieldZeroValidation() ) {
             executeUpdate();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("updateAssetsLiabilities.fxml"));
                 Stage saveInsert = (Stage) assetsLiabilitiesUpdateBtn.getScene().getWindow();
-                saveInsert.setTitle("City of Gems");
-                saveInsert.setScene(new Scene(root, 1050, 780));
+                saveInsert.setTitle("Gem Merchant System");
+                saveInsert.setScene(new Scene(root, 804, 705));
                 saveInsert.show();
             }
             catch(Exception ex){
@@ -126,19 +97,13 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
             catch(Exception ex){
                 ex.printStackTrace();
             }
-
         }
-
-
-
     }
-
-
 
 
     // Form Validation methods
 
-    // (1)check if any unfilled fields in income and expenses form
+    // (1)check if any unfilled fields in assets and liabilities form
     @FXML
     private boolean checkUpdateUiUnfilledFieldsValidation(){
 
@@ -146,7 +111,7 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter All values into the fields.");
+            alert.setContentText("Please enter all values into the fields.");
             alert.showAndWait();
 
             return false;
@@ -173,7 +138,7 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter only a number to the Amount field.");
+            alert.setContentText("Please enter only numbers to the Amount field.");
             alert.showAndWait();
 
             return false;
@@ -192,38 +157,11 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the amount greater than 0");
+            alert.setContentText("Please enter an amount greater than 0");
             alert.showAndWait();
 
             return false;
         }
-    }
-
-
-    //get income and expenses list
-    public ObservableList<FinanceManagement.UpdateAssetsLiabilities> getUpdateAssetsLiabilitiesList() {
-        ObservableList<FinanceManagement.UpdateAssetsLiabilities> UpdateAssetsLiabilitiesList = FXCollections.observableArrayList();
-        //Connection conn = getConnection();
-        FinanceManagement.DBConnection.getConnection();
-        String query = "SELECT * FROM assetsandliabilities";
-        Statement st;
-        ResultSet rs;
-
-        try {
-            //st = conn.createStatement();
-            st = FinanceManagement.DBConnection.getConnection().createStatement();
-            rs = st.executeQuery(query);
-            FinanceManagement.UpdateAssetsLiabilities updateAssetsLiabilities;
-
-            while (rs.next()) {
-                updateAssetsLiabilities = new FinanceManagement.UpdateAssetsLiabilities(rs.getInt("id"), rs.getString("description"), rs.getString("type"), rs.getDate("date"), rs.getDouble("amount"));
-                UpdateAssetsLiabilitiesList.add(updateAssetsLiabilities);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return UpdateAssetsLiabilitiesList;
     }
 
 
@@ -235,7 +173,6 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
 
 
     private void executeUpdate() {
-        //Connection conn = getConnection();
         try {
             Connection con = FinanceManagement.DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(
@@ -266,43 +203,11 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
         assetsLiabilitiesTypeTxt.setValue(type);
         assetsLiabilitiesDateTxt.setValue(toLocalDate);
         assetsLiabilitiesAmountTxt.setText("" + amount);
-
     }
 
 
 
-
-    //refreshTable (Refresh the table view after update assets and liabilities details)
-    @FXML
-    private void refreshTable1() {
-
-        list.clear();
-        ResultSet resultSet = null;
-        connection = DBConnection.getConnection();
-        String query = "SELECT * FROM `assetsandliabilities`";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                list.add(new UpdateAssetsLiabilities(
-                        resultSet.getInt("assetsliabilities_id"),
-                        resultSet.getString("assetsliabilities_description"),
-                        resultSet.getString("assetsliabilities_type"),
-                        resultSet.getDate("assetsliabilities_date"),
-                        resultSet.getDouble("assetsliabilities_amount")));
-                updateAssetsLiabilitiesTable.setItems(list);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-    //Cancel button method (Clear Fields method)
+    //Cancel button method (Fields will be cleared)
     @FXML
     private void UpdateAssetsLiabilitiesDetailsClear() {
         //Set all the form inputs to null
@@ -311,12 +216,4 @@ public class UpdateAssetsLiabilitiesController implements Initializable {
         assetsLiabilitiesDateTxt.setValue(null);
         assetsLiabilitiesAmountTxt.setText(null);
     }
-
-
-
-
-
-
-
-
 }
